@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Meteroi;
 
 namespace Protein_Crystallization
 {
@@ -18,14 +19,36 @@ namespace Protein_Crystallization
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
-            welcome.Visible = false;// Set the welcome page as invisible
+            string username = UserName.Text;
+            string password = PassWords.Text;
+            string ipaddress = IPAddress0.Text + '.' + IPAddress1.Text + '.' + IPAddress2.Text + '.' + IPAddress3.Text;
+            if (PCAS.connect(ipaddress, username, password))
+            {
+                float t1 = PCAS.get_box_temperature();
+                float t2 = PCAS.get_chip_temperature();
+                float m1 = PCAS.get_box_moisture();
+                float m2 = PCAS.get_chip_moisture();
+                welcome.Visible = false;// Set the welcome page as invisible
+                timer1.Enabled = true;
+                temperature1.Text = t1.ToString();
+                temperature0.Text = t2.ToString();
+                moisture0.Text = m1.ToString();
+                moisture1.Text = m2.ToString();
+            }
+            else
+            {
+                MessageBox.Show("connect error");
+            }
         }
 
         private void LoadSetting_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)//Load setting file
-            { 
-
+            {
+                float target_temp = float.Parse(targettemp.Text);
+                float target_moist = float.Parse(targetmoist.Text);
+                PCAS.set_target_temperature(target_temp);
+                PCAS.set_target_moisture(target_moist);
             }
         }
 
@@ -70,7 +93,87 @@ namespace Protein_Crystallization
             MessageBox.Show("确认关机", "远程关机", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
         }
 
+        private void xp_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_x(1);
+        }
 
+        private void xpp_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_x(100);
+        }
 
+        private void ymm_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_y(-100);
+        }
+
+        private void ym_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_y(-1);
+        }
+
+        private void xm_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_x(-1);
+        }
+
+        private void xmm_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_x(-100);
+        }
+
+        private void yp_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_y(1);
+        }
+
+        private void ypp_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_y(100);
+        }
+
+        private void zmm_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_z(-100);
+        }
+
+        private void zm_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_z(-10);
+        }
+
+        private void zp_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_z(10);
+        }
+
+        private void zpp_Click(object sender, EventArgs e)
+        {
+            PCAS.micoscope_z(100);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //float t1 = PCAS.get_box_temperature();
+            //float t2 = PCAS.get_chip_temperature();
+            //float m1 = PCAS.get_box_moisture();
+            //float m2 = PCAS.get_chip_moisture();
+            //if (t1 != float.NaN)
+            //    temperature1.Text = t1.ToString();
+            //if (t2 != float.NaN)
+            //    temperature0.Text = t2.ToString();
+            //if (m1 != float.NaN)
+            //    moisture0.Text = m1.ToString();
+            //if (m2 != float.NaN)
+            //    moisture1.Text = m2.ToString();
+            //logtext.Text = PCAS.get_log();
+        }
+
+        private void LED_light_ValueChanged(object sender, EventArgs e)
+        {
+            uint i = decimal.ToUInt32(LED_light.Value);
+            PCAS.set_led(i);
+        }
     }
 }
