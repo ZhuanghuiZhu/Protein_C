@@ -45,10 +45,6 @@ namespace Protein_Crystallization
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)//Load setting file
             {
-                float target_temp = float.Parse(targettemp.Text);
-                float target_moist = float.Parse(targetmoist.Text);
-                PCAS.set_target_temperature(target_temp);
-                PCAS.set_target_moisture(target_moist);
             }
         }
 
@@ -71,23 +67,31 @@ namespace Protein_Crystallization
         private void AlignmentMark0_Click(object sender, EventArgs e)
         {
             checkBox0.Checked = true;
+            PCAS.set_ref(0);
         }
 
         private void AlignmentMark1_Click(object sender, EventArgs e)
         {
             checkBox1.Checked = true;
+            PCAS.set_ref(1);
         }
 
         private void AlignmentMark2_Click(object sender, EventArgs e)
         {
             checkBox2.Checked = true;
+            PCAS.set_ref(2);
         }
 
         private void AlignmentMark3_Click(object sender, EventArgs e)
         {
             checkBox3.Checked = true;
+            PCAS.set_ref(3);
         }
-
+        private void original_Click(object sender, EventArgs e)
+        {
+            checkBox3.Checked = true;
+            PCAS.set_ref(4);
+        }
         private void RemoteClose_Click(object sender, EventArgs e)
         {
             MessageBox.Show("确认关机", "远程关机", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
@@ -155,25 +159,42 @@ namespace Protein_Crystallization
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //float t1 = PCAS.get_box_temperature();
-            //float t2 = PCAS.get_chip_temperature();
-            //float m1 = PCAS.get_box_moisture();
-            //float m2 = PCAS.get_chip_moisture();
-            //if (t1 != float.NaN)
-            //    temperature1.Text = t1.ToString();
-            //if (t2 != float.NaN)
-            //    temperature0.Text = t2.ToString();
-            //if (m1 != float.NaN)
-            //    moisture0.Text = m1.ToString();
-            //if (m2 != float.NaN)
-            //    moisture1.Text = m2.ToString();
-            //logtext.Text = PCAS.get_log();
+            float t1 = PCAS.get_box_temperature();
+            float t2 = PCAS.get_chip_temperature();
+            float m1 = PCAS.get_box_moisture();
+            float m2 = PCAS.get_chip_moisture();
+            if (t1 != float.NaN)
+                temperature1.Text = t1.ToString();
+            if (t2 != float.NaN)
+                temperature0.Text = t2.ToString();
+            if (m1 != float.NaN)
+                moisture1.Text = m1.ToString();
+            if (m2 != float.NaN)
+                moisture0.Text = m2.ToString();
+            logtext.Text = PCAS.get_log();
         }
 
         private void LED_light_ValueChanged(object sender, EventArgs e)
         {
             uint i = decimal.ToUInt32(LED_light.Value);
             PCAS.set_led(i);
+        }
+
+        private void targettemp_TextChanged(object sender, EventArgs e)
+        {
+            float target_temp = float.Parse(targettemp.Text);
+            PCAS.set_target_temperature(target_temp);
+        }
+
+        private void targetmoist_TextChanged(object sender, EventArgs e)
+        {
+            float target_moist = float.Parse(targetmoist.Text);
+            PCAS.set_target_moisture(target_moist);
+        }
+
+        private void radius_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

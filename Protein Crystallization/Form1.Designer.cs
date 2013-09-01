@@ -77,7 +77,9 @@
             this.AlignmentMark2 = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.original = new System.Windows.Forms.Button();
             this.LogPage = new System.Windows.Forms.TabPage();
+            this.logtext = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label31 = new System.Windows.Forms.Label();
             this.LED_light = new System.Windows.Forms.NumericUpDown();
@@ -93,7 +95,7 @@
             this.LoadSetting = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.radius = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -138,13 +140,13 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.logtext = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.LogPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LED_light)).BeginInit();
@@ -641,10 +643,21 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.original);
             this.panel1.Location = new System.Drawing.Point(100, 42);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(183, 96);
             this.panel1.TabIndex = 20;
+            // 
+            // original
+            // 
+            this.original.Location = new System.Drawing.Point(53, 58);
+            this.original.Name = "original";
+            this.original.Size = new System.Drawing.Size(75, 28);
+            this.original.TabIndex = 22;
+            this.original.Text = "确认";
+            this.original.UseVisualStyleBackColor = true;
+            this.original.Click += new System.EventHandler(this.original_Click);
             // 
             // LogPage
             // 
@@ -656,6 +669,15 @@
             this.LogPage.TabIndex = 3;
             this.LogPage.Text = "Log";
             this.LogPage.UseVisualStyleBackColor = true;
+            // 
+            // logtext
+            // 
+            this.logtext.Location = new System.Drawing.Point(6, 6);
+            this.logtext.Multiline = true;
+            this.logtext.Name = "logtext";
+            this.logtext.ReadOnly = true;
+            this.logtext.Size = new System.Drawing.Size(740, 426);
+            this.logtext.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -673,7 +695,7 @@
             this.tabPage2.Controls.Add(this.LoadSetting);
             this.tabPage2.Controls.Add(this.textBox5);
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.radius);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.textBox3);
@@ -710,7 +732,7 @@
             this.LED_light.Size = new System.Drawing.Size(46, 29);
             this.LED_light.TabIndex = 26;
             this.LED_light.Value = new decimal(new int[] {
-            60,
+            10,
             0,
             0,
             0});
@@ -827,12 +849,13 @@
             this.label18.TabIndex = 13;
             this.label18.Text = "数量：                         个";
             // 
-            // textBox6
+            // radius
             // 
-            this.textBox6.Location = new System.Drawing.Point(138, 208);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(61, 29);
-            this.textBox6.TabIndex = 12;
+            this.radius.Location = new System.Drawing.Point(138, 208);
+            this.radius.Name = "radius";
+            this.radius.Size = new System.Drawing.Size(61, 29);
+            this.radius.TabIndex = 12;
+            this.radius.TextChanged += new System.EventHandler(this.radius_TextChanged);
             // 
             // label19
             // 
@@ -899,6 +922,7 @@
             this.targetmoist.Name = "targetmoist";
             this.targetmoist.Size = new System.Drawing.Size(61, 29);
             this.targetmoist.TabIndex = 4;
+            this.targetmoist.TextChanged += new System.EventHandler(this.targetmoist_TextChanged);
             // 
             // label11
             // 
@@ -915,6 +939,7 @@
             this.targettemp.Name = "targettemp";
             this.targettemp.Size = new System.Drawing.Size(61, 29);
             this.targettemp.TabIndex = 2;
+            this.targettemp.TextChanged += new System.EventHandler(this.targettemp_TextChanged);
             // 
             // label10
             // 
@@ -1238,14 +1263,6 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // logtext
-            // 
-            this.logtext.Location = new System.Drawing.Point(6, 6);
-            this.logtext.Multiline = true;
-            this.logtext.Name = "logtext";
-            this.logtext.Size = new System.Drawing.Size(740, 426);
-            this.logtext.TabIndex = 0;
-            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1262,8 +1279,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.welcome);
             this.Name = "Detector";
             this.Text = "Protein Crystallization Detector";
             this.tabControl1.ResumeLayout(false);
@@ -1274,6 +1291,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.LogPage.ResumeLayout(false);
             this.LogPage.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1343,7 +1361,7 @@
         private System.Windows.Forms.Button LoadSetting;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox radius;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -1399,6 +1417,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox logtext;
+        private System.Windows.Forms.Button original;
     }
 }
 

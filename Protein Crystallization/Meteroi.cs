@@ -246,7 +246,12 @@ namespace Meteroi
             b.send_command_get_response(com);
             return;
         }
-
+        public static void set_radius(uint i)
+        {
+            string com = "rad " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        }
     }
 
 }
