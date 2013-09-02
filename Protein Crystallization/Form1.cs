@@ -37,7 +37,7 @@ namespace Protein_Crystallization
             }
             else
             {
-                MessageBox.Show("connect error");
+                MessageBox.Show("          连接失败");
             }
         }
 
@@ -196,5 +196,6 @@ namespace Protein_Crystallization
         {
 
         }
+
     }
 }
