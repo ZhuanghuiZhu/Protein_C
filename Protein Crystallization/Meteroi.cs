@@ -119,25 +119,7 @@ namespace Meteroi
         {
             return b.log;
         }
-//shell_cmd_func_t shell_cmd_func_list[] = {
-//    {"help",      "Print Help Manual",                 cli_help},
-//    {"temp",      "show the temperature",              show_temperature},
-//    {"moist",     "show the moisture",                 show_moisture},
-//    {"tempt",     "Set the target temperature",        set_temperature},
-//    {"moistt",    "Set the target temperature",        set_moisture},
-//    {"scope",     "set the coordinates of the micro scope",set_microscop_position},
-//    {"manual",    "Manual regulate the micro scope",   manual_calibration},
-//    {"x",         "regular x of micro scope",          microscop_x},
-//    {"y",         "regular y of micro scope",          microscop_y},
-//    {"z",         "regular z of micro scope",          microscop_z},
-//    {"move",      "Move to the sample",                microscop_move},
-//    {"ref",       "set the reference point of micro scope", microscop_ref},
-//    {"syf",       "syringe run forward",               syringe_plus},
-//    {"syb",       "syringe run back",                  syringe_minus},
-//    {"led",       "LED light",                         led},
-//    {"ut",        "Unit test of the system",           unit_test},
-//    {NULL, NULL, NULL}
-//};
+
         public static float get_box_temperature()
         {
             string regexStr = @"[-+]?\b(?:[0-9]*\.)?[0-9]+\b";
