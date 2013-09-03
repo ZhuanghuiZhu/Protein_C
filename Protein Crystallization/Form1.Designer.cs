@@ -33,13 +33,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.WorkSpace = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.numbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InjectionVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label31 = new System.Windows.Forms.Label();
             this.LED_light = new System.Windows.Forms.NumericUpDown();
@@ -147,6 +140,13 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.numbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InjectionVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -205,49 +205,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 30;
-            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.RowTemplate.Height = 26;
             this.dataGridView1.Size = new System.Drawing.Size(724, 459);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // numbers
-            // 
-            this.numbers.HeaderText = "编号";
-            this.numbers.Name = "numbers";
-            this.numbers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.numbers.Width = 75;
-            // 
-            // names
-            // 
-            this.names.HeaderText = "名称";
-            this.names.Name = "names";
-            // 
-            // Result
-            // 
-            this.Result.HeaderText = "结果";
-            this.Result.Name = "Result";
-            // 
-            // Diameter
-            // 
-            this.Diameter.HeaderText = "直径";
-            this.Diameter.Name = "Diameter";
-            // 
-            // InjectionVolume
-            // 
-            this.InjectionVolume.HeaderText = "加液量";
-            this.InjectionVolume.Name = "InjectionVolume";
-            this.InjectionVolume.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.InjectionVolume.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ManualInject
-            // 
-            this.ManualInject.HeaderText = "手动注射";
-            this.ManualInject.Name = "ManualInject";
-            this.ManualInject.Text = "注射";
-            // 
-            // others
-            // 
-            this.others.HeaderText = "其他";
-            this.others.Name = "others";
             // 
             // tabPage2
             // 
@@ -942,7 +902,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(92, 37);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 15);
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -962,7 +922,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(275, 37);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 15);
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 12;
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
@@ -971,7 +931,7 @@
             this.checkBox0.AutoSize = true;
             this.checkBox0.Location = new System.Drawing.Point(92, 141);
             this.checkBox0.Name = "checkBox0";
-            this.checkBox0.Size = new System.Drawing.Size(15, 15);
+            this.checkBox0.Size = new System.Drawing.Size(15, 14);
             this.checkBox0.TabIndex = 13;
             this.checkBox0.UseVisualStyleBackColor = true;
             // 
@@ -991,7 +951,7 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(275, 141);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 15);
+            this.checkBox3.Size = new System.Drawing.Size(15, 14);
             this.checkBox3.TabIndex = 14;
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
@@ -1388,6 +1348,46 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // numbers
+            // 
+            this.numbers.HeaderText = "编号";
+            this.numbers.Name = "numbers";
+            this.numbers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.numbers.Width = 75;
+            // 
+            // names
+            // 
+            this.names.HeaderText = "名称";
+            this.names.Name = "names";
+            // 
+            // Result
+            // 
+            this.Result.HeaderText = "结果";
+            this.Result.Name = "Result";
+            // 
+            // Diameter
+            // 
+            this.Diameter.HeaderText = "直径";
+            this.Diameter.Name = "Diameter";
+            // 
+            // InjectionVolume
+            // 
+            this.InjectionVolume.HeaderText = "加液量(μL)";
+            this.InjectionVolume.Name = "InjectionVolume";
+            this.InjectionVolume.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InjectionVolume.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ManualInject
+            // 
+            this.ManualInject.HeaderText = "手动注射";
+            this.ManualInject.Name = "ManualInject";
+            this.ManualInject.Text = "注射";
+            // 
+            // others
+            // 
+            this.others.HeaderText = "其他";
+            this.others.Name = "others";
+            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1465,13 +1465,6 @@
         private System.Windows.Forms.Label temperature0;
         private System.Windows.Forms.Button RemoteClose;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numbers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn names;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Diameter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InjectionVolume;
-        private System.Windows.Forms.DataGridViewButtonColumn ManualInject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn others;
         private System.Windows.Forms.TextBox targettemp;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
@@ -1551,6 +1544,13 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numbers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn names;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diameter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InjectionVolume;
+        private System.Windows.Forms.DataGridViewButtonColumn ManualInject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn others;
     }
 }
 

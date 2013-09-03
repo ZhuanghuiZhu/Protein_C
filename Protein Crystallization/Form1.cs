@@ -15,6 +15,15 @@ namespace Protein_Crystallization
         public Detector()
         {
             InitializeComponent();
+
+            dataGridView1.Rows.Add(23);
+            for (int i = 0; i < 12; i++)
+            {
+                this.dataGridView1[0, i].Value = "A" + Convert.ToString(i + 1);
+                this.dataGridView1[0, i + 12].Value = "B" + Convert.ToString(i + 1);
+            }
+            for (int i = 0; i < 24; i++)
+                this.dataGridView1.Rows[i].Cells[5].Value = "注射";
         }
         private void ConnectButton_Click(object sender, EventArgs e)
         {
