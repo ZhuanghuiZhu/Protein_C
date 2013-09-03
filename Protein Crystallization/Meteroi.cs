@@ -26,7 +26,7 @@ namespace Meteroi
         {
             string f;
             change_state_to_disconnect();
-            log = "Log:\n";
+            log = "Log:\n\r";
             shell = new Terminal(broad_address);
             shell.Connect(); // physcial connection
             do 

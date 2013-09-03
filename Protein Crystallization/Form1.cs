@@ -201,5 +201,19 @@ namespace Protein_Crystallization
         {
             PCAS.syringe_minus(200);
         }
+
+        private void set_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exam_Click(object sender, EventArgs e)
+        {
+            uint i = uint.Parse(textBox3.Text);
+            uint d = uint.Parse(textBox4.Text);
+            PCAS.set_radius(d);
+            PCAS.move_to_sample(i);
+        }
+
     }
 }
