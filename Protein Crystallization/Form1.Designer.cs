@@ -41,6 +41,8 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.angle = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.exam = new System.Windows.Forms.Button();
             this.set = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
@@ -253,6 +255,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.angle);
+            this.tabPage2.Controls.Add(this.label34);
             this.tabPage2.Controls.Add(this.exam);
             this.tabPage2.Controls.Add(this.set);
             this.tabPage2.Controls.Add(this.label31);
@@ -289,6 +293,24 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Setting";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // angle
+            // 
+            this.angle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.angle.Location = new System.Drawing.Point(244, 165);
+            this.angle.Name = "angle";
+            this.angle.Size = new System.Drawing.Size(61, 26);
+            this.angle.TabIndex = 30;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label34.Location = new System.Drawing.Point(152, 171);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(189, 20);
+            this.label34.TabIndex = 31;
+            this.label34.Text = "角偏移：                         个";
             // 
             // exam
             // 
@@ -1295,8 +1317,8 @@
             // 
             // moisture1
             // 
-            this.moisture1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.moisture1.Location = new System.Drawing.Point(561, 490);
+            this.moisture1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.moisture1.Location = new System.Drawing.Point(561, 489);
             this.moisture1.Name = "moisture1";
             this.moisture1.Size = new System.Drawing.Size(56, 28);
             this.moisture1.TabIndex = 22;
@@ -1315,8 +1337,8 @@
             // 
             // temperature1
             // 
-            this.temperature1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.temperature1.Location = new System.Drawing.Point(424, 490);
+            this.temperature1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.temperature1.Location = new System.Drawing.Point(424, 489);
             this.temperature1.Name = "temperature1";
             this.temperature1.Size = new System.Drawing.Size(58, 28);
             this.temperature1.TabIndex = 20;
@@ -1345,8 +1367,8 @@
             // 
             // moisture0
             // 
-            this.moisture0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.moisture0.Location = new System.Drawing.Point(230, 490);
+            this.moisture0.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.moisture0.Location = new System.Drawing.Point(243, 489);
             this.moisture0.Name = "moisture0";
             this.moisture0.Size = new System.Drawing.Size(51, 28);
             this.moisture0.TabIndex = 17;
@@ -1357,7 +1379,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(287, 492);
+            this.label9.Location = new System.Drawing.Point(298, 492);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(23, 20);
             this.label9.TabIndex = 16;
@@ -1365,8 +1387,8 @@
             // 
             // temperature0
             // 
-            this.temperature0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.temperature0.Location = new System.Drawing.Point(97, 490);
+            this.temperature0.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.temperature0.Location = new System.Drawing.Point(104, 489);
             this.temperature0.Name = "temperature0";
             this.temperature0.Size = new System.Drawing.Size(49, 28);
             this.temperature0.TabIndex = 15;
@@ -1377,7 +1399,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(152, 492);
+            this.label3.Location = new System.Drawing.Point(158, 492);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 20);
             this.label3.TabIndex = 14;
@@ -1418,10 +1440,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
             this.Controls.Add(this.welcome);
-            this.Controls.Add(this.moisture1);
-            this.Controls.Add(this.temperature1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
+            this.Controls.Add(this.moisture1);
+            this.Controls.Add(this.temperature1);
             this.Controls.Add(this.RemoteClose);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label2);
@@ -1577,6 +1599,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn others;
         private System.Windows.Forms.Button set;
         private System.Windows.Forms.Button exam;
+        private System.Windows.Forms.TextBox angle;
+        private System.Windows.Forms.Label label34;
     }
 }
 

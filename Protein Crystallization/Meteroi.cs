@@ -228,12 +228,18 @@ namespace Meteroi
             b.send_command_get_response(com);
             return;
         }
-        public static void set_radius(uint i)
+        public static void set_radius(float i)
         {
             string com = "rad " + i.ToString();
             b.send_command_get_response(com);
             return;
         }
+        public static void set_angle(float i)
+        {
+            string com = "angle " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        } 
     }
 
 }

@@ -156,13 +156,13 @@ namespace Protein_Crystallization
             float m1 = PCAS.get_box_moisture();
             float m2 = PCAS.get_chip_moisture();
             if (t1 != float.NaN)
-                temperature1.Text = t1.ToString();
+                temperature1.Text = t1.ToString("0.00");
             if (t2 != float.NaN)
-                temperature0.Text = t2.ToString();
+                temperature0.Text = t2.ToString("0.00");
             if (m1 != float.NaN)
-                moisture1.Text = m1.ToString();
-            if (m2 != float.NaN)
-                moisture0.Text = m2.ToString();
+                moisture1.Text = m1.ToString("0.00");
+            if (m2 != float.NaN && m2 > 0 && m2 < 100)
+                moisture0.Text = m2.ToString("0.00");
             logtext.Text = PCAS.get_log();
         }
         private void LED_light_ValueChanged(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace Protein_Crystallization
         }
         private void radius_TextChanged(object sender, EventArgs e)
         {
-            uint i = uint.Parse(radius.Text);
+            float i = uint.Parse(radius.Text);
             PCAS.set_radius(i);
         }
         private void syf_Click(object sender, EventArgs e)
@@ -201,17 +201,17 @@ namespace Protein_Crystallization
         {
             PCAS.syringe_minus(200);
         }
-
         private void set_Click(object sender, EventArgs e)
         {
 
         }
-
         private void exam_Click(object sender, EventArgs e)
         {
             uint i = uint.Parse(textBox3.Text);
-            uint d = uint.Parse(textBox4.Text);
+            float d = float.Parse(textBox4.Text);
+            float a = float.Parse(angle.Text);
             PCAS.set_radius(d);
+            PCAS.set_angle(a);
             PCAS.move_to_sample(i);
         }
 
