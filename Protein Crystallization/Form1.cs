@@ -45,7 +45,7 @@ namespace Protein_Crystallization
             }
             else
             {
-                MessageBox.Show("          连接失败");
+                MessageBox.Show("连接失败");
             }
         }
         private void LoadSetting_Click(object sender, EventArgs e)
@@ -172,18 +172,15 @@ namespace Protein_Crystallization
         }
         private void targettemp_TextChanged(object sender, EventArgs e)
         {
-            float target_temp = float.Parse(targettemp.Text);
-            PCAS.set_target_temperature(target_temp);
+
         }
         private void targetmoist_TextChanged(object sender, EventArgs e)
         {
-            float target_moist = float.Parse(targetmoist.Text);
-            PCAS.set_target_moisture(target_moist);
+
         }
         private void radius_TextChanged(object sender, EventArgs e)
         {
-            float i = uint.Parse(radius.Text);
-            PCAS.set_radius(i);
+
         }
         private void syf_Click(object sender, EventArgs e)
         {
@@ -203,7 +200,10 @@ namespace Protein_Crystallization
         }
         private void set_Click(object sender, EventArgs e)
         {
-
+            float target_temp = float.Parse(targettemp.Text);
+            float target_moist = float.Parse(targetmoist.Text);
+            PCAS.set_target_temperature(target_temp);
+            PCAS.set_target_moisture(target_moist);
         }
         private void exam_Click(object sender, EventArgs e)
         {
@@ -213,6 +213,16 @@ namespace Protein_Crystallization
             PCAS.set_radius(d);
             PCAS.set_angle(a);
             PCAS.move_to_sample(i);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            uint i = uint.Parse(textBox5.Text);
+            float d = float.Parse(radius.Text);
+            //float a = float.Parse(angle.Text);
+            PCAS.set_hole_radius(d);
+            //PCAS.set_angle(a);
+            PCAS.move_to_hole(i);
         }
 
     }

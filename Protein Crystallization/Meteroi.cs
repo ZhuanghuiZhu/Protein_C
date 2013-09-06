@@ -239,7 +239,19 @@ namespace Meteroi
             string com = "angle " + i.ToString();
             b.send_command_get_response(com);
             return;
+        }
+        public static void move_to_hole(uint i)
+        {
+            string com = "hole " + i.ToString();
+            b.send_command_get_response(com);
+            return;
         } 
+         public static void set_hole_radius(float i)
+        {
+            string com = "holer " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        }        
     }
 
 }
