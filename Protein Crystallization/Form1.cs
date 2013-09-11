@@ -184,19 +184,23 @@ namespace Protein_Crystallization
         }
         private void syf_Click(object sender, EventArgs e)
         {
-            PCAS.syringe_plus(50);
+            //PCAS.syringe_plus(50);
+            PCAS.syringe_minus(25);
         }
         private void syb_Click(object sender, EventArgs e)
         {
-            PCAS.syringe_minus(50);
+            //PCAS.syringe_minus(50);
+            PCAS.syringe_plus(25);
         }
         private void syff_Click(object sender, EventArgs e)
         {
-            PCAS.syringe_plus(200);
+            //PCAS.syringe_plus(200);
+            PCAS.syringe_minus(200);
         }
         private void sybb_Click(object sender, EventArgs e)
         {
-            PCAS.syringe_minus(200);
+            //PCAS.syringe_minus(200);
+            PCAS.syringe_plus(200);
         }
         private void set_Click(object sender, EventArgs e)
         {
