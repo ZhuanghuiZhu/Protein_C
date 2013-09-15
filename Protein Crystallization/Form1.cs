@@ -99,7 +99,21 @@ namespace Protein_Crystallization
         }
         private void RemoteClose_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("确认关机", "远程关机", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            string username = UserName.Text;
+            string password = PassWords.Text;
+            string ipaddress = IPAddress0.Text + '.' + IPAddress1.Text + '.' + IPAddress2.Text + '.' + IPAddress3.Text;
+            DialogResult r;
+            r = MessageBox.Show("确认关机", "远程关机", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            if (r == DialogResult.Cancel)
+                return;
+            if (PCAS.disconnect(ipaddress, username, password) == true)
+            {
+                welcome.Visible = true;// Set the welcome page as invisible
+                timer1.Enabled = false;
+            } else
+            {
+                MessageBox.Show("关机失败");
+            }
         }
         private void xp_Click(object sender, EventArgs e)
         {
@@ -212,20 +226,23 @@ namespace Protein_Crystallization
         private void exam_Click(object sender, EventArgs e)
         {
             uint i = uint.Parse(textBox3.Text);
+            uint sample = uint.Parse(Sample.Text);
             float d = float.Parse(textBox4.Text);
             float a = float.Parse(angle.Text);
             PCAS.set_radius(d);
             PCAS.set_angle(a);
+            PCAS.set_sample(sample);
             PCAS.move_to_sample(i);
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void addsample_Click(object sender, EventArgs e)
         {
             uint i = uint.Parse(textBox5.Text);
+            uint sample = uint.Parse(Sample.Text);
             float d = float.Parse(radius.Text);
-            //float a = float.Parse(angle.Text);
+            float a = float.Parse(angle.Text);
             PCAS.set_hole_radius(d);
-            //PCAS.set_angle(a);
+            PCAS.set_hole_angle(a);
+            PCAS.set_hole_sample(sample);
             PCAS.move_to_hole(i);
         }
 

@@ -41,8 +41,10 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.addsample = new System.Windows.Forms.Button();
+            this.Sample = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.angle = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -258,8 +260,10 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.label36);
+            this.tabPage2.Controls.Add(this.addsample);
+            this.tabPage2.Controls.Add(this.Sample);
             this.tabPage2.Controls.Add(this.label35);
             this.tabPage2.Controls.Add(this.angle);
             this.tabPage2.Controls.Add(this.label34);
@@ -300,23 +304,42 @@
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // textBox2
             // 
-            this.button1.Location = new System.Drawing.Point(511, 236);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "加样";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Location = new System.Drawing.Point(643, 279);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(61, 26);
+            this.textBox2.TabIndex = 35;
             // 
-            // textBox1
+            // label36
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(408, 125);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(61, 26);
-            this.textBox1.TabIndex = 33;
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label36.Location = new System.Drawing.Point(555, 285);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(177, 20);
+            this.label36.TabIndex = 36;
+            this.label36.Text = "角偏移：                      度";
+            // 
+            // addsample
+            // 
+            this.addsample.Location = new System.Drawing.Point(511, 236);
+            this.addsample.Name = "addsample";
+            this.addsample.Size = new System.Drawing.Size(75, 30);
+            this.addsample.TabIndex = 34;
+            this.addsample.Text = "加样";
+            this.addsample.UseVisualStyleBackColor = true;
+            this.addsample.Click += new System.EventHandler(this.addsample_Click);
+            // 
+            // Sample
+            // 
+            this.Sample.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Sample.Location = new System.Drawing.Point(408, 125);
+            this.Sample.Name = "Sample";
+            this.Sample.Size = new System.Drawing.Size(61, 26);
+            this.Sample.TabIndex = 33;
+            this.Sample.Text = "25";
             // 
             // label35
             // 
@@ -335,6 +358,7 @@
             this.angle.Name = "angle";
             this.angle.Size = new System.Drawing.Size(61, 26);
             this.angle.TabIndex = 30;
+            this.angle.Text = "0";
             // 
             // label34
             // 
@@ -495,6 +519,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(61, 26);
             this.textBox5.TabIndex = 14;
+            this.textBox5.Text = "0";
             // 
             // label18
             // 
@@ -513,6 +538,7 @@
             this.radius.Name = "radius";
             this.radius.Size = new System.Drawing.Size(61, 26);
             this.radius.TabIndex = 12;
+            this.radius.Text = "22.02";
             this.radius.TextChanged += new System.EventHandler(this.radius_TextChanged);
             // 
             // label19
@@ -541,6 +567,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(61, 26);
             this.textBox3.TabIndex = 9;
+            this.textBox3.Text = "0";
             // 
             // label13
             // 
@@ -559,6 +586,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(61, 26);
             this.textBox4.TabIndex = 7;
+            this.textBox4.Text = "14.05";
             // 
             // label16
             // 
@@ -586,6 +614,7 @@
             this.targetmoist.Name = "targetmoist";
             this.targetmoist.Size = new System.Drawing.Size(61, 26);
             this.targetmoist.TabIndex = 4;
+            this.targetmoist.Text = "80";
             this.targetmoist.TextChanged += new System.EventHandler(this.targetmoist_TextChanged);
             // 
             // label11
@@ -605,6 +634,7 @@
             this.targettemp.Name = "targettemp";
             this.targettemp.Size = new System.Drawing.Size(61, 26);
             this.targettemp.TabIndex = 2;
+            this.targettemp.Text = "25";
             this.targettemp.TextChanged += new System.EventHandler(this.targettemp_TextChanged);
             // 
             // label10
@@ -1474,7 +1504,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
-            this.Controls.Add(this.welcome);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
             this.Controls.Add(this.moisture1);
@@ -1487,8 +1516,9 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.welcome);
             this.Name = "Detector";
-            this.Text = "Protein Crystallization Detector";
+            this.Text = " ";
             this.tabControl1.ResumeLayout(false);
             this.WorkSpace.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1636,9 +1666,11 @@
         private System.Windows.Forms.Button exam;
         private System.Windows.Forms.TextBox angle;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Sample;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addsample;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label36;
     }
 }
 

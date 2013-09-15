@@ -70,6 +70,31 @@ namespace Meteroi
             log += shell.VirtualScreen.Hardcopy().TrimEnd();
             return shell.VirtualScreen.Hardcopy().TrimEnd();
         }
+        public bool turn_off(string password)
+        {
+            string f;
+            lock (this)
+            {
+                shell.VirtualScreen.CleanScreen();
+                if (connect_state)
+                {
+                    shell.SendResponse("exit", true);	// send exit 
+                    f = shell.WaitForString("$", true, 3); // program shell
+                    if (f == null)
+                        return false;
+                }
+                shell.VirtualScreen.CleanScreen();
+                shell.SendResponse("sudo poweroff", true);	// send poweroff
+                f = shell.WaitForString("password");
+                if (f == null)
+                    return false;
+                shell.SendResponse(password, true);	   // send poweroff
+
+            }
+            log += shell.VirtualScreen.Hardcopy().TrimEnd();
+            return true;
+        }
+
         ~broad()
         { 
             
@@ -115,6 +140,12 @@ namespace Meteroi
             else
                 return false;
         }
+
+        public static bool disconnect(string broad_address, string login_name, string login_pwd)
+        {
+            return b.turn_off(login_pwd);
+        }
+
         public static string get_log()
         {
             return b.log;
@@ -240,6 +271,12 @@ namespace Meteroi
             b.send_command_get_response(com);
             return;
         }
+        public static void set_sample(uint i)
+        {
+            string com = "sample " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        }
         public static void move_to_hole(uint i)
         {
             string com = "hole " + i.ToString();
@@ -249,6 +286,18 @@ namespace Meteroi
          public static void set_hole_radius(float i)
         {
             string com = "holer " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        }
+        public static void set_hole_sample(uint i)
+        {
+            string com = "holes " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        } 
+        public static void set_hole_angle(float i)
+        {
+            string com = "holea " + i.ToString();
             b.send_command_get_response(com);
             return;
         }        
