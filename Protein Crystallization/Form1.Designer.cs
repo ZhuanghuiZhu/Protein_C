@@ -312,6 +312,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(45, 23);
             this.textBox2.TabIndex = 35;
+            this.textBox2.Text = "0";
             // 
             // label36
             // 

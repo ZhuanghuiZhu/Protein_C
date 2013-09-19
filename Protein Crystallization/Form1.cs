@@ -184,6 +184,11 @@ namespace Protein_Crystallization
         private void LED_light_ValueChanged(object sender, EventArgs e)
         {
             uint i = decimal.ToUInt32(LED_light.Value);
+            if (i > 100)
+            {
+                MessageBox.Show("请输入正确的亮度比列");
+                return;
+            }
             PCAS.set_led(i);
         }
         private void targettemp_TextChanged(object sender, EventArgs e)
@@ -222,6 +227,16 @@ namespace Protein_Crystallization
         {
             float target_temp = float.Parse(targettemp.Text);
             float target_moist = float.Parse(targetmoist.Text);
+            if (target_temp > 30 || target_temp < 0)
+            {
+                MessageBox.Show("请输入正确的温度");
+                return;
+            }
+            if (target_moist > 100 || target_moist < 0)
+            {
+                MessageBox.Show("请输入正确的湿度");
+                return;
+            }
             PCAS.set_target_temperature(target_temp);
             PCAS.set_target_moisture(target_moist);
         }
@@ -231,6 +246,21 @@ namespace Protein_Crystallization
             uint sample = uint.Parse(Sample.Text);
             float d = float.Parse(textBox4.Text);
             float a = float.Parse(angle.Text);
+            if (i > sample)
+            {
+                MessageBox.Show("请输入正确的样本编号");
+                return;
+            }
+            if (a > 360 || a < - 360)
+            {
+                MessageBox.Show("请输入正确的角偏移");
+                return;
+            }
+            if (d < 0 || d > 30)
+            {
+                MessageBox.Show("请输入正确的半径");
+                return;
+            }
             PCAS.set_radius(d);
             PCAS.set_angle(a);
             PCAS.set_sample(sample);
@@ -242,6 +272,21 @@ namespace Protein_Crystallization
             uint sample = uint.Parse(Sample.Text);
             float d = float.Parse(radius.Text);
             float a = float.Parse(angle.Text);
+            if (i > sample)
+            {
+                MessageBox.Show("请输入正确的样本编号");
+                return;
+            }
+            if (a > 360 || a < -360)
+            {
+                MessageBox.Show("请输入正确的角偏移");
+                return;
+            }
+            if (d < 0 || d > 30)
+            {
+                MessageBox.Show("请输入正确的半径");
+                return;
+            }
             PCAS.set_hole_radius(d);
             PCAS.set_hole_angle(a);
             PCAS.set_hole_sample(sample);

@@ -26,7 +26,7 @@ namespace Meteroi
         {
             string f;
             change_state_to_disconnect();
-            log = "Log:\n\r";
+            log = "Log:\r\n";
             shell = new Terminal(broad_address);
             shell.Connect(); // physcial connection
             do 
@@ -49,6 +49,7 @@ namespace Meteroi
                 change_state_to_connect();
             } while (false);
             log += shell.VirtualScreen.Hardcopy().TrimEnd();
+            log += "\r\n";
         }
         public bool is_connect()
         {
@@ -68,6 +69,7 @@ namespace Meteroi
                 }
             }
             log += shell.VirtualScreen.Hardcopy().TrimEnd();
+            log += "\r\n";
             return shell.VirtualScreen.Hardcopy().TrimEnd();
         }
         public bool turn_off(string password)
@@ -92,6 +94,7 @@ namespace Meteroi
 
             }
             log += shell.VirtualScreen.Hardcopy().TrimEnd();
+            log += "\r\n";
             return true;
         }
 
