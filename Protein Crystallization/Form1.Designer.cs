@@ -41,6 +41,8 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.hole_d = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.holeangle = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.addsample = new System.Windows.Forms.Button();
@@ -78,6 +80,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.syff = new System.Windows.Forms.Button();
             this.syf = new System.Windows.Forms.Button();
@@ -156,8 +160,6 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.hole_d = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -308,6 +310,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // hole_d
+            // 
+            this.hole_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.hole_d.Location = new System.Drawing.Point(399, 251);
+            this.hole_d.Name = "hole_d";
+            this.hole_d.Size = new System.Drawing.Size(45, 23);
+            this.hole_d.TabIndex = 38;
+            this.hole_d.Text = "25.00";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.Location = new System.Drawing.Point(320, 251);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(156, 17);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "偏移：                     mm";
             // 
             // holeangle
             // 
@@ -671,6 +692,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.button17);
@@ -693,6 +716,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "校准";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(170, 397);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(65, 28);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "出盘";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(68, 397);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 28);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "进盘";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox3
             // 
@@ -1512,25 +1555,6 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // hole_d
-            // 
-            this.hole_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.hole_d.Location = new System.Drawing.Point(399, 251);
-            this.hole_d.Name = "hole_d";
-            this.hole_d.Size = new System.Drawing.Size(45, 23);
-            this.hole_d.TabIndex = 38;
-            this.hole_d.Text = "25.00";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(320, 251);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(156, 17);
-            this.label37.TabIndex = 37;
-            this.label37.Text = "偏移：                     mm";
-            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1705,6 +1729,8 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox hole_d;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

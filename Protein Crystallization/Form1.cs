@@ -299,5 +299,15 @@ namespace Protein_Crystallization
             PCAS.move_to_hole(i);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PCAS.pannel_in();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PCAS.pannel_out();
+        }
+
     }
 }

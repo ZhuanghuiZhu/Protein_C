@@ -315,6 +315,18 @@ namespace Meteroi
             string com = "holeuL " + i.ToString();
             b.send_command_get_response(com);
             return;
+        }
+        public static void pannel_in()
+        {
+            string com = "pi ";
+            b.send_command_get_response(com);
+            return;
+        }
+        public static void pannel_out()
+        {
+            string com = "po ";
+            b.send_command_get_response(com);
+            return;
         }  
     }
 
