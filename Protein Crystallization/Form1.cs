@@ -205,23 +205,20 @@ namespace Protein_Crystallization
         }
         private void syf_Click(object sender, EventArgs e)
         {
-            //PCAS.syringe_plus(50);
-            PCAS.syringe_minus(25);
+            PCAS.syringe_plus(25);
+           
         }
         private void syb_Click(object sender, EventArgs e)
         {
-            //PCAS.syringe_minus(50);
-            PCAS.syringe_plus(25);
-        }
+            PCAS.syringe_minus(25);
+        }    
         private void syff_Click(object sender, EventArgs e)
         {
-            //PCAS.syringe_plus(200);
-            PCAS.syringe_minus(200);
+            PCAS.syringe_plus(200);
         }
         private void sybb_Click(object sender, EventArgs e)
         {
-            //PCAS.syringe_minus(200);
-            PCAS.syringe_plus(200);
+            PCAS.syringe_minus(200);
         }
         private void set_Click(object sender, EventArgs e)
         {
@@ -271,7 +268,9 @@ namespace Protein_Crystallization
             uint i = uint.Parse(textBox5.Text);
             uint sample = uint.Parse(Sample.Text);
             float d = float.Parse(radius.Text);
-            float a = float.Parse(angle.Text);
+            float a = float.Parse(holeangle.Text);
+            float h_d = float.Parse(hole_d.Text);
+            float u = float.Parse(uL.Text);
             if (i > sample)
             {
                 MessageBox.Show("请输入正确的样本编号");
@@ -287,9 +286,16 @@ namespace Protein_Crystallization
                 MessageBox.Show("请输入正确的半径");
                 return;
             }
+            if (h_d < 0 || h_d > 50)
+            {
+                MessageBox.Show("请输入正确的偏移");
+                return;
+            }
             PCAS.set_hole_radius(d);
             PCAS.set_hole_angle(a);
             PCAS.set_hole_sample(sample);
+            PCAS.set_hole_delta(h_d);
+            PCAS.set_hole_uL(u);
             PCAS.move_to_hole(i);
         }
 

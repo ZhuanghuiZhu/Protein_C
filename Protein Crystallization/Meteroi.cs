@@ -303,7 +303,19 @@ namespace Meteroi
             string com = "holea " + i.ToString();
             b.send_command_get_response(com);
             return;
-        }        
+        }
+        public static void set_hole_delta(float i)
+        {
+            string com = "holed " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        }
+        public static void set_hole_uL(float i)
+        {
+            string com = "holeuL " + i.ToString();
+            b.send_command_get_response(com);
+            return;
+        }  
     }
 
 }

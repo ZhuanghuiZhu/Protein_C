@@ -41,7 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.holeangle = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.addsample = new System.Windows.Forms.Button();
             this.Sample = new System.Windows.Forms.TextBox();
@@ -56,7 +56,7 @@
             this.LoadCoodinate = new System.Windows.Forms.Button();
             this.SaveSetting = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.uL = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -156,6 +156,8 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.hole_d = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -260,7 +262,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.hole_d);
+            this.tabPage2.Controls.Add(this.label37);
+            this.tabPage2.Controls.Add(this.holeangle);
             this.tabPage2.Controls.Add(this.label36);
             this.tabPage2.Controls.Add(this.addsample);
             this.tabPage2.Controls.Add(this.Sample);
@@ -275,7 +279,7 @@
             this.tabPage2.Controls.Add(this.LoadCoodinate);
             this.tabPage2.Controls.Add(this.SaveSetting);
             this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.textBox8);
+            this.tabPage2.Controls.Add(this.uL);
             this.tabPage2.Controls.Add(this.label22);
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.textBox7);
@@ -305,14 +309,14 @@
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // holeangle
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(100, 248);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(45, 23);
-            this.textBox2.TabIndex = 35;
-            this.textBox2.Text = "0";
+            this.holeangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.holeangle.Location = new System.Drawing.Point(100, 248);
+            this.holeangle.Name = "holeangle";
+            this.holeangle.Size = new System.Drawing.Size(45, 23);
+            this.holeangle.TabIndex = 35;
+            this.holeangle.Text = "0";
             // 
             // label36
             // 
@@ -456,13 +460,14 @@
             this.label23.TabIndex = 21;
             this.label23.Text = "μL";
             // 
-            // textBox8
+            // uL
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox8.Location = new System.Drawing.Point(192, 340);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(46, 23);
-            this.textBox8.TabIndex = 20;
+            this.uL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uL.Location = new System.Drawing.Point(192, 340);
+            this.uL.Name = "uL";
+            this.uL.Size = new System.Drawing.Size(46, 23);
+            this.uL.TabIndex = 20;
+            this.uL.Text = "1";
             // 
             // label22
             // 
@@ -1507,12 +1512,32 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // hole_d
+            // 
+            this.hole_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.hole_d.Location = new System.Drawing.Point(399, 251);
+            this.hole_d.Name = "hole_d";
+            this.hole_d.Size = new System.Drawing.Size(45, 23);
+            this.hole_d.TabIndex = 38;
+            this.hole_d.Text = "25.00";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.Location = new System.Drawing.Point(320, 251);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(156, 17);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "偏移：                     mm";
+            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
             this.Controls.Add(this.welcome);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
             this.Controls.Add(this.moisture1);
@@ -1524,7 +1549,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.tabControl1);
             this.Name = "Detector";
             this.Text = " ";
             this.tabControl1.ResumeLayout(false);
@@ -1604,7 +1628,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox uL;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button SaveSetting;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -1677,8 +1701,10 @@
         private System.Windows.Forms.TextBox Sample;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Button addsample;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox holeangle;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox hole_d;
+        private System.Windows.Forms.Label label37;
     }
 }
 
