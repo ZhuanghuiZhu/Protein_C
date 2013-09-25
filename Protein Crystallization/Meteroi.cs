@@ -31,7 +31,7 @@ namespace Meteroi
             shell.Connect(); // physcial connection
             do 
 			{
-			    f = shell.WaitForString("Login");
+			    f = shell.WaitForString("Login",false,200);
 			    if (f==null) 
 				    break; // this little clumsy line is better to watch in the debugger
                 shell.SendResponse(login_name, true);	// send username
