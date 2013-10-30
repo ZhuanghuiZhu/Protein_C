@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Meteroi;
+using System.Threading;
 
 namespace Protein_Crystallization
 {
@@ -307,6 +308,40 @@ namespace Protein_Crystallization
         private void button2_Click(object sender, EventArgs e)
         {
             PCAS.pannel_out();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            uint i = 0;
+            uint sample = uint.Parse(Sample.Text);
+            float d = float.Parse(textBox4.Text);
+            float a = float.Parse(angle.Text);
+            int time = (int)uint.Parse(textBox7.Text) * 1000;
+            
+            if (i > sample)
+            {
+                MessageBox.Show("请输入正确的样本编号");
+                return;
+            }
+            if (a > 360 || a < -360)
+            {
+                MessageBox.Show("请输入正确的角偏移");
+                return;
+            }
+            if (d < 0 || d > 30)
+            {
+                MessageBox.Show("请输入正确的半径");
+                return;
+            }
+            PCAS.set_radius(d);
+            PCAS.set_angle(a);
+            PCAS.set_sample(sample);
+            while (i < sample)
+            {
+                Thread.Sleep(time);
+                PCAS.move_to_sample(i);
+                i++;
+            }
         }
 
     }

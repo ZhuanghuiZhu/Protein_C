@@ -41,6 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.hole_d = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.holeangle = new System.Windows.Forms.TextBox();
@@ -264,6 +265,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.hole_d);
             this.tabPage2.Controls.Add(this.label37);
             this.tabPage2.Controls.Add(this.holeangle);
@@ -310,6 +312,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(365, 288);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 30);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "检测";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // hole_d
             // 
@@ -513,7 +525,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(62, 24);
             this.comboBox1.TabIndex = 18;
-            this.comboBox1.Text = "分钟";
+            this.comboBox1.Text = "秒";
             // 
             // textBox7
             // 
@@ -1731,6 +1743,7 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }
 
