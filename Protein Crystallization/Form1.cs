@@ -238,6 +238,7 @@ namespace Protein_Crystallization
             PCAS.set_target_temperature(target_temp);
             PCAS.set_target_moisture(target_moist);
         }
+        
         private void exam_Click(object sender, EventArgs e)
         {
             uint i = uint.Parse(textBox3.Text);
@@ -264,6 +265,7 @@ namespace Protein_Crystallization
             PCAS.set_sample(sample);
             PCAS.move_to_sample(i);
         }
+
         private void addsample_Click(object sender, EventArgs e)
         {
             uint i = uint.Parse(textBox5.Text);
@@ -310,19 +312,37 @@ namespace Protein_Crystallization
             PCAS.pannel_out();
         }
 
+        private uint sample = 0;
+        private float d = 0;
+        private float a = 0;
+        private int time = 0;
+        private bool exam_start = false;
+        private void sample_exam_thread()
+        {
+            uint i = 1;
+            PCAS.set_radius(d);
+            PCAS.set_angle(a);
+            PCAS.set_sample(sample);
+            while (i < sample)
+            {
+                sampleid.Text = i.ToString();
+                Thread.Sleep(time);
+                PCAS.move_to_sample(i);
+                if(exam_start == false)
+                {
+                    return;
+                }
+                i++;
+            }                
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            uint i = 0;
-            uint sample = uint.Parse(Sample.Text);
-            float d = float.Parse(textBox4.Text);
-            float a = float.Parse(angle.Text);
-            int time = (int)uint.Parse(textBox7.Text) * 1000;
-            
-            if (i > sample)
-            {
-                MessageBox.Show("请输入正确的样本编号");
-                return;
-            }
+            Thread exam = new Thread(sample_exam_thread);
+            sample = uint.Parse(Sample.Text);
+            d = float.Parse(textBox4.Text);
+            a = float.Parse(angle.Text);
+            time = (int)uint.Parse(textBox7.Text) * 1000;
             if (a > 360 || a < -360)
             {
                 MessageBox.Show("请输入正确的角偏移");
@@ -333,14 +353,104 @@ namespace Protein_Crystallization
                 MessageBox.Show("请输入正确的半径");
                 return;
             }
-            PCAS.set_radius(d);
-            PCAS.set_angle(a);
-            PCAS.set_sample(sample);
-            while (i < sample)
+            if (exam_start == false)
             {
-                Thread.Sleep(time);
-                PCAS.move_to_sample(i);
-                i++;
+                exam_start = true;
+                button3.Text = "中断";
+                exam.Start();
+            }
+            else
+            {
+                exam_start = false;
+                button3.Text = "检测";
+            }
+        }
+
+        private void xp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xp.PerformClick();
+            }
+        }
+
+        private void xpp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xpp.PerformClick();
+            }
+        }
+
+        private void ym_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ym.PerformClick();
+            }
+        }
+
+        private void ymm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ymm.PerformClick();
+            }
+        }
+
+        private void xmm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xmm.PerformClick();
+            }
+        }
+
+        private void xm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xm.PerformClick();
+            }
+        }
+
+        private void yp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                yp.PerformClick();
+            }
+        }
+
+        private void ypp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ypp.PerformClick();
+            }
+        }
+
+        private void zm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zm.PerformClick();
+            }
+        }
+
+        private void zmm_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zmm.PerformClick();
+            }
+        }
+
+        private void zp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zp.PerformClick();
             }
         }
 
