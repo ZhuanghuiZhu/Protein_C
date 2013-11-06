@@ -13,6 +13,10 @@ namespace Protein_Crystallization
 {
     public partial class Detector : Form
     {
+        // This delegate enables asynchronous calls for setting
+        // the text property on a TextBox control.
+        delegate void SetTextCallback(string text);
+
         public Detector()
         {
             InitializeComponent();
@@ -317,6 +321,21 @@ namespace Protein_Crystallization
         private float a = 0;
         private int time = 0;
         private bool exam_start = false;
+        private void set_sampleid(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.textBox3.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(set_sampleid);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.textBox3.Text = text;
+            }
+        }
         private void sample_exam_thread()
         {
             uint i = 1;
@@ -325,13 +344,13 @@ namespace Protein_Crystallization
             PCAS.set_sample(sample);
             while (i < sample)
             {
-                sampleid.Text = i.ToString();
-                Thread.Sleep(time);
                 PCAS.move_to_sample(i);
-                if(exam_start == false)
+                this.set_sampleid(i.ToString());
+                if (exam_start == false)
                 {
                     return;
                 }
+                Thread.Sleep(time);
                 i++;
             }                
         }
@@ -353,10 +372,11 @@ namespace Protein_Crystallization
                 MessageBox.Show("请输入正确的半径");
                 return;
             }
+            timer1.Stop();
             if (exam_start == false)
             {
                 exam_start = true;
-                button3.Text = "中断";
+                button3.Text = "停止";
                 exam.Start();
             }
             else
@@ -370,7 +390,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xp.PerformClick();
+                //xp.PerformClick();
             }
         }
 
@@ -378,7 +398,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xpp.PerformClick();
+                //xpp.PerformClick();
             }
         }
 
@@ -386,7 +406,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                ym.PerformClick();
+                //ym.PerformClick();
             }
         }
 
@@ -394,7 +414,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                ymm.PerformClick();
+                //ymm.PerformClick();
             }
         }
 
@@ -402,7 +422,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xmm.PerformClick();
+                //xmm.PerformClick();
             }
         }
 
@@ -410,7 +430,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xm.PerformClick();
+                //xm.PerformClick();
             }
         }
 
@@ -418,7 +438,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                yp.PerformClick();
+                //yp.PerformClick();
             }
         }
 
@@ -426,7 +446,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                ypp.PerformClick();
+                //ypp.PerformClick();
             }
         }
 
@@ -434,7 +454,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zm.PerformClick();
+                //zm.PerformClick();
             }
         }
 
@@ -442,7 +462,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zmm.PerformClick();
+                //zmm.PerformClick();
             }
         }
 
@@ -450,7 +470,7 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zp.PerformClick();
+                //zp.PerformClick();
             }
         }
 
