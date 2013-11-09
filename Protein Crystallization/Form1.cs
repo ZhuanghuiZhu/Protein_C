@@ -18,6 +18,7 @@ namespace Protein_Crystallization
         // the text property on a TextBox control.
         delegate void SetTextCallback(string text);
         BasicForm picture;
+
         public Detector()
         {
             InitializeComponent();
@@ -393,11 +394,44 @@ namespace Protein_Crystallization
             }
         }
 
+        Thread xp_t =null;
+        Thread xpp_t =null;
+        Thread yp_t =null;
+        Thread yyp_t =null;
+        Thread zp_t = null;
+        Thread zpp_t =null;
+        bool xp_stop=false;
+
+        private void xp_thread()
+        {
+            int i=0;
+             while(true) {
+                //xp.PerformClick();
+                 i++;
+                 Console.WriteLine(i.ToString());
+                Thread.Sleep(1000);
+                if(xp_stop == true)
+                     return;
+             }
+        }
+
         private void xp_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                //xp.PerformClick();
+                if(xp_t == null)
+                    xp_t = new Thread(xp_thread);
+                xp_stop = false;
+                if(xp_t.IsAlive == false) 
+                    xp_t.Start();
+            }
+        }
+
+         private void xp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xp_stop=true;
             }
         }
 

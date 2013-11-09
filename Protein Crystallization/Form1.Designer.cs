@@ -1064,6 +1064,7 @@
             this.xp.UseVisualStyleBackColor = true;
             this.xp.Click += new System.EventHandler(this.xp_Click);
             this.xp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.xp_MouseDown);
+            this.xp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.xp_MouseUp);
             // 
             // button17
             // 
@@ -1720,7 +1721,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 778);
-            this.Controls.Add(this.welcome);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
             this.Controls.Add(this.moisture1);
@@ -1733,6 +1733,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.welcome);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Detector";
             this.Text = " ";
