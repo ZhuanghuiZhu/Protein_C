@@ -165,7 +165,7 @@ namespace objActiveSolutions
 				// All is good
 				return true;
 			}
-			catch(Exception eeeee )
+			catch(Exception e)
 			{
 				// Something failed
 				return false;

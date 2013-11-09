@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Meteroi;
 using System.Threading;
+using Basic;
 
 namespace Protein_Crystallization
 {
@@ -16,11 +17,12 @@ namespace Protein_Crystallization
         // This delegate enables asynchronous calls for setting
         // the text property on a TextBox control.
         delegate void SetTextCallback(string text);
-
+        BasicForm picture;
         public Detector()
         {
             InitializeComponent();
-
+            picture = new BasicForm();
+            picture.Visible = false;
             dataGridView1.Rows.Add(23);
             for (int i = 0; i < 24; i++) 
                 this.dataGridView1[0, i].Value = Convert.ToString(i + 1);
@@ -29,9 +31,14 @@ namespace Protein_Crystallization
             //    this.dataGridView1[0, i].Value = "A" + Convert.ToString(i + 1);
             //    this.dataGridView1[0, i + 12].Value = "B" + Convert.ToString(i + 1);
             //}
-            for (int i = 0; i < 24; i++) 
+            for (int i = 0; i < 24; i++)
+            {
                 this.dataGridView1.Rows[i].Cells[5].Value = "注射";
+                //this.dataGridView1.Rows[i].Cells[5].
+            }
+
         }
+
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             string username = UserName.Text;
@@ -471,6 +478,36 @@ namespace Protein_Crystallization
             if (e.Button == MouseButtons.Left)
             {
                 //zp.PerformClick();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (picture.IsDisposed)
+                picture = new BasicForm();
+            if (picture.Visible == false)
+            {
+                picture.Visible = true;
+                button4.Text = "隐藏图像";
+            }
+            else
+            {
+                picture.Visible = false;
+                button4.Text = "显示图像";
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            uint uL;
+            uint sampleid;
+            if (this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value != null)
+            {
+                uL = uint.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
+                sampleid = (uint)e.RowIndex + 1;
+                PCAS.set_hole_uL(uL);
+                PCAS.move_to_hole(sampleid);
+                //MessageBox.Show("加样" + uL.ToString()+"uL"+" to sample"+sampleid);
             }
         }
 
