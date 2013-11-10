@@ -16,7 +16,7 @@ using Snapshot;
 using CameraHandle = System.Int32;
 using MvApi = MVSDK.MvApi;
 using System.IO;
-
+using System.Drawing.Imaging;
 
 
 namespace Basic
@@ -329,8 +329,11 @@ namespace Basic
                 //否则，将造成死锁现象，预览通道和抓拍通道会被一直阻塞，直到调用CameraReleaseImageBuffer释放后解锁。
                 MvApi.CameraReleaseImageBuffer(m_hCamera, uRawBuffer);
                 //更新抓拍显示窗口。
+
                 m_DlgSnapshot.UpdateImage(ref tFrameHead, m_ImageBufferSnapshot);
-                m_DlgSnapshot.Show(); 
+                m_DlgSnapshot.Show();
+                Bitmap image1 = new Bitmap(m_DlgSnapshot.get_snapshotbox());
+                image1.Save("test.bmp", ImageFormat.Bmp);
             }
         }
 
@@ -339,5 +342,35 @@ namespace Basic
 
         }
 
+        public void Record_the_picture()
+        {
+            tSdkFrameHead tFrameHead;
+            uint uRawBuffer;//由SDK中给RAW数据分配内存，并释放
+
+
+            if (m_hCamera <= 0)
+            {
+                return;//相机还未初始化，句柄无效
+            }
+
+            if (MvApi.CameraSnapToBuffer(m_hCamera, out tFrameHead, out uRawBuffer, 500) == CameraSdkStatus.CAMERA_STATUS_SUCCESS)
+            {
+                //此时，uRawBuffer指向了相机原始数据的缓冲区地址，默认情况下为8bit位宽的Bayer格式，如果
+                //您需要解析bayer数据，此时就可以直接处理了，后续的操作演示了如何将原始数据转换为RGB格式
+                //并显示在窗口上。
+
+                //将相机输出的原始数据转换为RGB格式到内存m_ImageBufferSnapshot中
+                MvApi.CameraImageProcess(m_hCamera, uRawBuffer, m_ImageBufferSnapshot, ref tFrameHead);
+                //CameraSnapToBuffer成功调用后必须用CameraReleaseImageBuffer释放SDK中分配的RAW数据缓冲区
+                //否则，将造成死锁现象，预览通道和抓拍通道会被一直阻塞，直到调用CameraReleaseImageBuffer释放后解锁。
+                MvApi.CameraReleaseImageBuffer(m_hCamera, uRawBuffer);
+                //更新抓拍显示窗口。
+
+                m_DlgSnapshot.UpdateImage(ref tFrameHead, m_ImageBufferSnapshot);
+                Bitmap image1 = new Bitmap(m_DlgSnapshot.get_snapshotbox());
+                image1.Save("test.bmp", ImageFormat.Bmp);
+            }            
+        
+        }
     }
 }

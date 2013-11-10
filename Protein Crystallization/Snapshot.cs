@@ -92,6 +92,11 @@ namespace Snapshot
             //SnapshotBox.Layout = 
         }
 
+        public Image get_snapshotbox()
+        {
+            return SnapshotBox.Image;
+        }
+
         private void SnapshotDlg_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();

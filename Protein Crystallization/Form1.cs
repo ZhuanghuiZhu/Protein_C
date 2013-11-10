@@ -519,6 +519,9 @@ namespace Protein_Crystallization
         {
             if (picture.IsDisposed)
                 picture = new BasicForm();
+            picture.Left = this.Left + this.Size.Width;
+            picture.Top  = this.Top;
+
             if (picture.Visible == false)
             {
                 picture.Visible = true;
