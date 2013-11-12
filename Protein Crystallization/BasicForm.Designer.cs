@@ -29,33 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.BtnPlay = new System.Windows.Forms.Button();
             this.BtnSettings = new System.Windows.Forms.Button();
             this.BtnSnapshot = new System.Windows.Forms.Button();
             this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.StateLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // BtnPlay
-            // 
-            this.BtnPlay.Location = new System.Drawing.Point(18, 18);
-            this.BtnPlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BtnPlay.Name = "BtnPlay";
-            this.BtnPlay.Size = new System.Drawing.Size(112, 34);
-            this.BtnPlay.TabIndex = 0;
-            this.BtnPlay.Text = "播放";
-            this.BtnPlay.UseVisualStyleBackColor = true;
-            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
-            // 
             // BtnSettings
             // 
-            this.BtnSettings.Location = new System.Drawing.Point(156, 18);
-            this.BtnSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSettings.Location = new System.Drawing.Point(12, 12);
             this.BtnSettings.Name = "BtnSettings";
-            this.BtnSettings.Size = new System.Drawing.Size(112, 34);
+            this.BtnSettings.Size = new System.Drawing.Size(75, 23);
             this.BtnSettings.TabIndex = 0;
             this.BtnSettings.Text = "设置";
             this.BtnSettings.UseVisualStyleBackColor = true;
@@ -63,10 +51,9 @@
             // 
             // BtnSnapshot
             // 
-            this.BtnSnapshot.Location = new System.Drawing.Point(292, 18);
-            this.BtnSnapshot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSnapshot.Location = new System.Drawing.Point(102, 12);
             this.BtnSnapshot.Name = "BtnSnapshot";
-            this.BtnSnapshot.Size = new System.Drawing.Size(112, 34);
+            this.BtnSnapshot.Size = new System.Drawing.Size(75, 23);
             this.BtnSnapshot.TabIndex = 0;
             this.BtnSnapshot.Text = "抓拍";
             this.BtnSnapshot.UseVisualStyleBackColor = true;
@@ -74,20 +61,18 @@
             // 
             // PreviewBox
             // 
-            this.PreviewBox.Location = new System.Drawing.Point(18, 76);
-            this.PreviewBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PreviewBox.Location = new System.Drawing.Point(12, 41);
             this.PreviewBox.Name = "PreviewBox";
-            this.PreviewBox.Size = new System.Drawing.Size(1010, 693);
+            this.PreviewBox.Size = new System.Drawing.Size(673, 462);
             this.PreviewBox.TabIndex = 1;
             this.PreviewBox.TabStop = false;
             // 
             // StateLabel
             // 
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(21, 784);
-            this.StateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StateLabel.Location = new System.Drawing.Point(12, 517);
             this.StateLabel.Name = "StateLabel";
-            this.StateLabel.Size = new System.Drawing.Size(62, 18);
+            this.StateLabel.Size = new System.Drawing.Size(41, 12);
             this.StateLabel.TabIndex = 2;
             this.StateLabel.Text = "状态栏";
             // 
@@ -105,15 +90,13 @@
             // 
             // BasicForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 819);
+            this.ClientSize = new System.Drawing.Size(697, 539);
             this.Controls.Add(this.StateLabel);
             this.Controls.Add(this.PreviewBox);
             this.Controls.Add(this.BtnSnapshot);
             this.Controls.Add(this.BtnSettings);
-            this.Controls.Add(this.BtnPlay);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BasicForm";
             this.Text = "Camera C# demo[Basic]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BasicForm_FormClosing);
@@ -126,13 +109,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button BtnPlay;
         private System.Windows.Forms.Button BtnSettings;
         private System.Windows.Forms.Button BtnSnapshot;
         private System.Windows.Forms.PictureBox PreviewBox;
         private System.Windows.Forms.Label StateLabel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

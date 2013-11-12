@@ -12,7 +12,6 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using MVSDK;//使用MindVision .net SDK接口
-using Snapshot; 
 using CameraHandle = System.Int32;
 using MvApi = MVSDK.MvApi;
 using System.IO;
@@ -38,7 +37,6 @@ namespace Basic
         protected bool         m_bExitCaptureThread = false;//采用线程采集时，让线程退出的标志
         protected IntPtr       m_iSettingPageMsgCallbackCtx; //相机配置界面消息回调函数的上下文参数   
         protected tSdkFrameHead m_tFrameHead;
-        protected SnapshotDlg  m_DlgSnapshot = new SnapshotDlg();               //显示抓拍图像的窗口
         protected bool          m_bEraseBk = false;
         #endregion
 
@@ -52,7 +50,6 @@ namespace Basic
             if (InitCamera() == true)
             {
                 MvApi.CameraPlay(m_hCamera);
-                BtnPlay.Text = "暂停";
             }
 
         }
@@ -231,21 +228,11 @@ namespace Basic
                 if (InitCamera() == true)
                 {
                     MvApi.CameraPlay(m_hCamera);
-                    BtnPlay.Text = "暂停";
                 }
             }
             else//已经初始化
             {
-                if (BtnPlay.Text == "播放")
-                {
-                    MvApi.CameraPlay(m_hCamera);
-                    BtnPlay.Text = "暂停";
-                }
-                else
-                {
-                    MvApi.CameraPause(m_hCamera);
-                    BtnPlay.Text = "播放";
-                }
+                MvApi.CameraPlay(m_hCamera);
             }
         }
 
@@ -306,6 +293,74 @@ namespace Basic
             }
         }
 
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        public struct BITMAPFILEHEADER
+        {
+            public ushort bfType;
+            public uint bfSize;
+            public ushort bfReserved1;
+            public ushort bfReserved2;
+            public uint bfOffBits;
+        }
+
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        public struct BITMAPINFOHEADER
+        {
+            public uint biSize;
+            public int biWidth;
+            public int biHeight;
+            public ushort biPlanes;
+            public ushort biBitCount;
+            public uint biCompression;
+            public uint biSizeImage;
+            public int biXPelsPerMeter;
+            public int biYPelsPerMeter;
+            public uint biClrUsed;
+            public uint biClrImportant;
+            public const int BI_RGB = 0;
+        } 
+        private Image convertImage(ref tSdkFrameHead tFrameHead, IntPtr pRgbBuffer)
+        {
+            BITMAPINFOHEADER bmi;
+            BITMAPFILEHEADER bmfi;
+
+            bmfi.bfType = ((int)'M' << 8) | ((int)'B');
+            bmfi.bfOffBits = 54;
+            bmfi.bfSize = (uint)(54 + tFrameHead.iWidth * tFrameHead.iHeight * 3);
+            bmfi.bfReserved1 = 0;
+            bmfi.bfReserved2 = 0;
+
+            bmi.biBitCount = 24;
+            bmi.biClrImportant = 0;
+            bmi.biClrUsed = 0;
+            bmi.biCompression = 0;
+            bmi.biPlanes = 1;
+            bmi.biSize = 40;
+            bmi.biHeight = tFrameHead.iHeight;
+            bmi.biWidth = tFrameHead.iWidth;
+            bmi.biXPelsPerMeter = 0;
+            bmi.biYPelsPerMeter = 0;
+            bmi.biSizeImage = 0;
+
+            MemoryStream stream = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(stream);
+            byte[] data = new byte[14];
+            IntPtr ptr = Marshal.AllocHGlobal(54);
+            Marshal.StructureToPtr((object)bmfi, ptr, false);
+            Marshal.Copy(ptr, data, 0, data.Length);
+            bw.Write(data);
+            data = new byte[40];
+            Marshal.StructureToPtr((object)bmi, ptr, false);
+            Marshal.Copy(ptr, data, 0, data.Length);
+            bw.Write(data);
+            data = new byte[tFrameHead.iWidth * tFrameHead.iHeight * 3];
+            Marshal.Copy(pRgbBuffer, data, 0, data.Length);
+            bw.Write(data);
+            Marshal.FreeHGlobal(ptr);
+            return Image.FromStream(stream);
+        }
+
+
         private void BtnSnapshot_Click(object sender, EventArgs e)
         {
             tSdkFrameHead tFrameHead;
@@ -330,10 +385,12 @@ namespace Basic
                 MvApi.CameraReleaseImageBuffer(m_hCamera, uRawBuffer);
                 //更新抓拍显示窗口。
 
-                m_DlgSnapshot.UpdateImage(ref tFrameHead, m_ImageBufferSnapshot);
-                m_DlgSnapshot.Show();
-                Bitmap image1 = new Bitmap(m_DlgSnapshot.get_snapshotbox());
-                image1.Save("test.bmp", ImageFormat.Bmp);
+                Bitmap image1 = new Bitmap(convertImage(ref tFrameHead, m_ImageBufferSnapshot));
+                saveFileDialog1.Filter = "JPEG files (*.jpg)|*.jpg";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)//Save setting file
+                {
+                    image1.Save(saveFileDialog1.FileName, ImageFormat.Jpeg);
+                }
             }
         }
 
@@ -366,9 +423,6 @@ namespace Basic
                 MvApi.CameraReleaseImageBuffer(m_hCamera, uRawBuffer);
                 //更新抓拍显示窗口。
 
-                m_DlgSnapshot.UpdateImage(ref tFrameHead, m_ImageBufferSnapshot);
-                Bitmap image1 = new Bitmap(m_DlgSnapshot.get_snapshotbox());
-                image1.Save("test.bmp", ImageFormat.Bmp);
             }            
         
         }

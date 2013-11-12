@@ -187,6 +187,8 @@ namespace Meteroi
             if (response == null)
                 return float.NaN;
             MatchCollection mc = Regex.Matches(response, regexStr);
+            if (mc.Count < 1)
+                return float.NaN;
             resualt = float.Parse(mc[1].Value);
             return resualt;
         }
@@ -199,6 +201,8 @@ namespace Meteroi
             if (response == null)
                 return float.NaN;
             MatchCollection mc = Regex.Matches(response, regexStr);
+            if(mc.Count < 1)
+                return float.NaN;
             resualt = float.Parse(mc[1].Value);
             return resualt;
         }

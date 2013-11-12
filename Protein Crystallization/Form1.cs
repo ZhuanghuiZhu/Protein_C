@@ -397,41 +397,191 @@ namespace Protein_Crystallization
         Thread xp_t =null;
         Thread xpp_t =null;
         Thread yp_t =null;
-        Thread yyp_t =null;
+        Thread ypp_t =null;
         Thread zp_t = null;
         Thread zpp_t =null;
+        Thread xm_t = null;
+        Thread xmm_t = null;
+        Thread ym_t = null;
+        Thread ymm_t = null;
+        Thread zm_t = null;
+        Thread zmm_t = null;
+
         bool xp_stop=false;
+        bool xpp_stop = false;
+        bool yp_stop = false;
+        bool ypp_stop = false;
+        bool zp_stop = false;
+        bool zpp_stop = false;
+        bool xm_stop = false;
+        bool xmm_stop = false;
+        bool ym_stop = false;
+        bool ymm_stop = false;
+        bool zm_stop = false;
+        bool zmm_stop = false;
 
         private void xp_thread()
         {
             int i=0;
              while(true) {
-                //xp.PerformClick();
-                 i++;
-                 Console.WriteLine(i.ToString());
-                Thread.Sleep(1000);
+                PCAS.micoscope_x(1);
+                i++;
+                Thread.Sleep(100);
                 if(xp_stop == true)
                      return;
              }
+        }
+
+        private void xpp_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_x(100);
+                i++;
+                Thread.Sleep(100);
+                if (xpp_stop == true)
+                    return;
+            }
+        }
+
+        private void yp_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_y(1);
+                i++;
+                Thread.Sleep(100);
+                if (yp_stop == true)
+                    return;
+            }
+        }
+
+        private void ypp_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_y(100);
+                i++;
+                Thread.Sleep(100);
+                if (ypp_stop == true)
+                    return;
+            }
+        }
+
+        private void zp_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_z(1);
+                i++;
+                Thread.Sleep(100);
+                if (zp_stop == true)
+                    return;
+            }
+        }
+
+        private void zpp_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_z(100);
+                i++;
+                Thread.Sleep(100);
+                if (zpp_stop == true)
+                    return;
+            }
+        }
+
+        private void xm_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_x(-1);
+                i++;
+                Thread.Sleep(100);
+                if (xm_stop == true)
+                    return;
+            }
+        }
+
+        private void xmm_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_x(-100);
+                i++;
+                Thread.Sleep(100);
+                if (xmm_stop == true)
+                    return;
+            }
+        }
+
+        private void ym_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_y(-1);
+                i++;
+                Thread.Sleep(100);
+                if (ym_stop == true)
+                    return;
+            }
+        }
+
+        private void ymm_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_y(-100);
+                i++;
+                Thread.Sleep(100);
+                if (ymm_stop == true)
+                    return;
+            }
+        }
+
+        private void zm_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_z(-1);
+                i++;
+                Thread.Sleep(100);
+                if (zm_stop == true)
+                    return;
+            }
+        }
+
+        private void zmm_thread()
+        {
+            int i = 0;
+            while (true)
+            {
+                PCAS.micoscope_z(-100);
+                i++;
+                Thread.Sleep(100);
+                if (zmm_stop == true)
+                    return;
+            }
         }
 
         private void xp_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                if(xp_t == null)
-                    xp_t = new Thread(xp_thread);
+                xp_t = new Thread(xp_thread);
                 xp_stop = false;
-                if(xp_t.IsAlive == false) 
-                    xp_t.Start();
-            }
-        }
-
-         private void xp_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                xp_stop=true;
+                xp_t.Start();
             }
         }
 
@@ -439,7 +589,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //xpp.PerformClick();
+                xpp_t = new Thread(xpp_thread);
+                xpp_stop = false;
+                xpp_t.Start();
             }
         }
 
@@ -447,7 +599,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //ym.PerformClick();
+                ym_t = new Thread(ym_thread);
+                ym_stop = false;
+                ym_t.Start();
             }
         }
 
@@ -455,7 +609,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //ymm.PerformClick();
+                ymm_t = new Thread(ymm_thread);
+                ymm_stop = false;
+                ymm_t.Start();
             }
         }
 
@@ -463,7 +619,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //xmm.PerformClick();
+                xmm_t = new Thread(xmm_thread);
+                xmm_stop = false;
+                xmm_t.Start();
             }
         }
 
@@ -471,7 +629,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //xm.PerformClick();
+                xm_t = new Thread(xm_thread);
+                xm_stop = false;
+                xm_t.Start();
             }
         }
 
@@ -479,7 +639,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //yp.PerformClick();
+                yp_t = new Thread(yp_thread);
+                yp_stop = false;
+                yp_t.Start();
             }
         }
 
@@ -487,7 +649,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //ypp.PerformClick();
+                ypp_t = new Thread(ypp_thread);
+                ypp_stop = false;
+                ypp_t.Start();
             }
         }
 
@@ -495,7 +659,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //zm.PerformClick();
+                zm_t = new Thread(zm_thread);
+                zm_stop = false;
+                zm_t.Start();
             }
         }
 
@@ -503,7 +669,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //zmm.PerformClick();
+                zmm_t = new Thread(zmm_thread);
+                zmm_stop = false;
+                zmm_t.Start();
             }
         }
 
@@ -511,7 +679,107 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                //zp.PerformClick();
+                zp_t = new Thread(zp_thread);
+                zp_stop = false;
+                zp_t.Start();
+            }
+        }
+
+        private void zpp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zpp_t = new Thread(zpp_thread);
+                zpp_stop = false;
+                zpp_t.Start();
+            }
+        }
+
+        private void xp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xp_stop = true;
+            }
+        }
+
+        private void xmm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xmm_stop = true;
+            }
+        }
+
+        private void ymm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ymm_stop = true;
+            }
+        }
+
+        private void ypp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ypp_stop = true;
+            }
+        }
+
+        private void yp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                yp_stop = true;
+            }
+        }
+
+        private void ym_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ym_stop = true;
+            }
+        }
+
+        private void xpp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xpp_stop = true;
+            }
+        }
+
+        private void xm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                xm_stop = true;
+            }
+        }
+
+        private void zpp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zpp_stop = true;
+            }
+        }
+
+        private void zmm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zmm_stop = true;
+            }
+        }
+
+        private void zm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                zm_stop = true;
             }
         }
 
@@ -546,6 +814,11 @@ namespace Protein_Crystallization
                 PCAS.move_to_hole(sampleid);
                 //MessageBox.Show("加样" + uL.ToString()+"uL"+" to sample"+sampleid);
             }
+        }
+
+        private void Detector_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            picture.Close();
         }
 
     }
