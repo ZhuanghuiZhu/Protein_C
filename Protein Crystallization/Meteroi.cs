@@ -11,6 +11,7 @@ namespace Meteroi
 {
     class broad
     {
+        bool debug = false;
         private Terminal shell = null;
         public string log;
         bool connect_state = false;
@@ -27,6 +28,11 @@ namespace Meteroi
             string f;
             change_state_to_disconnect();
             log = "Log:\r\n";
+            if (debug == true)
+            {
+                change_state_to_connect();
+                return;
+            }
             shell = new Terminal(broad_address);
             shell.Connect(); // physcial connection
             do 
@@ -58,6 +64,12 @@ namespace Meteroi
         public string send_command_get_response(string command)
         {
             string f;
+            if (debug == true)
+            {
+                log += command;
+                log += "\r\n";
+                return command;
+            }
             lock (this)
             {
                 shell.VirtualScreen.CleanScreen(); 
@@ -163,6 +175,8 @@ namespace Meteroi
             if (response == null)
                 return float.NaN;
             MatchCollection mc = Regex.Matches(response, regexStr);
+            if(mc.Count < 2)
+                return float.NaN;
             resualt = float.Parse(mc[1].Value);
             return resualt;
         }
@@ -175,6 +189,8 @@ namespace Meteroi
             if (response == null)
                 return float.NaN;
             MatchCollection mc = Regex.Matches(response, regexStr);
+            if (mc.Count < 2)
+                return float.NaN;
             resualt = float.Parse(mc[1].Value);
             return resualt;
         }
@@ -187,7 +203,7 @@ namespace Meteroi
             if (response == null)
                 return float.NaN;
             MatchCollection mc = Regex.Matches(response, regexStr);
-            if (mc.Count < 1)
+            if (mc.Count < 2)
                 return float.NaN;
             resualt = float.Parse(mc[1].Value);
             return resualt;
@@ -201,7 +217,7 @@ namespace Meteroi
             if (response == null)
                 return float.NaN;
             MatchCollection mc = Regex.Matches(response, regexStr);
-            if(mc.Count < 1)
+            if(mc.Count < 2)
                 return float.NaN;
             resualt = float.Parse(mc[1].Value);
             return resualt;

@@ -23,6 +23,7 @@ namespace Protein_Crystallization
         {
             InitializeComponent();
             picture = new BasicForm();
+            picture.parent_window = this;
             picture.Visible = false;
             dataGridView1.Rows.Add(23);
             for (int i = 0; i < 24; i++) 
@@ -380,7 +381,6 @@ namespace Protein_Crystallization
                 MessageBox.Show("请输入正确的半径");
                 return;
             }
-            timer1.Stop();
             if (exam_start == false)
             {
                 exam_start = true;
@@ -579,9 +579,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xp_t = new Thread(xp_thread);
-                xp_stop = false;
-                xp_t.Start();
+                //xp_t = new Thread(xp_thread);
+                //xp_stop = false;
+                //xp_t.Start();
             }
         }
 
@@ -589,9 +589,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xpp_t = new Thread(xpp_thread);
-                xpp_stop = false;
-                xpp_t.Start();
+                //xpp_t = new Thread(xpp_thread);
+                //xpp_stop = false;
+                //xpp_t.Start();
             }
         }
 
@@ -599,9 +599,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                ym_t = new Thread(ym_thread);
-                ym_stop = false;
-                ym_t.Start();
+                //ym_t = new Thread(ym_thread);
+                //ym_stop = false;
+                //ym_t.Start();
             }
         }
 
@@ -609,9 +609,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                ymm_t = new Thread(ymm_thread);
-                ymm_stop = false;
-                ymm_t.Start();
+                //ymm_t = new Thread(ymm_thread);
+                //ymm_stop = false;
+                //ymm_t.Start();
             }
         }
 
@@ -619,9 +619,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xmm_t = new Thread(xmm_thread);
-                xmm_stop = false;
-                xmm_t.Start();
+                //xmm_t = new Thread(xmm_thread);
+                //xmm_stop = false;
+                //xmm_t.Start();
             }
         }
 
@@ -629,9 +629,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                xm_t = new Thread(xm_thread);
-                xm_stop = false;
-                xm_t.Start();
+                //xm_t = new Thread(xm_thread);
+                //xm_stop = false;
+                //xm_t.Start();
             }
         }
 
@@ -639,9 +639,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                yp_t = new Thread(yp_thread);
-                yp_stop = false;
-                yp_t.Start();
+                //yp_t = new Thread(yp_thread);
+                //yp_stop = false;
+                //yp_t.Start();
             }
         }
 
@@ -649,9 +649,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                ypp_t = new Thread(ypp_thread);
-                ypp_stop = false;
-                ypp_t.Start();
+                //ypp_t = new Thread(ypp_thread);
+                //ypp_stop = false;
+                //ypp_t.Start();
             }
         }
 
@@ -659,9 +659,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zm_t = new Thread(zm_thread);
-                zm_stop = false;
-                zm_t.Start();
+                //zm_t = new Thread(zm_thread);
+                //zm_stop = false;
+                //zm_t.Start();
             }
         }
 
@@ -669,9 +669,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zmm_t = new Thread(zmm_thread);
-                zmm_stop = false;
-                zmm_t.Start();
+                //zmm_t = new Thread(zmm_thread);
+                //zmm_stop = false;
+                //zmm_t.Start();
             }
         }
 
@@ -679,9 +679,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zp_t = new Thread(zp_thread);
-                zp_stop = false;
-                zp_t.Start();
+                //zp_t = new Thread(zp_thread);
+                //zp_stop = false;
+                //zp_t.Start();
             }
         }
 
@@ -689,9 +689,9 @@ namespace Protein_Crystallization
         {
             if (e.Button == MouseButtons.Left)
             {
-                zpp_t = new Thread(zpp_thread);
-                zpp_stop = false;
-                zpp_t.Start();
+                //zpp_t = new Thread(zpp_thread);
+                //zpp_stop = false;
+                //zpp_t.Start();
             }
         }
 
@@ -783,22 +783,35 @@ namespace Protein_Crystallization
             }
         }
 
+        public void set_show_picture()
+        {
+            button4.Text = "显示图像";
+        }
+
+        public void set_hide_picture()
+        {
+            button4.Text = "隐藏图像";
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (picture.IsDisposed)
+            {
                 picture = new BasicForm();
+                picture.parent_window = this;
+            }
             picture.Left = this.Left + this.Size.Width;
             picture.Top  = this.Top;
 
             if (picture.Visible == false)
             {
                 picture.Visible = true;
-                button4.Text = "隐藏图像";
+                set_hide_picture();
             }
             else
             {
                 picture.Visible = false;
-                button4.Text = "显示图像";
+                set_show_picture();
             }
         }
 

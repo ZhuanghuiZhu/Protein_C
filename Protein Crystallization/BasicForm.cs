@@ -16,7 +16,7 @@ using CameraHandle = System.Int32;
 using MvApi = MVSDK.MvApi;
 using System.IO;
 using System.Drawing.Imaging;
-
+using Protein_Crystallization;
 
 namespace Basic
 {
@@ -25,6 +25,7 @@ namespace Basic
     public partial class BasicForm : Form
     {
         
+        public Detector parent_window; 
 
         #region variable
         protected CameraHandle m_hCamera = 0;             // ¾ä±ú
@@ -252,7 +253,7 @@ namespace Basic
                 Marshal.FreeHGlobal(m_ImageBufferSnapshot);
                 m_hCamera = 0;
             }
-
+            parent_window.set_show_picture();
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
