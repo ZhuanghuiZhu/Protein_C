@@ -355,6 +355,7 @@ namespace Protein_Crystallization
             {
                 PCAS.move_to_sample(i);
                 this.set_sampleid(i.ToString());
+                picture.Record_the_picture(i);
                 if (exam_start == false)
                 {
                     return;
@@ -385,11 +386,13 @@ namespace Protein_Crystallization
             {
                 exam_start = true;
                 button3.Text = "停止";
+                savedir.Visible = false;
                 exam.Start();
             }
             else
             {
                 exam_start = false;
+                savedir.Visible = true;
                 button3.Text = "检测";
             }
         }
@@ -832,6 +835,14 @@ namespace Protein_Crystallization
         private void Detector_FormClosing(object sender, FormClosingEventArgs e)
         {
             picture.Close();
+        }
+
+        private void savedir_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                picture.save_path = folderBrowserDialog1.SelectedPath;
+            }
         }
 
     }

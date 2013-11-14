@@ -25,8 +25,8 @@ namespace Basic
     public partial class BasicForm : Form
     {
         
-        public Detector parent_window; 
-
+        public Detector parent_window;
+        public string save_path = "";
         #region variable
         protected CameraHandle m_hCamera = 0;             // 句柄
         protected IntPtr       m_ImageBuffer;             // 预览通道RGB图像缓存
@@ -400,11 +400,13 @@ namespace Basic
 
         }
 
-        public void Record_the_picture()
+        public void Record_the_picture(uint i)
         {
             tSdkFrameHead tFrameHead;
             uint uRawBuffer;//由SDK中给RAW数据分配内存，并释放
 
+            //Bitmap image = new Bitmap(10, 10);
+            //image.Save(save_path+'\\'+"sampe_" + i.ToString()+ '_' + DateTime.Now.ToString("hh_mm_ss") + ".jpg", ImageFormat.Jpeg);
 
             if (m_hCamera <= 0)
             {
@@ -424,8 +426,9 @@ namespace Basic
                 MvApi.CameraReleaseImageBuffer(m_hCamera, uRawBuffer);
                 //更新抓拍显示窗口。
 
-            }            
-        
+                Bitmap image1 = new Bitmap(convertImage(ref tFrameHead, m_ImageBufferSnapshot));
+                image1.Save(save_path + '\\' + "sampe_" + i.ToString() + '_' + DateTime.Now.ToString("hh_mm_ss") + ".jpg", ImageFormat.Jpeg);
+            }       
         }
     }
 }

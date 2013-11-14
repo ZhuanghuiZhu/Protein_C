@@ -138,9 +138,6 @@ namespace objActiveSolutions
 			return input;
 		}
 
-
-		
-		
 		/// <summary>
 		/// Connects to the telnet server.
 		/// </summary>
