@@ -41,6 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.savedir = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.hole_d = new System.Windows.Forms.TextBox();
@@ -163,7 +164,10 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.savedir = new System.Windows.Forms.Button();
+            this.time_test = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.autotesttime = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -272,6 +276,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.time_test);
             this.tabPage2.Controls.Add(this.savedir);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.button3);
@@ -323,6 +330,16 @@
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // savedir
+            // 
+            this.savedir.Location = new System.Drawing.Point(485, 423);
+            this.savedir.Name = "savedir";
+            this.savedir.Size = new System.Drawing.Size(144, 44);
+            this.savedir.TabIndex = 41;
+            this.savedir.Text = "保存路径";
+            this.savedir.UseVisualStyleBackColor = true;
+            this.savedir.Click += new System.EventHandler(this.savedir_Click);
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(776, 590);
@@ -335,7 +352,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(765, 428);
+            this.button3.Location = new System.Drawing.Point(652, 419);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 45);
@@ -1730,15 +1747,45 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // savedir
+            // time_test
             // 
-            this.savedir.Location = new System.Drawing.Point(545, 428);
-            this.savedir.Name = "savedir";
-            this.savedir.Size = new System.Drawing.Size(144, 44);
-            this.savedir.TabIndex = 41;
-            this.savedir.Text = "保存路径";
-            this.savedir.UseVisualStyleBackColor = true;
-            this.savedir.Click += new System.EventHandler(this.savedir_Click);
+            this.time_test.Location = new System.Drawing.Point(980, 425);
+            this.time_test.Name = "time_test";
+            this.time_test.Size = new System.Drawing.Size(114, 41);
+            this.time_test.TabIndex = 42;
+            this.time_test.Text = "定时检测";
+            this.time_test.UseVisualStyleBackColor = true;
+            this.time_test.Click += new System.EventHandler(this.time_test_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(790, 430);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(66, 30);
+            this.textBox1.TabIndex = 43;
+            this.textBox1.Text = "5";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox2.FormatString = "N2";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "分钟",
+            "小时"});
+            this.comboBox2.Location = new System.Drawing.Point(871, 429);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(91, 33);
+            this.comboBox2.TabIndex = 44;
+            this.comboBox2.Text = "分钟";
+            // 
+            // autotesttime
+            // 
+            this.autotesttime.Interval = 300000;
+            this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
             // Detector
             // 
@@ -1922,6 +1969,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button savedir;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button time_test;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Timer autotesttime;
     }
 }
 

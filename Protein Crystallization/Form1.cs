@@ -126,6 +126,7 @@ namespace Protein_Crystallization
             {
                 welcome.Visible = true;// Set the welcome page as invisible
                 timer1.Enabled = false;
+                picture.Close();
             } else
             {
                 MessageBox.Show("关机失败");
@@ -345,6 +346,22 @@ namespace Protein_Crystallization
                 this.textBox3.Text = text;
             }
         }
+        private void set_exam(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.button3.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(set_exam);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.button3.Text = text;
+                this.savedir.Visible = true;
+            }
+        }
         private void sample_exam_thread()
         {
             uint i = 1;
@@ -355,14 +372,18 @@ namespace Protein_Crystallization
             {
                 PCAS.move_to_sample(i);
                 this.set_sampleid(i.ToString());
+                Thread.Sleep(100);
                 picture.Record_the_picture(i);
+                Thread.Sleep(100);
                 if (exam_start == false)
                 {
                     return;
                 }
                 Thread.Sleep(time);
                 i++;
-            }                
+            }
+            exam_start = false;
+            set_exam("检测");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -843,6 +864,38 @@ namespace Protein_Crystallization
             {
                 picture.save_path = folderBrowserDialog1.SelectedPath;
             }
+        }
+        private bool auto_test = false;
+        private void time_test_Click(object sender, EventArgs e)
+        {
+            if (auto_test == false)
+            {
+                uint time = uint.Parse(textBox1.Text) * 1000 * 60;
+                uint sample = uint.Parse(Sample.Text);
+                uint timeinterval = uint.Parse(textBox7.Text) * 1000;
+                if (time < sample * timeinterval)
+                {
+                    MessageBox.Show("时间间隔太短");
+                }
+                autotesttime.Interval = (int)time;
+                autotesttime.Start();
+                auto_test = true;
+                time_test.Text = "停止";
+                if (exam_start == false)
+                    button3.PerformClick();
+            } else {
+                auto_test = false;
+                autotesttime.Stop();
+                time_test.Text = "定时检查";
+                if (exam_start == true)
+                    button3.PerformClick();
+            }
+        }
+
+        private void autotesttime_Tick(object sender, EventArgs e)
+        {
+            if (exam_start == false)
+                button3.PerformClick();
         }
 
     }

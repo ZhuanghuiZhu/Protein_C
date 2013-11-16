@@ -41,9 +41,10 @@
             // 
             // BtnSettings
             // 
-            this.BtnSettings.Location = new System.Drawing.Point(12, 12);
+            this.BtnSettings.Location = new System.Drawing.Point(18, 18);
+            this.BtnSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnSettings.Name = "BtnSettings";
-            this.BtnSettings.Size = new System.Drawing.Size(75, 23);
+            this.BtnSettings.Size = new System.Drawing.Size(112, 34);
             this.BtnSettings.TabIndex = 0;
             this.BtnSettings.Text = "设置";
             this.BtnSettings.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             // 
             // BtnSnapshot
             // 
-            this.BtnSnapshot.Location = new System.Drawing.Point(102, 12);
+            this.BtnSnapshot.Location = new System.Drawing.Point(153, 18);
+            this.BtnSnapshot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnSnapshot.Name = "BtnSnapshot";
-            this.BtnSnapshot.Size = new System.Drawing.Size(75, 23);
+            this.BtnSnapshot.Size = new System.Drawing.Size(112, 34);
             this.BtnSnapshot.TabIndex = 0;
             this.BtnSnapshot.Text = "抓拍";
             this.BtnSnapshot.UseVisualStyleBackColor = true;
@@ -61,18 +63,21 @@
             // 
             // PreviewBox
             // 
-            this.PreviewBox.Location = new System.Drawing.Point(12, 41);
+            this.PreviewBox.Location = new System.Drawing.Point(18, 62);
+            this.PreviewBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PreviewBox.Name = "PreviewBox";
-            this.PreviewBox.Size = new System.Drawing.Size(673, 462);
+            this.PreviewBox.Size = new System.Drawing.Size(1010, 693);
             this.PreviewBox.TabIndex = 1;
             this.PreviewBox.TabStop = false;
+            this.PreviewBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PreviewBox_MouseClick);
             // 
             // StateLabel
             // 
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(12, 517);
+            this.StateLabel.Location = new System.Drawing.Point(18, 776);
+            this.StateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StateLabel.Name = "StateLabel";
-            this.StateLabel.Size = new System.Drawing.Size(41, 12);
+            this.StateLabel.Size = new System.Drawing.Size(62, 18);
             this.StateLabel.TabIndex = 2;
             this.StateLabel.Text = "状态栏";
             // 
@@ -90,13 +95,14 @@
             // 
             // BasicForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 539);
+            this.ClientSize = new System.Drawing.Size(1046, 808);
             this.Controls.Add(this.StateLabel);
             this.Controls.Add(this.PreviewBox);
             this.Controls.Add(this.BtnSnapshot);
             this.Controls.Add(this.BtnSettings);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BasicForm";
             this.Text = "Camera C# demo[Basic]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BasicForm_FormClosing);

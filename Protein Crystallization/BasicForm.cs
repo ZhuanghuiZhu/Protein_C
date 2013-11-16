@@ -17,6 +17,7 @@ using MvApi = MVSDK.MvApi;
 using System.IO;
 using System.Drawing.Imaging;
 using Protein_Crystallization;
+using Meteroi;
 
 namespace Basic
 {
@@ -427,8 +428,23 @@ namespace Basic
                 //更新抓拍显示窗口。
 
                 Bitmap image1 = new Bitmap(convertImage(ref tFrameHead, m_ImageBufferSnapshot));
-                image1.Save(save_path + '\\' + "sampe_" + i.ToString() + '_' + DateTime.Now.ToString("hh_mm_ss") + ".jpg", ImageFormat.Jpeg);
+                image1.Save(save_path + '\\' + "sampe_" + i.ToString() + '_' + DateTime.Now.ToString("HH_mm_ss") + ".jpg", ImageFormat.Jpeg);
             }       
+        }
+
+        private void PreviewBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            // 点击时记录坐标
+            int x = e.X;
+            int y = e.Y;
+            int w = PreviewBox.Width;
+            int h = PreviewBox.Height;
+            // 执行你的方法,无须模拟鼠标动作
+            MessageBox.Show("axis" + x.ToString() + " " + y.ToString() + " " + w.ToString() + " "+ h.ToString());
+            if (m_hCamera <= 0)
+            {
+                return;//相机还未初始化，句柄无效
+            }
         }
     }
 }
