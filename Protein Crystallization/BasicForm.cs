@@ -439,12 +439,19 @@ namespace Basic
             int y = e.Y;
             int w = PreviewBox.Width;
             int h = PreviewBox.Height;
+            int ox = w / 2;
+            int oy = h / 2;
             // 执行你的方法,无须模拟鼠标动作
-            MessageBox.Show("axis" + x.ToString() + " " + y.ToString() + " " + w.ToString() + " "+ h.ToString());
             if (m_hCamera <= 0)
             {
                 return;//相机还未初始化，句柄无效
             }
+            int picture_w = m_tFrameHead.iWidth;
+            int picture_h = m_tFrameHead.iHeight;
+            int delta_x = (ox - x) / 5;
+            int delta_y = (oy - y) / 5;
+            PCAS.micoscope_x(delta_x);
+            PCAS.micoscope_y(delta_y);
         }
     }
 }

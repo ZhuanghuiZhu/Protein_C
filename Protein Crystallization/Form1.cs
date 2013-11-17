@@ -823,10 +823,11 @@ namespace Protein_Crystallization
             {
                 picture = new BasicForm();
                 picture.parent_window = this;
+                picture.Visible = false;
             }
             picture.Left = this.Left + this.Size.Width;
             picture.Top  = this.Top;
-
+            ;
             if (picture.Visible == false)
             {
                 picture.Visible = true;
@@ -843,6 +844,8 @@ namespace Protein_Crystallization
         {
             uint uL;
             uint sampleid;
+            if (e.RowIndex < 0 || e.ColumnIndex < 1)
+                return;
             if (this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value != null)
             {
                 uL = uint.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
