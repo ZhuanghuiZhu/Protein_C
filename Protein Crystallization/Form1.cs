@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Meteroi;
 using System.Threading;
 using Basic;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Protein_Crystallization
 {
@@ -28,17 +30,20 @@ namespace Protein_Crystallization
             dataGridView1.Rows.Add(23);
             for (int i = 0; i < 24; i++) 
                 this.dataGridView1[0, i].Value = Convert.ToString(i + 1);
-            //for (int i = 0; i < 12; i++)
-            //{
-            //    this.dataGridView1[0, i].Value = "A" + Convert.ToString(i + 1);
-            //    this.dataGridView1[0, i + 12].Value = "B" + Convert.ToString(i + 1);
-            //}
+            for (int i = 0; i < 24; i++)
+                this.dataGridView1[1, i].Value = "";
+            for (int i = 0; i < 24; i++)
+                this.dataGridView1[2, i].Value = "";
+            for (int i = 0; i < 24; i++)
+                this.dataGridView1[3, i].Value = "";
+            for (int i = 0; i < 24; i++)
+                this.dataGridView1[4, i].Value = "";
+            for (int i = 0; i < 24; i++)
+                this.dataGridView1[6, i].Value = "";
             for (int i = 0; i < 24; i++)
             {
                 this.dataGridView1.Rows[i].Cells[5].Value = "注射";
-                //this.dataGridView1.Rows[i].Cells[5].
             }
-
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
@@ -64,18 +69,174 @@ namespace Protein_Crystallization
                 MessageBox.Show("连接失败");
             }
         }
+        public class setting
+        {
+            [XmlElementAttribute("Target_temperature")]
+            public float temperature;
+            [XmlElementAttribute("Target_moisture")]
+            public float moisture;
+
+            [XmlElementAttribute("Samples")]
+            public uint samples;
+            [XmlElementAttribute("Sample_id")]
+            public uint sampleid;
+            [XmlElementAttribute("Sample_radius")]
+            public float s_radius;
+            [XmlElementAttribute("Sample_angle_offset")]
+            public float s_angle;
+
+            [XmlElementAttribute("Hole_id")]
+            public uint holeid;
+            [XmlElementAttribute("Hole_radius")]
+            public float h_radius;
+            [XmlElementAttribute("Hole_angle_offset")]
+            public float h_angle;
+            [XmlElementAttribute("Hole_distance_offset")]
+            public float h_off;
+
+            [XmlElementAttribute("LED_light")]
+            public uint LED;
+            [XmlElementAttribute("Liquid_uL")]
+            public uint uL;
+
+            [XmlElementAttribute("Testing_time")]
+            public int test_time;
+            [XmlElementAttribute("Interval_time")]
+            public int time;
+
+            [XmlElementAttribute("grid_size")]
+            public int grid_size;
+
+            [XmlElementAttribute("grid_name")]
+            public List<string> grid_name;
+
+            [XmlElementAttribute("grid_resualt")]
+            public List<string> grid_resualt;
+
+            [XmlElementAttribute("grid_ diameter")]
+            public List<string> grid_diameter;
+
+            [XmlElementAttribute("grid_uL")]
+            public List<string> grid_uL;
+
+            [XmlElementAttribute("grid_other")]
+            public List<string> grid_other;
+
+            public setting()
+            {
+                grid_name     = new List<string>();
+                grid_resualt  = new List<string>();
+                grid_diameter = new List<string>();
+                grid_uL       = new List<string>();
+                grid_other    = new List<string>();
+            }
+        }
         private void LoadSetting_Click(object sender, EventArgs e)
         {
+            openFileDialog1.Filter = "XML files (*.xml)|*.xml";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)//Load setting file
             {
+                int i;
+                setting save = new setting();
+                XmlSerializer serializer = new XmlSerializer(save.GetType());
+                TextReader read = new StreamReader(openFileDialog1.FileName);
+                save = (setting)serializer.Deserialize(read);
+                read.Close();
+                targettemp.Text    = save.temperature.ToString();
+                targetmoist.Text   = save.moisture.ToString();
 
+                sample_radius.Text = save.s_radius.ToString();
+                Sample.Text        = save.samples.ToString();
+                sampleid.Text      = save.sampleid.ToString();
+                angle.Text         = save.s_angle.ToString();
+
+                radius.Text        = save.h_radius.ToString();
+                holeid.Text        = save.holeid.ToString();
+                hole_off.Text      = save.h_off.ToString();
+                angle.Text         = save.h_angle.ToString();
+
+                LED_light.Value = new decimal(save.LED);
+                save.uL = uint.Parse(uL.Text);
+
+                i = 0;
+                foreach(string s in save.grid_name)
+                {
+                    dataGridView1[1, i].Value = s;
+                    i++;
+                }
+                i = 0;
+                foreach (string s in save.grid_resualt)
+                {
+                    dataGridView1[2, i].Value = s;
+                    i++;
+                }
+                i = 0;
+                foreach(string s in save.grid_diameter)
+                {
+                    dataGridView1[3, i].Value = s;
+                    i++;
+                }
+                i = 0;
+                foreach (string s in save.grid_uL)
+                {
+                    dataGridView1[4, i].Value = s;
+                    i++;
+                }
+                i = 0;
+                foreach (string s in save.grid_other)
+                {
+                    dataGridView1[6, i].Value = s;
+                    i++;
+                }
             }
         }
         private void SaveSetting_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.Filter = "XML files (*.xml)|*.xml";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)//Save setting file
             {
+                setting save = new setting();
+                save.temperature = float.Parse(targettemp.Text);
+                save.moisture    = float.Parse(targetmoist.Text);
 
+                save.s_radius    = float.Parse(sample_radius.Text);
+                save.samples     = uint.Parse(Sample.Text);
+                save.sampleid    = uint.Parse(sampleid.Text);
+                save.s_angle     = float.Parse(angle.Text);
+
+                save.h_radius = float.Parse(radius.Text);
+                save.holeid   = uint.Parse(holeid.Text);
+                save.h_off    = float.Parse(hole_off.Text);
+                save.h_angle  = float.Parse(angle.Text);
+
+                save.LED      = decimal.ToUInt32(LED_light.Value);
+                save.uL       = uint.Parse(uL.Text);
+
+                save.grid_size = dataGridView1.RowCount;
+                for (int i = 0; i < save.grid_size; i++)
+                {
+                    save.grid_name.Add(dataGridView1[1, i].Value.ToString());
+                }
+                for (int i = 0; i < save.grid_size; i++)
+                {
+                    save.grid_resualt.Add(dataGridView1[2, i].Value.ToString());
+                }
+                for (int i = 0; i < save.grid_size; i++)
+                {
+                    save.grid_diameter.Add(dataGridView1[3, i].Value.ToString());
+                }
+                for (int i = 0; i < save.grid_size; i++)
+                {
+                    save.grid_uL.Add(dataGridView1[4, i].Value.ToString());
+                }
+                for (int i = 0; i < save.grid_size; i++)
+                {
+                    save.grid_other.Add(dataGridView1[6, i].Value.ToString());
+                }
+                XmlSerializer serializer = new XmlSerializer(save.GetType());
+                TextWriter writer = new StreamWriter(saveFileDialog1.FileName);
+                serializer.Serialize(writer, save);
+                writer.Close();
             }
         }
         private void LoadCoodinate_Click(object sender, EventArgs e)
@@ -195,6 +356,8 @@ namespace Protein_Crystallization
             if (m2 != float.NaN && m2 > 0 && m2 < 100)
                 moisture0.Text = m2.ToString("0.00");
             logtext.Text = PCAS.get_log();
+            logtext.Select(logtext.TextLength, 0);//光标定位到文本最后
+            logtext.ScrollToCaret();//滚动到光标处
         }
         private void LED_light_ValueChanged(object sender, EventArgs e)
         {
@@ -255,9 +418,9 @@ namespace Protein_Crystallization
         
         private void exam_Click(object sender, EventArgs e)
         {
-            uint i = uint.Parse(textBox3.Text);
+            uint i = uint.Parse(sampleid.Text);
             uint sample = uint.Parse(Sample.Text);
-            float d = float.Parse(textBox4.Text);
+            float d = float.Parse(sample_radius.Text);
             float a = float.Parse(angle.Text);
             if (i > sample)
             {
@@ -282,11 +445,11 @@ namespace Protein_Crystallization
 
         private void addsample_Click(object sender, EventArgs e)
         {
-            uint i = uint.Parse(textBox5.Text);
+            uint i = uint.Parse(holeid.Text);
             uint sample = uint.Parse(Sample.Text);
             float d = float.Parse(radius.Text);
             float a = float.Parse(holeangle.Text);
-            float h_d = float.Parse(hole_d.Text);
+            float h_d = float.Parse(hole_off.Text);
             float u = float.Parse(uL.Text);
             if (i > sample)
             {
@@ -336,14 +499,14 @@ namespace Protein_Crystallization
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (this.textBox3.InvokeRequired)
+            if (this.sampleid.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(set_sampleid);
                 this.Invoke(d, new object[] { text });
             }
             else
             {
-                this.textBox3.Text = text;
+                this.sampleid.Text = text;
             }
         }
         private void set_exam(string text)
@@ -390,7 +553,7 @@ namespace Protein_Crystallization
         {
             Thread exam = new Thread(sample_exam_thread);
             sample = uint.Parse(Sample.Text);
-            d = float.Parse(textBox4.Text);
+            d = float.Parse(sample_radius.Text);
             a = float.Parse(angle.Text);
             time = (int)uint.Parse(textBox7.Text) * 1000;
             if (a > 360 || a < -360)
