@@ -11,7 +11,7 @@ namespace Meteroi
 {
     class broad
     {
-        bool debug = true;
+        bool debug = false;
         private Terminal shell = null;
         public string log;
         bool connect_state = false;

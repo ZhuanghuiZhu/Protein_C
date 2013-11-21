@@ -396,12 +396,12 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // hole_d
+            // hole_off
             // 
             this.hole_off.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.hole_off.Location = new System.Drawing.Point(598, 376);
             this.hole_off.Margin = new System.Windows.Forms.Padding(4);
-            this.hole_off.Name = "hole_d";
+            this.hole_off.Name = "hole_off";
             this.hole_off.Size = new System.Drawing.Size(66, 30);
             this.hole_off.TabIndex = 38;
             this.hole_off.Text = "25.00";
@@ -652,12 +652,12 @@
             this.LoadSetting.UseVisualStyleBackColor = true;
             this.LoadSetting.Click += new System.EventHandler(this.LoadSetting_Click);
             // 
-            // textBox5
+            // holeid
             // 
             this.holeid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.holeid.Location = new System.Drawing.Point(592, 320);
             this.holeid.Margin = new System.Windows.Forms.Padding(4);
-            this.holeid.Name = "textBox5";
+            this.holeid.Name = "holeid";
             this.holeid.Size = new System.Drawing.Size(66, 30);
             this.holeid.TabIndex = 14;
             this.holeid.Text = "0";
@@ -706,12 +706,12 @@
             this.label20.TabIndex = 10;
             this.label20.Text = "3.加样位置";
             // 
-            // textBox3
+            // sampleid
             // 
             this.sampleid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.sampleid.Location = new System.Drawing.Point(592, 222);
             this.sampleid.Margin = new System.Windows.Forms.Padding(4);
-            this.sampleid.Name = "textBox3";
+            this.sampleid.Name = "sampleid";
             this.sampleid.Size = new System.Drawing.Size(66, 30);
             this.sampleid.TabIndex = 9;
             this.sampleid.Text = "0";
@@ -727,12 +727,12 @@
             this.label13.TabIndex = 8;
             this.label13.Text = "位置：                    号";
             // 
-            // textBox4
+            // sample_radius
             // 
             this.sample_radius.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.sample_radius.Location = new System.Drawing.Point(150, 171);
             this.sample_radius.Margin = new System.Windows.Forms.Padding(4);
-            this.sample_radius.Name = "textBox4";
+            this.sample_radius.Name = "sample_radius";
             this.sample_radius.Size = new System.Drawing.Size(66, 30);
             this.sample_radius.TabIndex = 7;
             this.sample_radius.Text = "14.05";
@@ -1794,6 +1794,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 778);
+            this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
@@ -1806,7 +1807,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.welcome);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Detector";
             this.Text = " ";
