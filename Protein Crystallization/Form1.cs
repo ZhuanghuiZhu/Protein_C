@@ -1046,7 +1046,7 @@ namespace Protein_Crystallization
                 autotesttime.Interval = (int)time;
                 autotesttime.Start();
                 auto_test = true;
-                time_test.Text = "停止";
+                time_test.Text = "终止";
                 if (exam_start == false)
                     button3.PerformClick();
             } else {
