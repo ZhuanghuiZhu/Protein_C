@@ -448,8 +448,8 @@ namespace Basic
             }
             int picture_w = m_tFrameHead.iWidth;
             int picture_h = m_tFrameHead.iHeight;
-            int delta_x = (x - ox) * 1150 /5 / w; // 2 * 500 / 710;
-            int delta_y = (y - oy) * 800 /5 / h;  // 2 * 300 / 420;
+            int delta_x = (x - ox) * 1150 / parent_window.step_lenght / w; // 2 * 500 / 710;
+            int delta_y = (y - oy) * 800 / parent_window.step_lenght / h;  // 2 * 300 / 420;
             PCAS.micoscope_x(delta_x);
             PCAS.micoscope_y(delta_y);
         }
