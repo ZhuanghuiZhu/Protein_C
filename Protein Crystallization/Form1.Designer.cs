@@ -41,6 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label38 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -169,7 +170,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
-            this.label38 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -330,6 +330,16 @@
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label38.Location = new System.Drawing.Point(341, 397);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(105, 20);
+            this.label38.TabIndex = 46;
+            this.label38.Text = "电机步进精度";
+            // 
             // comboBox3
             // 
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -338,9 +348,9 @@
             this.comboBox3.Items.AddRange(new object[] {
             "10",
             "5"});
-            this.comboBox3.Location = new System.Drawing.Point(425, 395);
+            this.comboBox3.Location = new System.Drawing.Point(452, 395);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(62, 24);
+            this.comboBox3.Size = new System.Drawing.Size(39, 24);
             this.comboBox3.TabIndex = 45;
             this.comboBox3.Text = "10";
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
@@ -1686,21 +1696,12 @@
             this.autotesttime.Interval = 300000;
             this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(286, 396);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(22, 20);
-            this.label38.TabIndex = 46;
-            this.label38.Text = "7.";
-            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
+            this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
@@ -1713,7 +1714,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.welcome);
             this.Name = "Detector";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detector_FormClosing);
