@@ -41,8 +41,6 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label38 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.time_test = new System.Windows.Forms.Button();
@@ -275,8 +273,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label38);
-            this.tabPage2.Controls.Add(this.comboBox3);
             this.tabPage2.Controls.Add(this.comboBox2);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.time_test);
@@ -329,31 +325,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(341, 397);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(105, 20);
-            this.label38.TabIndex = 46;
-            this.label38.Text = "电机步进精度";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox3.FormatString = "N2";
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "10",
-            "5"});
-            this.comboBox3.Location = new System.Drawing.Point(452, 395);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(39, 24);
-            this.comboBox3.TabIndex = 45;
-            this.comboBox3.Text = "10";
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -1881,8 +1852,6 @@
         private System.Windows.Forms.Button time_test;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Timer autotesttime;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label38;
     }
 }
 

@@ -20,7 +20,6 @@ namespace Protein_Crystallization
         // the text property on a TextBox control.
         delegate void SetTextCallback(string text);
         BasicForm picture;
-        public int step_lenght = 10;
         public Detector()
         {
             InitializeComponent();
@@ -98,8 +97,6 @@ namespace Protein_Crystallization
             public uint LED;
             [XmlElementAttribute("Liquid_uL")]
             public uint uL;
-            [XmlElementAttribute("step_length")]
-            public int step_length;
 
             [XmlElementAttribute("Testing_time")]
             public int test_time;
@@ -159,7 +156,6 @@ namespace Protein_Crystallization
 
                 LED_light.Value = new decimal(save.LED);
                 uL.Text         = save.uL.ToString();
-                step_lenght     = save.step_length;
 
                 i = 0;
                 foreach(string s in save.grid_name)
@@ -214,7 +210,6 @@ namespace Protein_Crystallization
 
                 save.LED         = decimal.ToUInt32(LED_light.Value);
                 save.uL          = uint.Parse(uL.Text);
-                save.step_length = step_lenght;
 
                 save.grid_size = dataGridView1.RowCount;
                 for (int i = 0; i < save.grid_size; i++)
@@ -1074,14 +1069,5 @@ namespace Protein_Crystallization
             if (exam_start == false)
                 button3.PerformClick();
         }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox3.SelectedIndex == 0)
-                step_lenght = 10;
-            if (comboBox3.SelectedIndex == 1)
-                step_lenght = 5;
-        }
-
     }
 }
