@@ -100,8 +100,13 @@ namespace Protein_Crystallization
 
             [XmlElementAttribute("Testing_time")]
             public int test_time;
+            [XmlElementAttribute("Testing_time_unit")]
+            public int test_time_unit;
+
             [XmlElementAttribute("Interval_time")]
             public int time;
+            [XmlElementAttribute("Interval_time_unit")]
+            public int time_unit;
 
             [XmlElementAttribute("grid_size")]
             public int grid_size;
@@ -157,6 +162,11 @@ namespace Protein_Crystallization
                 LED_light.Value = new decimal(save.LED);
                 uL.Text         = save.uL.ToString();
 
+                textBox7.Text   = save.test_time.ToString();
+                comboBox1.SelectedIndex = save.test_time_unit;
+                textBox1.Text = save.time.ToString();
+                comboBox2.SelectedIndex = save.time_unit; 
+
                 i = 0;
                 foreach(string s in save.grid_name)
                 {
@@ -210,6 +220,11 @@ namespace Protein_Crystallization
 
                 save.LED         = decimal.ToUInt32(LED_light.Value);
                 save.uL          = uint.Parse(uL.Text);
+
+                save.test_time   = int.Parse(textBox7.Text);
+                save.test_time_unit = comboBox1.SelectedIndex;
+                save.time        = int.Parse(textBox1.Text);
+                save.time_unit   = comboBox2.SelectedIndex;
 
                 save.grid_size = dataGridView1.RowCount;
                 for (int i = 0; i < save.grid_size; i++)
@@ -1068,6 +1083,59 @@ namespace Protein_Crystallization
         {
             if (exam_start == false)
                 button3.PerformClick();
+        }
+
+        bool cycle_start = false;
+        bool cycle_pause  = false;
+        private void cycle_thread()
+        {
+            while(true) {
+                if (cycle_start == false)
+                    return;
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (cycle_start == false)
+            {
+                Thread cycle = new Thread(cycle_thread);
+                cycle.Start();
+                button14.Text = "停止";
+                button15.Visible = true;
+                cycle_start = true;
+            }
+            else
+            {
+                button14.Text = "启动";
+                cycle_start = false;
+                cycle_pause = false;
+                button15.Visible = false;
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (cycle_pause == false)
+            {
+                button15.Text = "恢复";
+                cycle_pause = true;
+            }
+            else
+            {
+                button15.Text = "暂停";
+                cycle_pause = true;
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

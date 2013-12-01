@@ -168,6 +168,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -273,6 +276,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.label38);
+            this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.comboBox2);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.time_test);
@@ -373,7 +379,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(517, 393);
+            this.button4.Location = new System.Drawing.Point(521, 392);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 28);
@@ -534,7 +540,7 @@
             // 
             // LoadCoodinate
             // 
-            this.LoadCoodinate.Location = new System.Drawing.Point(643, 114);
+            this.LoadCoodinate.Location = new System.Drawing.Point(521, 342);
             this.LoadCoodinate.Name = "LoadCoodinate";
             this.LoadCoodinate.Size = new System.Drawing.Size(100, 28);
             this.LoadCoodinate.TabIndex = 23;
@@ -588,8 +594,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "秒",
-            "分钟",
-            "小时"});
+            "分钟"});
             this.comboBox1.Location = new System.Drawing.Point(245, 287);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(62, 24);
@@ -1075,6 +1080,7 @@
             this.button17.TabIndex = 10;
             this.button17.Text = "确定";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // label29
             // 
@@ -1105,6 +1111,7 @@
             this.button16.TabIndex = 7;
             this.button16.Text = "确定";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // button15
             // 
@@ -1115,6 +1122,8 @@
             this.button15.TabIndex = 6;
             this.button15.Text = "暂停";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Visible = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button14
             // 
@@ -1125,6 +1134,7 @@
             this.button14.TabIndex = 5;
             this.button14.Text = "启动";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // textBox9
             // 
@@ -1667,13 +1677,40 @@
             this.autotesttime.Interval = 300000;
             this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(435, 342);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 30);
+            this.button5.TabIndex = 45;
+            this.button5.Text = "检测";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Location = new System.Drawing.Point(358, 345);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(45, 23);
+            this.textBox2.TabIndex = 47;
+            this.textBox2.Text = "0";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label38.Location = new System.Drawing.Point(283, 346);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(144, 17);
+            this.label38.TabIndex = 46;
+            this.label38.Text = "位置：                    号";
+            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
             this.Controls.Add(this.welcome);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
             this.Controls.Add(this.moisture1);
@@ -1685,6 +1722,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.tabControl1);
             this.Name = "Detector";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detector_FormClosing);
@@ -1852,6 +1890,9 @@
         private System.Windows.Forms.Button time_test;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Timer autotesttime;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label38;
     }
 }
 
