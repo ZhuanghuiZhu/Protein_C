@@ -41,6 +41,9 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.time_test = new System.Windows.Forms.Button();
@@ -168,9 +171,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -331,6 +331,35 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox2.Location = new System.Drawing.Point(358, 345);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(45, 23);
+            this.textBox2.TabIndex = 47;
+            this.textBox2.Text = "0";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label38.Location = new System.Drawing.Point(283, 346);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(144, 17);
+            this.label38.TabIndex = 46;
+            this.label38.Text = "位置：                    号";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(435, 342);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 30);
+            this.button5.TabIndex = 45;
+            this.button5.Text = "检测";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // comboBox2
             // 
@@ -1677,40 +1706,11 @@
             this.autotesttime.Interval = 300000;
             this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(435, 342);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 30);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "检测";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox2.Location = new System.Drawing.Point(358, 345);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(45, 23);
-            this.textBox2.TabIndex = 47;
-            this.textBox2.Text = "0";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(283, 346);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(144, 17);
-            this.label38.TabIndex = 46;
-            this.label38.Text = "位置：                    号";
-            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
-            this.Controls.Add(this.welcome);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
             this.Controls.Add(this.moisture1);
@@ -1723,6 +1723,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.welcome);
             this.Name = "Detector";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detector_FormClosing);

@@ -11,7 +11,7 @@ namespace Meteroi
 {
     class broad
     {
-        bool debug = true;
+        bool debug = false;
         private Terminal shell = null;
         public string log;
         bool connect_state = false;
@@ -347,7 +347,25 @@ namespace Meteroi
             string com = "po ";
             b.send_command_get_response(com);
             return;
-        }  
+        }
+        public static void set_hole_z()
+        {
+            string com = "holez ";
+            b.send_command_get_response(com);
+            return;
+        }
+        public static void set_view_z()
+        {
+            string com = "viewz ";
+            b.send_command_get_response(com);
+            return;
+        }
+        public static void microscopexy(uint x, uint y)
+        {
+            string com = "xy " + x.ToString()+' '+y.ToString();
+            b.send_command_get_response(com);
+            return;
+        }
     }
 
 }

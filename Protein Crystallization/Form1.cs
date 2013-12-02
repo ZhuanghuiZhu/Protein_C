@@ -1089,9 +1089,12 @@ namespace Protein_Crystallization
         bool cycle_pause  = false;
         private void cycle_thread()
         {
-            while(true) {
+            float angle = 0;
+            //PCAS.micoscope_x();
+            while(angle < 360) {
                 if (cycle_start == false)
                     return;
+                angle++;
             }
         }
 
@@ -1130,12 +1133,18 @@ namespace Protein_Crystallization
 
         private void button16_Click(object sender, EventArgs e)
         {
-
+            PCAS.set_view_z();
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
+            PCAS.set_hole_z();
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            //microscopexy();
         }
     }
 }
