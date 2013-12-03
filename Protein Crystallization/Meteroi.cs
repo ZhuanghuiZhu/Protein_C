@@ -360,7 +360,7 @@ namespace Meteroi
             b.send_command_get_response(com);
             return;
         }
-        public static void microscopexy(uint x, uint y)
+        public static void microscopexy(int x, int y)
         {
             string com = "xy " + x.ToString()+' '+y.ToString();
             b.send_command_get_response(com);

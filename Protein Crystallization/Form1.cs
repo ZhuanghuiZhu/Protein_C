@@ -11,6 +11,7 @@ using System.Threading;
 using Basic;
 using System.Xml.Serialization;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Protein_Crystallization
 {
@@ -253,12 +254,32 @@ namespace Protein_Crystallization
                 writer.Close();
             }
         }
+
+        private List<int> x;
+        private List<int> y;
         private void LoadCoodinate_Click(object sender, EventArgs e)
         {
             if (openFileDialog2.ShowDialog() == DialogResult.OK)//Load the coordinate file
             {
-
+                StreamReader file = new StreamReader(openFileDialog2.FileName);
+                while (!file.EndOfStream)
+                {
+                    string strReadLine = file.ReadLine(); //读取每行数据
+                    string regexStr = @"[-+]?\b(?:[0-9]*\.)?[0-9]+\b";
+                    MatchCollection mc = Regex.Matches(strReadLine, regexStr);
+                    if (mc.Count < 2)
+                        return;
+                    x.Add(int.Parse(mc[0].Value));
+                    y.Add(int.Parse(mc[1].Value));
+                }
             }
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int i = int.Parse(textBox2.Text);
+            if (i > x.Count)
+                return;
+            PCAS.microscopexy(x[i], y[i]);
         }
         private void AlignmentMark0_Click(object sender, EventArgs e)
         {
@@ -1086,14 +1107,22 @@ namespace Protein_Crystallization
         }
 
         bool cycle_start = false;
-        bool cycle_pause  = false;
+        bool cycle_pause = false;
+        int r = 0;
         private void cycle_thread()
         {
-            float angle = 0;
-            //PCAS.micoscope_x();
+            int angle = 0;
+            PCAS.micoscope_x(-r);
             while(angle < 360) {
                 if (cycle_start == false)
                     return;
+                if (cycle_pause == true)
+                {
+                    Thread.Sleep(1);
+                    continue;
+                }
+                PCAS.micoscope_x((int)(r - r * Math.Cos(Math.PI / 180 * angle)));
+                PCAS.micoscope_y((int)(r * Math.Sin(Math.PI/180 * angle)));
                 angle++;
             }
         }
@@ -1102,6 +1131,7 @@ namespace Protein_Crystallization
         {
             if (cycle_start == false)
             {
+                r = int.Parse(textBox9.Text);
                 Thread cycle = new Thread(cycle_thread);
                 cycle.Start();
                 button14.Text = "停止";
@@ -1139,12 +1169,6 @@ namespace Protein_Crystallization
         private void button17_Click(object sender, EventArgs e)
         {
             PCAS.set_hole_z();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-            //microscopexy();
         }
     }
 }

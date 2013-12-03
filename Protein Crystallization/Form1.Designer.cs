@@ -1711,6 +1711,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
+            this.Controls.Add(this.welcome);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
             this.Controls.Add(this.moisture1);
@@ -1722,8 +1724,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.welcome);
             this.Name = "Detector";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detector_FormClosing);
