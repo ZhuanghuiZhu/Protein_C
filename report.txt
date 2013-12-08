@@ -1,0 +1,2 @@
+"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 96.8, 0.005
+"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 128.8, 0.005
