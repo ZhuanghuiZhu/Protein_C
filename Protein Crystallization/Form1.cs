@@ -255,8 +255,8 @@ namespace Protein_Crystallization
             }
         }
 
-        private List<int> x;
-        private List<int> y;
+        private List<int> x = new List<int>();
+        private List<int> y = new List<int>();
         private void LoadCoodinate_Click(object sender, EventArgs e)
         {
             if (openFileDialog2.ShowDialog() == DialogResult.OK)//Load the coordinate file
@@ -277,6 +277,11 @@ namespace Protein_Crystallization
         private void button5_Click(object sender, EventArgs e)
         {
             int i = int.Parse(textBox2.Text);
+            if (i == 0) {
+                PCAS.microscopexy(0, 0);
+                return;
+            }
+            i = i - 1;
             if (i > x.Count)
                 return;
             PCAS.microscopexy(x[i], y[i]);
@@ -1157,7 +1162,7 @@ namespace Protein_Crystallization
             else
             {
                 button15.Text = "暂停";
-                cycle_pause = true;
+                cycle_pause = false;
             }
         }
 
