@@ -171,6 +171,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -276,6 +277,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.label38);
             this.tabPage2.Controls.Add(this.button5);
@@ -1172,6 +1174,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(47, 26);
             this.textBox9.TabIndex = 4;
+            this.textBox9.Text = "50";
             // 
             // label27
             // 
@@ -1706,6 +1709,16 @@
             this.autotesttime.Interval = 300000;
             this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(399, 392);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 28);
+            this.button6.TabIndex = 48;
+            this.button6.Text = "报告路径";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1894,6 +1907,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button button6;
     }
 }
 

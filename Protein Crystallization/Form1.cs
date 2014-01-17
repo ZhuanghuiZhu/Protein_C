@@ -255,8 +255,8 @@ namespace Protein_Crystallization
             }
         }
 
-        private List<int> x;
-        private List<int> y;
+        private List<int> x = new List<int>();
+        private List<int> y = new List<int>();
         private void LoadCoodinate_Click(object sender, EventArgs e)
         {
             if (openFileDialog2.ShowDialog() == DialogResult.OK)//Load the coordinate file
@@ -277,6 +277,11 @@ namespace Protein_Crystallization
         private void button5_Click(object sender, EventArgs e)
         {
             int i = int.Parse(textBox2.Text);
+            if (i == 0) {
+                PCAS.microscopexy(0, 0);
+                return;
+            }
+            i = i - 1;
             if (i > x.Count)
                 return;
             PCAS.microscopexy(x[i], y[i]);
@@ -560,8 +565,13 @@ namespace Protein_Crystallization
                 this.savedir.Visible = true;
             }
         }
+        StreamReader reportfile = null;
         private void sample_exam_thread()
         {
+            
+            string strReadLine;
+            string regexStr = @"[-+]?\b(?:[0-9]*\.)*[0-9]+\b";
+            MatchCollection mc;
             uint i = 1;
             PCAS.set_radius(d);
             PCAS.set_angle(a);
@@ -573,6 +583,20 @@ namespace Protein_Crystallization
                 Thread.Sleep(100);
                 picture.Record_the_picture(i);
                 Thread.Sleep(100);
+                if (reportfile != null)
+                {
+                    strReadLine = reportfile.ReadLine(); //读取每行数据
+                    //while (!reportfile.EndOfStream)
+                    //    strReadLine = reportfile.ReadLine(); //读取每行数据
+                    if (strReadLine != null)
+                    {
+                        mc = Regex.Matches(strReadLine, regexStr);
+                        if (mc.Count >= 9)
+                        {
+                            dataGridView1[3, (int)i - 1].Value = mc[7].Value;
+                        }
+                    }
+                }
                 if (exam_start == false)
                 {
                     return;
@@ -1052,8 +1076,7 @@ namespace Protein_Crystallization
                 uL = uint.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
                 sampleid = (uint)e.RowIndex + 1;
                 PCAS.set_hole_uL(uL);
-                PCAS.move_to_hole(sampleid);
-                //MessageBox.Show("加样" + uL.ToString()+"uL"+" to sample"+sampleid);
+                PCAS.move_to_hole(sampleid);                
             }
         }
 
@@ -1157,7 +1180,7 @@ namespace Protein_Crystallization
             else
             {
                 button15.Text = "暂停";
-                cycle_pause = true;
+                cycle_pause = false;
             }
         }
 
@@ -1169,6 +1192,15 @@ namespace Protein_Crystallization
         private void button17_Click(object sender, EventArgs e)
         {
             PCAS.set_hole_z();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Txt files (*.txt)|*.txt";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)//Load setting file
+            {
+                reportfile = new StreamReader(openFileDialog1.FileName);
+            }
         }
     }
 }
