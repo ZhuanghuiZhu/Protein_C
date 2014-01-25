@@ -41,6 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -171,7 +172,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
-            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -334,6 +334,16 @@
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(399, 392);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 28);
+            this.button6.TabIndex = 48;
+            this.button6.Text = "报告路径";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -342,6 +352,7 @@
             this.textBox2.Size = new System.Drawing.Size(45, 23);
             this.textBox2.TabIndex = 47;
             this.textBox2.Text = "0";
+            this.textBox2.Visible = false;
             // 
             // label38
             // 
@@ -352,6 +363,7 @@
             this.label38.Size = new System.Drawing.Size(144, 17);
             this.label38.TabIndex = 46;
             this.label38.Text = "位置：                    号";
+            this.label38.Visible = false;
             // 
             // button5
             // 
@@ -361,6 +373,7 @@
             this.button5.TabIndex = 45;
             this.button5.Text = "检测";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // comboBox2
@@ -577,6 +590,7 @@
             this.LoadCoodinate.TabIndex = 23;
             this.LoadCoodinate.Text = "导入坐标";
             this.LoadCoodinate.UseVisualStyleBackColor = true;
+            this.LoadCoodinate.Visible = false;
             this.LoadCoodinate.Click += new System.EventHandler(this.LoadCoodinate_Click);
             // 
             // SaveSetting
@@ -1165,6 +1179,7 @@
             this.button14.TabIndex = 5;
             this.button14.Text = "启动";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Visible = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // textBox9
@@ -1175,6 +1190,7 @@
             this.textBox9.Size = new System.Drawing.Size(47, 26);
             this.textBox9.TabIndex = 4;
             this.textBox9.Text = "50";
+            this.textBox9.Visible = false;
             // 
             // label27
             // 
@@ -1185,6 +1201,7 @@
             this.label27.Size = new System.Drawing.Size(294, 17);
             this.label27.TabIndex = 3;
             this.label27.Text = "  在半径为               mm位置自动寻找对准标记";
+            this.label27.Visible = false;
             // 
             // label26
             // 
@@ -1709,22 +1726,11 @@
             this.autotesttime.Interval = 300000;
             this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(399, 392);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 28);
-            this.button6.TabIndex = 48;
-            this.button6.Text = "报告路径";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 519);
-            this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.moisture0);
             this.Controls.Add(this.temperature0);
@@ -1737,6 +1743,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.welcome);
             this.Name = "Detector";
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Detector_FormClosing);
