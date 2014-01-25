@@ -21,6 +21,8 @@ namespace Protein_Crystallization
         // the text property on a TextBox control.
         delegate void SetTextCallback(string text);
         BasicForm picture;
+        private List<int> x = new List<int>();
+        private List<int> y = new List<int>();
         public Detector()
         {
             InitializeComponent();
@@ -255,8 +257,6 @@ namespace Protein_Crystallization
             }
         }
 
-        private List<int> x = new List<int>();
-        private List<int> y = new List<int>();
         private void LoadCoodinate_Click(object sender, EventArgs e)
         {
             if (openFileDialog2.ShowDialog() == DialogResult.OK)//Load the coordinate file
@@ -566,6 +566,7 @@ namespace Protein_Crystallization
             }
         }
         StreamReader reportfile = null;
+        bool cycle = true;
         private void sample_exam_thread()
         {
             
@@ -578,7 +579,14 @@ namespace Protein_Crystallization
             PCAS.set_sample(sample);
             while (i < sample)
             {
-                PCAS.move_to_sample(i);
+                if (cycle == true)
+                    PCAS.move_to_sample(i);
+                else
+                {
+                    if (i > x.Count - 1)
+                        break;
+                    PCAS.microscopexy(x[(int)i], y[(int)i]);
+                }
                 this.set_sampleid(i.ToString());
                 Thread.Sleep(100);
                 picture.Record_the_picture(i);
@@ -611,6 +619,7 @@ namespace Protein_Crystallization
         private void button3_Click(object sender, EventArgs e)
         {
             Thread exam = new Thread(sample_exam_thread);
+            cycle = comboBox3.SelectedIndex == 0;
             sample = uint.Parse(Sample.Text);
             d = float.Parse(sample_radius.Text);
             a = float.Parse(angle.Text);
