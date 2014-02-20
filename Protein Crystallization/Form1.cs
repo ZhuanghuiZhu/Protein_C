@@ -569,6 +569,7 @@ namespace Protein_Crystallization
         bool cycle = true;
         int delta_x = 100;
         int delta_y = 100;
+        int delta_z = 50;
         private void sample_exam_thread()
         {
             
@@ -597,7 +598,12 @@ namespace Protein_Crystallization
                 {
                     PCAS.micoscope_x(delta_x);
                     PCAS.micoscope_y(delta_y);
+                    PCAS.micoscope_z(delta_z);
                     Thread.Sleep(200);
+                    if (exam_start == false)
+                    {
+                        return;
+                    }
                     strReadLine = reportfile.ReadLine(); //读取每行数据
                     //while (!reportfile.EndOfStream)
                     //    strReadLine = reportfile.ReadLine(); //读取每行数据
@@ -611,6 +617,7 @@ namespace Protein_Crystallization
                     }
                     PCAS.micoscope_x(-delta_x);
                     PCAS.micoscope_y(-delta_y);
+                    PCAS.micoscope_z(-delta_z);
                 }
                 if (exam_start == false)
                 {
@@ -1217,8 +1224,21 @@ namespace Protein_Crystallization
             {
                 reportfile = new StreamReader(openFileDialog1.FileName);
             }
-            delta_x = int.Parse(sensor_x.Text);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            delta_z = int.Parse(sensor_z.Text);
+        }
+
+        private void sensor_y_TextChanged(object sender, EventArgs e)
+        {
             delta_y = int.Parse(sensor_y.Text);
+        }
+
+        private void sensor_x_TextChanged(object sender, EventArgs e)
+        {
+            delta_x = int.Parse(sensor_x.Text);
         }
     }
 }

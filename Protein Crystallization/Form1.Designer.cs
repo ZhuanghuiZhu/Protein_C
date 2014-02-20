@@ -177,6 +177,8 @@
             this.sensor_y = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.sensor_z = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -282,6 +284,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label41);
+            this.tabPage2.Controls.Add(this.sensor_z);
             this.tabPage2.Controls.Add(this.label40);
             this.tabPage2.Controls.Add(this.label39);
             this.tabPage2.Controls.Add(this.sensor_y);
@@ -361,7 +365,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(411, 392);
+            this.button6.Location = new System.Drawing.Point(423, 391);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 28);
             this.button6.TabIndex = 48;
@@ -448,7 +452,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(521, 392);
+            this.button4.Location = new System.Drawing.Point(528, 393);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 28);
@@ -577,7 +581,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(243, 393);
+            this.label31.Location = new System.Drawing.Point(197, 393);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(20, 17);
             this.label31.TabIndex = 27;
@@ -586,7 +590,7 @@
             // LED_light
             // 
             this.LED_light.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LED_light.Location = new System.Drawing.Point(192, 391);
+            this.LED_light.Location = new System.Drawing.Point(146, 391);
             this.LED_light.Name = "LED_light";
             this.LED_light.Size = new System.Drawing.Size(45, 23);
             this.LED_light.TabIndex = 26;
@@ -609,7 +613,7 @@
             // 
             // LoadCoodinate
             // 
-            this.LoadCoodinate.Location = new System.Drawing.Point(521, 342);
+            this.LoadCoodinate.Location = new System.Drawing.Point(528, 342);
             this.LoadCoodinate.Name = "LoadCoodinate";
             this.LoadCoodinate.Size = new System.Drawing.Size(100, 28);
             this.LoadCoodinate.TabIndex = 23;
@@ -632,7 +636,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(244, 342);
+            this.label23.Location = new System.Drawing.Point(198, 343);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(24, 17);
             this.label23.TabIndex = 21;
@@ -641,7 +645,7 @@
             // uL
             // 
             this.uL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uL.Location = new System.Drawing.Point(192, 340);
+            this.uL.Location = new System.Drawing.Point(146, 341);
             this.uL.Name = "uL";
             this.uL.Size = new System.Drawing.Size(46, 23);
             this.uL.TabIndex = 20;
@@ -1754,26 +1758,28 @@
             // sensor_x
             // 
             this.sensor_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.sensor_x.Location = new System.Drawing.Point(283, 390);
+            this.sensor_x.Location = new System.Drawing.Point(233, 391);
             this.sensor_x.Name = "sensor_x";
             this.sensor_x.Size = new System.Drawing.Size(45, 23);
             this.sensor_x.TabIndex = 50;
             this.sensor_x.Text = "100";
+            this.sensor_x.TextChanged += new System.EventHandler(this.sensor_x_TextChanged);
             // 
             // sensor_y
             // 
             this.sensor_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.sensor_y.Location = new System.Drawing.Point(354, 391);
+            this.sensor_y.Location = new System.Drawing.Point(304, 392);
             this.sensor_y.Name = "sensor_y";
             this.sensor_y.Size = new System.Drawing.Size(45, 23);
             this.sensor_y.TabIndex = 51;
             this.sensor_y.Text = "100";
+            this.sensor_y.TextChanged += new System.EventHandler(this.sensor_y_TextChanged);
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(264, 394);
+            this.label39.Location = new System.Drawing.Point(214, 395);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(17, 17);
             this.label39.TabIndex = 52;
@@ -1783,11 +1789,31 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label40.Location = new System.Drawing.Point(332, 394);
+            this.label40.Location = new System.Drawing.Point(282, 395);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(17, 17);
             this.label40.TabIndex = 53;
             this.label40.Text = "Y";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label41.Location = new System.Drawing.Point(353, 395);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(17, 17);
+            this.label41.TabIndex = 55;
+            this.label41.Text = "Z";
+            // 
+            // sensor_z
+            // 
+            this.sensor_z.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.sensor_z.Location = new System.Drawing.Point(375, 392);
+            this.sensor_z.Name = "sensor_z";
+            this.sensor_z.Size = new System.Drawing.Size(45, 23);
+            this.sensor_z.TabIndex = 54;
+            this.sensor_z.Text = "50";
+            this.sensor_z.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // Detector
             // 
@@ -1984,6 +2010,8 @@
         private System.Windows.Forms.TextBox sensor_y;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox sensor_z;
     }
 }
 
