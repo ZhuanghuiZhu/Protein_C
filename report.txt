@@ -1,24 +1,10 @@
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 96.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 128.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 111.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 156.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 122.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 99.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 56.2, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 21.7, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 96.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 128.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 111.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 156.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 122.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 99.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 56.2, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 21.7, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 96.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 128.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 111.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 156.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 122.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 99.8, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 56.2, 0.005
-"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity" "96 nm", "05/30/96", "14:35:27", 21.7, 0.005
+"Sample Id", "Date", "Time", "Effective Diameter (nm)", "Polydispersity"
+"Unknown Sample", "12/12/13", "16:52:29", 0.0, 0.000
+"Run1", "12/12/13", "16:53:10", 299.0, 0.707
+"Run2", "12/12/13", "16:53:42", 100.2, 0.363
+"Run3", "12/12/13", "16:53:42", 85.8, 0.500
+"Run3", "12/12/13", "16:55:23", 144842.2, 3.180
+"Run1", "12/12/13", "16:56:03", 95.8, 0.265
+"Run2", "12/12/13", "16:56:35", 0.0, 0.000
+"Run3", "12/12/13", "16:56:35", 0.0, 0.000
+"Run3", "12/12/13", "16:58:50", 116938.1, 0.005 

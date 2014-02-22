@@ -91,6 +91,17 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.sensor_z = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.sensor_y = new System.Windows.Forms.TextBox();
+            this.sensor_x = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -116,10 +127,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -173,12 +180,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
-            this.sensor_x = new System.Windows.Forms.TextBox();
-            this.sensor_y = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.sensor_z = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -284,12 +285,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label41);
-            this.tabPage2.Controls.Add(this.sensor_z);
-            this.tabPage2.Controls.Add(this.label40);
-            this.tabPage2.Controls.Add(this.label39);
-            this.tabPage2.Controls.Add(this.sensor_y);
-            this.tabPage2.Controls.Add(this.sensor_x);
             this.tabPage2.Controls.Add(this.comboBox3);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.textBox2);
@@ -853,6 +848,17 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Controls.Add(this.label44);
+            this.tabPage3.Controls.Add(this.label43);
+            this.tabPage3.Controls.Add(this.label42);
+            this.tabPage3.Controls.Add(this.label27);
+            this.tabPage3.Controls.Add(this.label41);
+            this.tabPage3.Controls.Add(this.sensor_z);
+            this.tabPage3.Controls.Add(this.label40);
+            this.tabPage3.Controls.Add(this.label39);
+            this.tabPage3.Controls.Add(this.sensor_y);
+            this.tabPage3.Controls.Add(this.sensor_x);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.groupBox3);
@@ -861,10 +867,6 @@
             this.tabPage3.Controls.Add(this.label29);
             this.tabPage3.Controls.Add(this.label28);
             this.tabPage3.Controls.Add(this.button16);
-            this.tabPage3.Controls.Add(this.button15);
-            this.tabPage3.Controls.Add(this.button14);
-            this.tabPage3.Controls.Add(this.textBox9);
-            this.tabPage3.Controls.Add(this.label27);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -877,6 +879,117 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "校准";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button7.Location = new System.Drawing.Point(352, 265);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(56, 26);
+            this.button7.TabIndex = 66;
+            this.button7.Text = "校准";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label44.Location = new System.Drawing.Point(207, 267);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(30, 17);
+            this.label44.TabIndex = 65;
+            this.label44.Text = "mm";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label43.Location = new System.Drawing.Point(311, 268);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(30, 17);
+            this.label43.TabIndex = 64;
+            this.label43.Text = "mm";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label42.Location = new System.Drawing.Point(133, 267);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(17, 17);
+            this.label42.TabIndex = 63;
+            this.label42.Text = "Y";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.Location = new System.Drawing.Point(37, 231);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(134, 20);
+            this.label27.TabIndex = 62;
+            this.label27.Text = "2.激光器位置校准";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label41.Location = new System.Drawing.Point(238, 268);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(17, 17);
+            this.label41.TabIndex = 61;
+            this.label41.Text = "Z";
+            // 
+            // sensor_z
+            // 
+            this.sensor_z.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.sensor_z.Location = new System.Drawing.Point(260, 265);
+            this.sensor_z.Name = "sensor_z";
+            this.sensor_z.Size = new System.Drawing.Size(45, 23);
+            this.sensor_z.TabIndex = 60;
+            this.sensor_z.Text = "3";
+            this.sensor_z.TextChanged += new System.EventHandler(this.sensor_z_TextChanged);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label40.Location = new System.Drawing.Point(104, 268);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(30, 17);
+            this.label40.TabIndex = 59;
+            this.label40.Text = "mm";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label39.Location = new System.Drawing.Point(36, 268);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(17, 17);
+            this.label39.TabIndex = 58;
+            this.label39.Text = "X";
+            // 
+            // sensor_y
+            // 
+            this.sensor_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.sensor_y.Location = new System.Drawing.Point(156, 264);
+            this.sensor_y.Name = "sensor_y";
+            this.sensor_y.Size = new System.Drawing.Size(45, 23);
+            this.sensor_y.TabIndex = 57;
+            this.sensor_y.Text = "3";
+            this.sensor_y.TextChanged += new System.EventHandler(this.sensor_y_TextChanged);
+            // 
+            // sensor_x
+            // 
+            this.sensor_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.sensor_x.Location = new System.Drawing.Point(55, 264);
+            this.sensor_x.Name = "sensor_x";
+            this.sensor_x.Size = new System.Drawing.Size(45, 23);
+            this.sensor_x.TabIndex = 56;
+            this.sensor_x.Text = "3";
+            this.sensor_x.TextChanged += new System.EventHandler(this.sensor_x_TextChanged);
             // 
             // button2
             // 
@@ -1187,51 +1300,6 @@
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // button15
-            // 
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button15.Location = new System.Drawing.Point(227, 255);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(56, 26);
-            this.button15.TabIndex = 6;
-            this.button15.Text = "暂停";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Visible = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.Location = new System.Drawing.Point(99, 255);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(56, 26);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "启动";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Visible = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox9.Location = new System.Drawing.Point(108, 220);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(47, 26);
-            this.textBox9.TabIndex = 4;
-            this.textBox9.Text = "50";
-            this.textBox9.Visible = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.Location = new System.Drawing.Point(33, 223);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(294, 17);
-            this.label27.TabIndex = 3;
-            this.label27.Text = "  在半径为               mm位置自动寻找对准标记";
-            this.label27.Visible = false;
-            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -1240,7 +1308,7 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(150, 20);
             this.label26.TabIndex = 2;
-            this.label26.Text = "2.注射针头位置校准";
+            this.label26.Text = "3.注射针头位置校准";
             // 
             // label25
             // 
@@ -1755,66 +1823,6 @@
             this.autotesttime.Interval = 300000;
             this.autotesttime.Tick += new System.EventHandler(this.autotesttime_Tick);
             // 
-            // sensor_x
-            // 
-            this.sensor_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.sensor_x.Location = new System.Drawing.Point(233, 391);
-            this.sensor_x.Name = "sensor_x";
-            this.sensor_x.Size = new System.Drawing.Size(45, 23);
-            this.sensor_x.TabIndex = 50;
-            this.sensor_x.Text = "100";
-            this.sensor_x.TextChanged += new System.EventHandler(this.sensor_x_TextChanged);
-            // 
-            // sensor_y
-            // 
-            this.sensor_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.sensor_y.Location = new System.Drawing.Point(304, 392);
-            this.sensor_y.Name = "sensor_y";
-            this.sensor_y.Size = new System.Drawing.Size(45, 23);
-            this.sensor_y.TabIndex = 51;
-            this.sensor_y.Text = "100";
-            this.sensor_y.TextChanged += new System.EventHandler(this.sensor_y_TextChanged);
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(214, 395);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(17, 17);
-            this.label39.TabIndex = 52;
-            this.label39.Text = "X";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label40.Location = new System.Drawing.Point(282, 395);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(17, 17);
-            this.label40.TabIndex = 53;
-            this.label40.Text = "Y";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label41.Location = new System.Drawing.Point(353, 395);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(17, 17);
-            this.label41.TabIndex = 55;
-            this.label41.Text = "Z";
-            // 
-            // sensor_z
-            // 
-            this.sensor_z.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.sensor_z.Location = new System.Drawing.Point(375, 392);
-            this.sensor_z.Name = "sensor_z";
-            this.sensor_z.Size = new System.Drawing.Size(45, 23);
-            this.sensor_z.TabIndex = 54;
-            this.sensor_z.Text = "50";
-            this.sensor_z.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1935,14 +1943,10 @@
         private System.Windows.Forms.Button ypp;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox0;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -2006,12 +2010,17 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox sensor_x;
-        private System.Windows.Forms.TextBox sensor_y;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.TextBox sensor_z;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox sensor_y;
+        private System.Windows.Forms.TextBox sensor_x;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Button button7;
     }
 }
 

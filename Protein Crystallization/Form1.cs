@@ -23,29 +23,39 @@ namespace Protein_Crystallization
         BasicForm picture;
         private List<int> x = new List<int>();
         private List<int> y = new List<int>();
+
+        int grid_size = 28;
         public Detector()
         {
             InitializeComponent();
             picture = new BasicForm();
             picture.parent_window = this;
             picture.Visible = false;
-            dataGridView1.Rows.Add(23);
-            for (int i = 0; i < 24; i++) 
+            dataGridView1.Rows.Add(grid_size);
+            for (int i = 0; i < grid_size; i++) 
                 this.dataGridView1[0, i].Value = Convert.ToString(i + 1);
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[1, i].Value = "";
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[2, i].Value = "";
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[3, i].Value = "";
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[4, i].Value = "";
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[6, i].Value = "";
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < grid_size; i++)
             {
                 this.dataGridView1.Rows[i].Cells[5].Value = "注射";
             }
+            update_delta();
+        }
+
+        private void update_delta()
+        {
+            delta_x = (int)(float.Parse(sensor_x.Text) * -100);
+            delta_y = (int)(float.Parse(sensor_y.Text) * 100);
+            delta_z = (int)(float.Parse(sensor_z.Text) * -100);
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
@@ -61,10 +71,7 @@ namespace Protein_Crystallization
                 float m2 = PCAS.get_chip_moisture();
                 welcome.Visible = false;// Set the welcome page as invisible
                 timer1.Enabled = true;
-                temperature1.Text = t1.ToString();
-                temperature0.Text = t2.ToString();
-                moisture0.Text = m1.ToString();
-                moisture1.Text = m2.ToString();
+                updatebar();
             }
             else
             {
@@ -129,6 +136,15 @@ namespace Protein_Crystallization
             [XmlElementAttribute("grid_other")]
             public List<string> grid_other;
 
+            [XmlElementAttribute("laser_x")]
+            public float laser_delta_x;
+
+            [XmlElementAttribute("laser_y")]
+            public float laser_delta_y;
+
+            [XmlElementAttribute("laser_z")]
+            public float laser_delta_z;
+
             public setting()
             {
                 grid_name     = new List<string>();
@@ -168,7 +184,12 @@ namespace Protein_Crystallization
                 textBox7.Text   = save.test_time.ToString();
                 comboBox1.SelectedIndex = save.test_time_unit;
                 textBox1.Text = save.time.ToString();
-                comboBox2.SelectedIndex = save.time_unit; 
+                comboBox2.SelectedIndex = save.time_unit;
+
+                sensor_x.Text = save.laser_delta_x.ToString();
+                sensor_y.Text = save.laser_delta_y.ToString();
+                sensor_z.Text = save.laser_delta_z.ToString();
+                update_delta();
 
                 i = 0;
                 foreach(string s in save.grid_name)
@@ -229,7 +250,7 @@ namespace Protein_Crystallization
                 save.time        = int.Parse(textBox1.Text);
                 save.time_unit   = comboBox2.SelectedIndex;
 
-                save.grid_size = dataGridView1.RowCount;
+                save.grid_size = dataGridView1.RowCount-1;
                 for (int i = 0; i < save.grid_size; i++)
                 {
                     save.grid_name.Add(dataGridView1[1, i].Value.ToString());
@@ -250,6 +271,11 @@ namespace Protein_Crystallization
                 {
                     save.grid_other.Add(dataGridView1[6, i].Value.ToString());
                 }
+
+                save.laser_delta_x = float.Parse(sensor_x.Text);
+                save.laser_delta_y = float.Parse(sensor_y.Text);
+                save.laser_delta_z = float.Parse(sensor_z.Text);
+
                 XmlSerializer serializer = new XmlSerializer(save.GetType());
                 TextWriter writer = new StreamWriter(saveFileDialog1.FileName);
                 serializer.Serialize(writer, save);
@@ -274,6 +300,23 @@ namespace Protein_Crystallization
                 }
             }
         }
+
+        private void updatebar()
+        {
+            float t1 = PCAS.get_box_temperature();
+            float t2 = PCAS.get_chip_temperature();
+            float m1 = PCAS.get_box_moisture();
+            float m2 = PCAS.get_chip_moisture();
+            if (!float.IsNaN(t1))
+                temperature1.Text = t1.ToString("0.00");
+            if (!float.IsNaN(t2))
+                temperature0.Text = t2.ToString("0.00");
+            if (!float.IsNaN(m1) && m1 > 0 && m1 < 100)
+                moisture1.Text = m1.ToString("0.00");
+            if (!float.IsNaN(m2) && m2 > 0 && m2 < 100)
+                moisture0.Text = m2.ToString("0.00");
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             int i = int.Parse(textBox2.Text);
@@ -383,22 +426,12 @@ namespace Protein_Crystallization
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            float t1 = PCAS.get_box_temperature();
-            float t2 = PCAS.get_chip_temperature();
-            float m1 = PCAS.get_box_moisture();
-            float m2 = PCAS.get_chip_moisture();
-            if (t1 != float.NaN)
-                temperature1.Text = t1.ToString("0.00");
-            if (t2 != float.NaN)
-                temperature0.Text = t2.ToString("0.00");
-            if (m1 != float.NaN)
-                moisture1.Text = m1.ToString("0.00");
-            if (m2 != float.NaN && m2 > 0 && m2 < 100)
-                moisture0.Text = m2.ToString("0.00");
+            updatebar();
             logtext.Text = PCAS.get_log();
             logtext.Select(logtext.TextLength, 0);//光标定位到文本最后
             logtext.ScrollToCaret();//滚动到光标处
         }
+
         private void LED_light_ValueChanged(object sender, EventArgs e)
         {
             uint i = decimal.ToUInt32(LED_light.Value);
@@ -567,9 +600,9 @@ namespace Protein_Crystallization
         }
         StreamReader reportfile = null;
         bool cycle = true;
-        int delta_x = 100;
-        int delta_y = 100;
-        int delta_z = 50;
+        int delta_x = 0;
+        int delta_y = 0;
+        int delta_z = 0;
         private void sample_exam_thread()
         {
             
@@ -610,9 +643,9 @@ namespace Protein_Crystallization
                     if (strReadLine != null)
                     {
                         mc = Regex.Matches(strReadLine, regexStr);
-                        if (mc.Count >= 9)
+                        if (mc.Count >= 8)
                         {
-                            dataGridView1[3, (int)i - 1].Value = mc[7].Value;
+                            dataGridView1[3, (int)i - 1].Value = mc[6].Value;
                         }
                     }
                     PCAS.micoscope_x(-delta_x);
@@ -1088,6 +1121,7 @@ namespace Protein_Crystallization
             }
         }
 
+        const int STEP_PER_UL = 8;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             uint uL;
@@ -1098,7 +1132,7 @@ namespace Protein_Crystallization
             {
                 uL = uint.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
                 sampleid = (uint)e.RowIndex + 1;
-                PCAS.set_hole_uL(uL);
+                PCAS.set_hole_uL(uL*STEP_PER_UL);
                 PCAS.move_to_hole(sampleid);                
             }
         }
@@ -1173,40 +1207,6 @@ namespace Protein_Crystallization
             }
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-            if (cycle_start == false)
-            {
-                r = int.Parse(textBox9.Text);
-                Thread cycle = new Thread(cycle_thread);
-                cycle.Start();
-                button14.Text = "停止";
-                button15.Visible = true;
-                cycle_start = true;
-            }
-            else
-            {
-                button14.Text = "启动";
-                cycle_start = false;
-                cycle_pause = false;
-                button15.Visible = false;
-            }
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            if (cycle_pause == false)
-            {
-                button15.Text = "恢复";
-                cycle_pause = true;
-            }
-            else
-            {
-                button15.Text = "暂停";
-                cycle_pause = false;
-            }
-        }
-
         private void button16_Click(object sender, EventArgs e)
         {
             PCAS.set_view_z();
@@ -1223,22 +1223,45 @@ namespace Protein_Crystallization
             if (openFileDialog1.ShowDialog() == DialogResult.OK)//Load setting file
             {
                 reportfile = new StreamReader(openFileDialog1.FileName);
+                reportfile.ReadLine(); //读取第一行数据
             }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            delta_z = int.Parse(sensor_z.Text);
         }
 
         private void sensor_y_TextChanged(object sender, EventArgs e)
         {
-            delta_y = int.Parse(sensor_y.Text);
+            update_delta();
         }
 
         private void sensor_x_TextChanged(object sender, EventArgs e)
         {
-            delta_x = int.Parse(sensor_x.Text);
+            update_delta();
+        }
+
+        private void sensor_z_TextChanged(object sender, EventArgs e)
+        {
+            update_delta();
+        }
+
+        bool laser_test = true;
+        private void button7_Click(object sender, EventArgs e)
+        {
+            update_delta();
+            if (laser_test == true)
+            {
+                PCAS.micoscope_x(delta_x);
+                PCAS.micoscope_y(delta_y);
+                PCAS.micoscope_z(delta_z);
+                laser_test = false;
+                button7.Text = "复原";
+            }
+            else
+            {
+                PCAS.micoscope_x(-delta_x);
+                PCAS.micoscope_y(-delta_y);
+                PCAS.micoscope_z(-delta_z);
+                laser_test = true;
+                button7.Text = "校准";
+            }
         }
     }
 }
