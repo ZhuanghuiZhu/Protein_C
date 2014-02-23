@@ -24,15 +24,21 @@ namespace Protein_Crystallization
         private List<int> x = new List<int>();
         private List<int> y = new List<int>();
 
-        int grid_size = 28;
         public Detector()
         {
             InitializeComponent();
             picture = new BasicForm();
             picture.parent_window = this;
             picture.Visible = false;
+            updateGrid(25);
+            update_delta();
+        }
+
+        private void updateGrid(int grid_size)
+        {
+            dataGridView1.Rows.Clear();     
             dataGridView1.Rows.Add(grid_size);
-            for (int i = 0; i < grid_size; i++) 
+            for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[0, i].Value = Convert.ToString(i + 1);
             for (int i = 0; i < grid_size; i++)
                 this.dataGridView1[1, i].Value = "";
@@ -48,36 +54,83 @@ namespace Protein_Crystallization
             {
                 this.dataGridView1.Rows[i].Cells[5].Value = "注射";
             }
-            update_delta();
         }
+
+        private int string_to_int(int default_value, string str, bool errror_message)
+        {
+            int i;
+            try {
+                i = int.Parse(str);
+            }
+            catch(SystemException) {
+                if (errror_message == true)
+                    MessageBox.Show("请输入正确的数值");
+                i = default_value;
+            }
+            return i;
+        }
+        private int string_to_int(int default_value, string str)
+        { return string_to_int(default_value, str, true); }
+
+        private uint string_to_uint(uint default_value, string str, bool errror_message)
+        {
+            uint i;
+            try
+            {
+                i = uint.Parse(str);
+            }
+            catch (SystemException)
+            {
+                if (errror_message == true)
+                    MessageBox.Show("请输入正确的数值");
+                i = default_value;
+            }
+            return i;
+        }
+        private uint string_to_uint(uint default_value, string str)
+        { return string_to_uint(default_value, str, true); }
+
+        private float string_to_float(float default_value, string str, bool errror_message)
+        {
+            float i;
+            try
+            {
+                i = float.Parse(str);
+            }
+            catch (SystemException)
+            {
+                if (errror_message == true)
+                    MessageBox.Show("请输入正确的数值");
+                i = default_value;
+            }
+            return i;
+        }
+        private float string_to_float(float default_value, string str)
+        { return string_to_float(default_value, str, true); }
 
         private void update_delta()
         {
-            delta_x = (int)(float.Parse(sensor_x.Text) * -100);
-            delta_y = (int)(float.Parse(sensor_y.Text) * 100);
-            delta_z = (int)(float.Parse(sensor_z.Text) * -100);
+            delta_x = (int)(string_to_float(3,sensor_x.Text,false) * -100);
+            delta_y = (int)(string_to_float(3,sensor_y.Text,false) * 100);
+            delta_z = (int)(string_to_float(3,sensor_z.Text,false) * -100);
         }
 
-        private void ConnectButton_Click(object sender, EventArgs e)
+        private void updatebar()
         {
-            string username = UserName.Text;
-            string password = PassWords.Text;
-            string ipaddress = IPAddress0.Text + '.' + IPAddress1.Text + '.' + IPAddress2.Text + '.' + IPAddress3.Text;
-            if (PCAS.connect(ipaddress, username, password))
-            {
-                float t1 = PCAS.get_box_temperature();
-                float t2 = PCAS.get_chip_temperature();
-                float m1 = PCAS.get_box_moisture();
-                float m2 = PCAS.get_chip_moisture();
-                welcome.Visible = false;// Set the welcome page as invisible
-                timer1.Enabled = true;
-                updatebar();
-            }
-            else
-            {
-                MessageBox.Show("连接失败");
-            }
+            float t1 = PCAS.get_box_temperature();
+            float t2 = PCAS.get_chip_temperature();
+            float m1 = PCAS.get_box_moisture();
+            float m2 = PCAS.get_chip_moisture();
+            if (!float.IsNaN(t1))
+                temperature1.Text = t1.ToString("0.00");
+            if (!float.IsNaN(t2))
+                temperature0.Text = t2.ToString("0.00");
+            if (!float.IsNaN(m1) && m1 > 0 && m1 < 100)
+                moisture1.Text = m1.ToString("0.00");
+            if (!float.IsNaN(m2) && m2 > 0 && m2 < 100)
+                moisture0.Text = m2.ToString("0.00");
         }
+
         public class setting
         {
             [XmlElementAttribute("Target_temperature")]
@@ -301,25 +354,30 @@ namespace Protein_Crystallization
             }
         }
 
-        private void updatebar()
+        private void ConnectButton_Click(object sender, EventArgs e)
         {
-            float t1 = PCAS.get_box_temperature();
-            float t2 = PCAS.get_chip_temperature();
-            float m1 = PCAS.get_box_moisture();
-            float m2 = PCAS.get_chip_moisture();
-            if (!float.IsNaN(t1))
-                temperature1.Text = t1.ToString("0.00");
-            if (!float.IsNaN(t2))
-                temperature0.Text = t2.ToString("0.00");
-            if (!float.IsNaN(m1) && m1 > 0 && m1 < 100)
-                moisture1.Text = m1.ToString("0.00");
-            if (!float.IsNaN(m2) && m2 > 0 && m2 < 100)
-                moisture0.Text = m2.ToString("0.00");
+            string username = UserName.Text;
+            string password = PassWords.Text;
+            string ipaddress = IPAddress0.Text + '.' + IPAddress1.Text + '.' + IPAddress2.Text + '.' + IPAddress3.Text;
+            if (PCAS.connect(ipaddress, username, password))
+            {
+                float t1 = PCAS.get_box_temperature();
+                float t2 = PCAS.get_chip_temperature();
+                float m1 = PCAS.get_box_moisture();
+                float m2 = PCAS.get_chip_moisture();
+                welcome.Visible = false;// Set the welcome page as invisible
+                timer1.Enabled = true;
+                updatebar();
+            }
+            else
+            {
+                MessageBox.Show("连接失败");
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            int i = int.Parse(textBox2.Text);
+            int i = string_to_int(0,textBox2.Text);
             if (i == 0) {
                 PCAS.microscopexy(0, 0);
                 return;
@@ -444,16 +502,129 @@ namespace Protein_Crystallization
         }
         private void targettemp_TextChanged(object sender, EventArgs e)
         {
-
+            if (targettemp.Text.Length != 0)
+            {
+                float i = string_to_float(25, targettemp.Text);
+                targettemp.Text = i.ToString();
+            }
         }
         private void targetmoist_TextChanged(object sender, EventArgs e)
         {
-
+            if (targetmoist.Text.Length != 0)
+            {
+                float i = string_to_float(80, targetmoist.Text);
+                targetmoist.Text = i.ToString();
+            }
         }
         private void radius_TextChanged(object sender, EventArgs e)
         {
-
+            if (radius.Text.Length != 0)
+            {
+                float i = string_to_float(22.02f, radius.Text);
+                radius.Text = i.ToString();
+            }
         }
+        private void Sample_TextChanged(object sender, EventArgs e)
+        {
+            if (Sample.Text.Length != 0)
+            {
+                uint i = string_to_uint(25, Sample.Text);
+                Sample.Text = i.ToString();
+                updateGrid((int)i);
+            }
+        }
+
+        private void sampleid_TextChanged(object sender, EventArgs e)
+        {
+            if (sampleid.Text.Length != 0)
+            {
+                uint i = string_to_uint(0, sampleid.Text);
+                sampleid.Text = i.ToString();
+            }
+        }
+
+        private void angle_TextChanged(object sender, EventArgs e)
+        {
+            if (angle.Text.Length != 0)
+            {
+                float i = string_to_float(0, angle.Text);
+                angle.Text = i.ToString();
+            }
+        }
+
+        private void sample_radius_TextChanged(object sender, EventArgs e)
+        {
+            if (sample_radius.Text.Length != 0)
+            {
+                float i = string_to_float(14.05f, sample_radius.Text);
+                sample_radius.Text = i.ToString();
+            }
+        }
+
+        private void holeid_TextChanged(object sender, EventArgs e)
+        {
+            if (holeid.Text.Length != 0)
+            {
+                uint i = string_to_uint(0, holeid.Text);
+                holeid.Text = i.ToString();
+            }
+        }
+
+        private void holeangle_TextChanged(object sender, EventArgs e)
+        {
+            if (holeangle.Text.Length != 0)
+            {
+                float i = string_to_float(0, holeangle.Text);
+                holeangle.Text = i.ToString();
+            }
+        }
+
+        private void hole_off_TextChanged(object sender, EventArgs e)
+        {
+            if (hole_off.Text.Length != 0)
+            {
+                float i = string_to_float(25.00f, hole_off.Text);
+                hole_off.Text = i.ToString();
+            }
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox7.Text.Length != 0)
+            {
+                uint i = string_to_uint(5, textBox7.Text);
+                textBox7.Text = i.ToString();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length != 0)
+            {
+                uint i = string_to_uint(5, textBox1.Text);
+                textBox1.Text = i.ToString();
+            }
+        }
+
+        private void uL_TextChanged(object sender, EventArgs e)
+        {
+            if (uL.Text.Length != 0)
+            {
+                uint i = string_to_uint(1, uL.Text);
+                uL.Text = i.ToString();
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length != 0)
+            {
+                uint i;
+                i = string_to_uint(0, textBox2.Text);
+                textBox2.Text = i.ToString();
+            }
+        }
+
         private void syf_Click(object sender, EventArgs e)
         {
             PCAS.syringe_plus(25);
@@ -473,8 +644,8 @@ namespace Protein_Crystallization
         }
         private void set_Click(object sender, EventArgs e)
         {
-            float target_temp = float.Parse(targettemp.Text);
-            float target_moist = float.Parse(targetmoist.Text);
+            float target_temp = string_to_float(25,targettemp.Text,false);
+            float target_moist = string_to_float(80, targetmoist.Text, false);
             if (target_temp > 30 || target_temp < 0)
             {
                 MessageBox.Show("请输入正确的温度");
@@ -491,10 +662,10 @@ namespace Protein_Crystallization
         
         private void exam_Click(object sender, EventArgs e)
         {
-            uint i = uint.Parse(sampleid.Text);
-            uint sample = uint.Parse(Sample.Text);
-            float d = float.Parse(sample_radius.Text);
-            float a = float.Parse(angle.Text);
+            uint i = string_to_uint(25,sampleid.Text,false);
+            uint sample = string_to_uint(0,Sample.Text,false);
+            float d = string_to_float(14.05f,sample_radius.Text,false);
+            float a = string_to_float(0,angle.Text,false);
             if (i > sample)
             {
                 MessageBox.Show("请输入正确的样本编号");
@@ -518,12 +689,12 @@ namespace Protein_Crystallization
 
         private void addsample_Click(object sender, EventArgs e)
         {
-            uint i = uint.Parse(holeid.Text);
-            uint sample = uint.Parse(Sample.Text);
-            float d = float.Parse(radius.Text);
-            float a = float.Parse(holeangle.Text);
-            float h_d = float.Parse(hole_off.Text);
-            float u = float.Parse(uL.Text);
+            uint i = string_to_uint(0,holeid.Text,false);
+            uint sample = string_to_uint(0,Sample.Text,false);
+            float d = string_to_float(22.02f,radius.Text,false);
+            float a = string_to_float(0,holeangle.Text,false);
+            float h_d = string_to_float(25.0f,hole_off.Text,false);
+            float u = string_to_float(1,uL.Text,false);
             if (i > sample)
             {
                 MessageBox.Show("请输入正确的样本编号");
@@ -667,13 +838,13 @@ namespace Protein_Crystallization
         {
             Thread exam = new Thread(sample_exam_thread);
             cycle = comboBox3.SelectedIndex == 0;
-            sample = uint.Parse(Sample.Text);
-            d = float.Parse(sample_radius.Text);
-            a = float.Parse(angle.Text);
+            sample = string_to_uint(0,Sample.Text,false);
+            d = string_to_float(14.05f,sample_radius.Text,false);
+            a = string_to_float(0,angle.Text,false);
             if (comboBox1.SelectedIndex == 0)
-                time = (int)uint.Parse(textBox7.Text) * 1000;
+                time = (int)string_to_uint(5,textBox7.Text,false) * 1000;
             else
-                time = (int)uint.Parse(textBox7.Text) * 1000 * 60;
+                time = (int)string_to_uint(5,textBox7.Text,false) * 1000 * 60;
             if (a > 360 || a < -360)
             {
                 MessageBox.Show("请输入正确的角偏移");
@@ -1130,7 +1301,7 @@ namespace Protein_Crystallization
                 return;
             if (this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value != null)
             {
-                uL = uint.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
+                uL = string_to_uint(1,this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
                 sampleid = (uint)e.RowIndex + 1;
                 PCAS.set_hole_uL(uL*STEP_PER_UL);
                 PCAS.move_to_hole(sampleid);                
@@ -1156,11 +1327,11 @@ namespace Protein_Crystallization
             {
                 uint time;
                 if(comboBox2.SelectedIndex ==0)
-                    time = uint.Parse(textBox1.Text) * 1000 * 60;
+                    time = string_to_uint(5,textBox1.Text,true) * 1000 * 60;
                 else
-                    time = uint.Parse(textBox1.Text) * 1000 * 60 * 60;
-                uint sample = uint.Parse(Sample.Text);
-                uint timeinterval = uint.Parse(textBox7.Text) * 1000;
+                    time = string_to_uint(5, textBox1.Text, true) * 1000 * 60 * 60;
+                uint sample = string_to_uint(0, Sample.Text, true);
+                uint timeinterval = string_to_uint(5,textBox7.Text, true) * 1000;
                 if (time < sample * timeinterval)
                 {
                     MessageBox.Show("时间间隔太短");
@@ -1227,19 +1398,34 @@ namespace Protein_Crystallization
             }
         }
 
-        private void sensor_y_TextChanged(object sender, EventArgs e)
-        {
-            update_delta();
-        }
-
         private void sensor_x_TextChanged(object sender, EventArgs e)
         {
-            update_delta();
+            if (sensor_x.Text.Length != 0)
+            {
+                float i = string_to_float(3, sensor_x.Text);
+                sensor_x.Text = i.ToString();
+                update_delta();
+            }
+        }
+
+        private void sensor_y_TextChanged(object sender, EventArgs e)
+        {
+            if (sensor_y.Text.Length != 0)
+            {
+                float i = string_to_float(3, sensor_y.Text);
+                sensor_y.Text = i.ToString();
+                update_delta();
+            }
         }
 
         private void sensor_z_TextChanged(object sender, EventArgs e)
         {
-            update_delta();
+            if (sensor_z.Text.Length != 0)
+            {
+                float i = string_to_float(3, sensor_z.Text);
+                sensor_z.Text = i.ToString();
+                update_delta();
+            }
         }
 
         bool laser_test = true;
