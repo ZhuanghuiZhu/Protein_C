@@ -112,7 +112,7 @@ namespace Protein_Crystallization
         {
             delta_x = (int)(string_to_float(3,sensor_x.Text,false) * -100);
             delta_y = (int)(string_to_float(3,sensor_y.Text,false) * 100);
-            delta_z = (int)(string_to_float(3,sensor_z.Text,false) * -100);
+            delta_z = (int)(string_to_float(3,sensor_z.Text,false) * -33);
         }
 
         private void updatebar()
@@ -502,127 +502,127 @@ namespace Protein_Crystallization
         }
         private void targettemp_TextChanged(object sender, EventArgs e)
         {
-            if (targettemp.Text.Length != 0)
-            {
-                float i = string_to_float(25, targettemp.Text);
-                targettemp.Text = i.ToString();
-            }
+            //if (targettemp.Text.Length != 0)
+            //{
+            //    float i = string_to_float(25, targettemp.Text);
+            //    targettemp.Text = i.ToString();
+            //}
         }
         private void targetmoist_TextChanged(object sender, EventArgs e)
         {
-            if (targetmoist.Text.Length != 0)
-            {
-                float i = string_to_float(80, targetmoist.Text);
-                targetmoist.Text = i.ToString();
-            }
+            //if (targetmoist.Text.Length != 0)
+            //{
+            //    float i = string_to_float(80, targetmoist.Text);
+            //    targetmoist.Text = i.ToString();
+            //}
         }
         private void radius_TextChanged(object sender, EventArgs e)
         {
-            if (radius.Text.Length != 0)
-            {
-                float i = string_to_float(22.02f, radius.Text);
-                radius.Text = i.ToString();
-            }
+            //if (radius.Text.Length != 0)
+            //{
+            //    float i = string_to_float(22.02f, radius.Text);
+            //    radius.Text = i.ToString();
+            //}
         }
         private void Sample_TextChanged(object sender, EventArgs e)
         {
-            if (Sample.Text.Length != 0)
-            {
-                uint i = string_to_uint(25, Sample.Text);
-                Sample.Text = i.ToString();
-                updateGrid((int)i);
-            }
+            //if (Sample.Text.Length != 0)
+            //{
+            //    uint i = string_to_uint(25, Sample.Text);
+            //    Sample.Text = i.ToString();
+            //    updateGrid((int)i);
+            //}
         }
 
         private void sampleid_TextChanged(object sender, EventArgs e)
         {
-            if (sampleid.Text.Length != 0)
-            {
-                uint i = string_to_uint(0, sampleid.Text);
-                sampleid.Text = i.ToString();
-            }
+            //if (sampleid.Text.Length != 0)
+            //{
+            //    uint i = string_to_uint(0, sampleid.Text);
+            //    sampleid.Text = i.ToString();
+            //}
         }
 
         private void angle_TextChanged(object sender, EventArgs e)
         {
-            if (angle.Text.Length != 0)
-            {
-                float i = string_to_float(0, angle.Text);
-                angle.Text = i.ToString();
-            }
+            //if (angle.Text.Length != 0)
+            //{
+            //    float i = string_to_float(0, angle.Text);
+            //    angle.Text = i.ToString();
+            //}
         }
 
         private void sample_radius_TextChanged(object sender, EventArgs e)
         {
-            if (sample_radius.Text.Length != 0)
-            {
-                float i = string_to_float(14.05f, sample_radius.Text);
-                sample_radius.Text = i.ToString();
-            }
+            //if (sample_radius.Text.Length != 0)
+            //{
+            //    float i = string_to_float(14.05f, sample_radius.Text);
+            //    sample_radius.Text = i.ToString();
+            //}
         }
 
         private void holeid_TextChanged(object sender, EventArgs e)
         {
-            if (holeid.Text.Length != 0)
-            {
-                uint i = string_to_uint(0, holeid.Text);
-                holeid.Text = i.ToString();
-            }
+            //if (holeid.Text.Length != 0)
+            //{
+            //    uint i = string_to_uint(0, holeid.Text);
+            //    holeid.Text = i.ToString();
+            //}
         }
 
         private void holeangle_TextChanged(object sender, EventArgs e)
         {
-            if (holeangle.Text.Length != 0)
-            {
-                float i = string_to_float(0, holeangle.Text);
-                holeangle.Text = i.ToString();
-            }
+            //if (holeangle.Text.Length != 0)
+            //{
+            //    float i = string_to_float(0, holeangle.Text);
+            //    holeangle.Text = i.ToString();
+            //}
         }
 
         private void hole_off_TextChanged(object sender, EventArgs e)
         {
-            if (hole_off.Text.Length != 0)
-            {
-                float i = string_to_float(25.00f, hole_off.Text);
-                hole_off.Text = i.ToString();
-            }
+            //if (hole_off.Text.Length != 0)
+            //{
+            //    float i = string_to_float(25.00f, hole_off.Text);
+            //    hole_off.Text = i.ToString();
+            //}
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
-            if (textBox7.Text.Length != 0)
-            {
-                uint i = string_to_uint(5, textBox7.Text);
-                textBox7.Text = i.ToString();
-            }
+            //if (textBox7.Text.Length != 0)
+            //{
+            //    uint i = string_to_uint(5, textBox7.Text);
+            //    textBox7.Text = i.ToString();
+            //}
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length != 0)
-            {
-                uint i = string_to_uint(5, textBox1.Text);
-                textBox1.Text = i.ToString();
-            }
+            //if (textBox1.Text.Length != 0)
+            //{
+            //    uint i = string_to_uint(5, textBox1.Text);
+            //    textBox1.Text = i.ToString();
+            //}
         }
 
         private void uL_TextChanged(object sender, EventArgs e)
         {
-            if (uL.Text.Length != 0)
-            {
-                uint i = string_to_uint(1, uL.Text);
-                uL.Text = i.ToString();
-            }
+            //if (uL.Text.Length != 0)
+            //{
+            //    uint i = string_to_uint(1, uL.Text);
+            //    uL.Text = i.ToString();
+            //}
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length != 0)
-            {
-                uint i;
-                i = string_to_uint(0, textBox2.Text);
-                textBox2.Text = i.ToString();
-            }
+            //if (textBox2.Text.Length != 0)
+            //{
+            //    uint i;
+            //    i = string_to_uint(0, textBox2.Text);
+            //    textBox2.Text = i.ToString();
+            //}
         }
 
         private void syf_Click(object sender, EventArgs e)
@@ -769,7 +769,7 @@ namespace Protein_Crystallization
                 this.savedir.Visible = true;
             }
         }
-        StreamReader reportfile = null;
+        String reportfile_name = null;
         bool cycle = true;
         int delta_x = 0;
         int delta_y = 0;
@@ -777,14 +777,15 @@ namespace Protein_Crystallization
         private void sample_exam_thread()
         {
             
-            string strReadLine;
+            string strReadLine = null;
             string regexStr = @"[-+]?\b(?:[0-9]*\.)*[0-9]+\b";
             MatchCollection mc;
             uint i = 1;
             PCAS.set_radius(d);
             PCAS.set_angle(a);
             PCAS.set_sample(sample);
-            while (i < sample)
+
+            while (i <= sample)
             {
                 if (cycle == true)
                     PCAS.move_to_sample(i);
@@ -798,19 +799,20 @@ namespace Protein_Crystallization
                 Thread.Sleep(100);
                 picture.Record_the_picture(i);
                 Thread.Sleep(100);
-                if (reportfile != null)
+                if (reportfile_name != null)
                 {
+                    StreamReader reportfile = null;
                     PCAS.micoscope_x(delta_x);
                     PCAS.micoscope_y(delta_y);
                     PCAS.micoscope_z(delta_z);
-                    Thread.Sleep(200);
+                    Thread.Sleep(30000);
                     if (exam_start == false)
                     {
                         return;
                     }
-                    strReadLine = reportfile.ReadLine(); //读取每行数据
-                    //while (!reportfile.EndOfStream)
-                    //    strReadLine = reportfile.ReadLine(); //读取每行数据
+                    reportfile = new StreamReader(reportfile_name);
+                    while (!reportfile.EndOfStream)
+                        strReadLine = reportfile.ReadLine(); //读取每行数据
                     if (strReadLine != null)
                     {
                         mc = Regex.Matches(strReadLine, regexStr);
@@ -822,6 +824,7 @@ namespace Protein_Crystallization
                     PCAS.micoscope_x(-delta_x);
                     PCAS.micoscope_y(-delta_y);
                     PCAS.micoscope_z(-delta_z);
+                    reportfile.Close();
                 }
                 if (exam_start == false)
                 {
@@ -1393,8 +1396,7 @@ namespace Protein_Crystallization
             openFileDialog1.Filter = "Txt files (*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)//Load setting file
             {
-                reportfile = new StreamReader(openFileDialog1.FileName);
-                reportfile.ReadLine(); //读取第一行数据
+                reportfile_name = openFileDialog1.FileName;
             }
         }
 
@@ -1402,8 +1404,8 @@ namespace Protein_Crystallization
         {
             if (sensor_x.Text.Length != 0)
             {
-                float i = string_to_float(3, sensor_x.Text);
-                sensor_x.Text = i.ToString();
+                //float i = string_to_float(3, sensor_x.Text);
+                //sensor_x.Text = i.ToString();
                 update_delta();
             }
         }
@@ -1412,8 +1414,8 @@ namespace Protein_Crystallization
         {
             if (sensor_y.Text.Length != 0)
             {
-                float i = string_to_float(3, sensor_y.Text);
-                sensor_y.Text = i.ToString();
+                //float i = string_to_float(3, sensor_y.Text);
+                //sensor_y.Text = i.ToString();
                 update_delta();
             }
         }
@@ -1422,8 +1424,8 @@ namespace Protein_Crystallization
         {
             if (sensor_z.Text.Length != 0)
             {
-                float i = string_to_float(3, sensor_z.Text);
-                sensor_z.Text = i.ToString();
+                //float i = string_to_float(3, sensor_z.Text);
+                //sensor_z.Text = i.ToString();
                 update_delta();
             }
         }
@@ -1434,17 +1436,17 @@ namespace Protein_Crystallization
             update_delta();
             if (laser_test == true)
             {
+                PCAS.micoscope_z(delta_z);
                 PCAS.micoscope_x(delta_x);
                 PCAS.micoscope_y(delta_y);
-                PCAS.micoscope_z(delta_z);
                 laser_test = false;
                 button7.Text = "复原";
             }
             else
             {
+                PCAS.micoscope_z(-delta_z);
                 PCAS.micoscope_x(-delta_x);
                 PCAS.micoscope_y(-delta_y);
-                PCAS.micoscope_z(-delta_z);
                 laser_test = true;
                 button7.Text = "校准";
             }
