@@ -1444,9 +1444,9 @@ namespace Protein_Crystallization
             }
             else
             {
-                PCAS.micoscope_z(-delta_z);
                 PCAS.micoscope_x(-delta_x);
                 PCAS.micoscope_y(-delta_y);
+                PCAS.micoscope_z(-delta_z);
                 laser_test = true;
                 button7.Text = "校准";
             }
