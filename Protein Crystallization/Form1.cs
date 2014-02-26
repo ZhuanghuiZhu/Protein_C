@@ -112,7 +112,7 @@ namespace Protein_Crystallization
         {
             delta_x = (int)(string_to_float(3,sensor_x.Text,false) * -100);
             delta_y = (int)(string_to_float(3,sensor_y.Text,false) * 100);
-            delta_z = (int)(string_to_float(3,sensor_z.Text,false) * -33);
+            delta_z = (int)(string_to_float(3,sensor_z.Text,false) * -333);
         }
 
         private void updatebar()
@@ -1436,17 +1436,17 @@ namespace Protein_Crystallization
             update_delta();
             if (laser_test == true)
             {
-                PCAS.micoscope_z(delta_z);
                 PCAS.micoscope_x(delta_x);
                 PCAS.micoscope_y(delta_y);
+                PCAS.micoscope_z(delta_z);
                 laser_test = false;
                 button7.Text = "复原";
             }
             else
             {
+                PCAS.micoscope_z(-delta_z);
                 PCAS.micoscope_x(-delta_x);
                 PCAS.micoscope_y(-delta_y);
-                PCAS.micoscope_z(-delta_z);
                 laser_test = true;
                 button7.Text = "校准";
             }
