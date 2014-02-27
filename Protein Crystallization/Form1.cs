@@ -774,6 +774,7 @@ namespace Protein_Crystallization
         int delta_x = 0;
         int delta_y = 0;
         int delta_z = 0;
+        int laser_test_time = 0;
         private void sample_exam_thread()
         {
             
@@ -805,7 +806,7 @@ namespace Protein_Crystallization
                     PCAS.micoscope_x(delta_x);
                     PCAS.micoscope_y(delta_y);
                     PCAS.micoscope_z(delta_z);
-                    Thread.Sleep(30000);
+                    Thread.Sleep(laser_test_time);
                     if (exam_start == false)
                     {
                         return;
@@ -821,9 +822,9 @@ namespace Protein_Crystallization
                             dataGridView1[3, (int)i - 1].Value = mc[6].Value;
                         }
                     }
+                    PCAS.micoscope_z(-delta_z);
                     PCAS.micoscope_x(-delta_x);
                     PCAS.micoscope_y(-delta_y);
-                    PCAS.micoscope_z(-delta_z);
                     reportfile.Close();
                 }
                 if (exam_start == false)
@@ -844,6 +845,8 @@ namespace Protein_Crystallization
             sample = string_to_uint(0,Sample.Text,false);
             d = string_to_float(14.05f,sample_radius.Text,false);
             a = string_to_float(0,angle.Text,false);
+            float t = string_to_float(0,laser_time.Text, false);
+            laser_test_time = (int)t * 1000 * 60;
             if (comboBox1.SelectedIndex == 0)
                 time = (int)string_to_uint(5,textBox7.Text,false) * 1000;
             else
@@ -1304,7 +1307,7 @@ namespace Protein_Crystallization
                 return;
             if (this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value != null)
             {
-                uL = string_to_uint(1,this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString());
+                uL = string_to_uint(1,this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Value.ToString(),false);
                 sampleid = (uint)e.RowIndex + 1;
                 PCAS.set_hole_uL(uL*STEP_PER_UL);
                 PCAS.move_to_hole(sampleid);                

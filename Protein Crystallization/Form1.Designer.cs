@@ -41,6 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.laser_time = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -90,6 +91,7 @@
             this.targettemp = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
@@ -216,7 +218,7 @@
             this.WorkSpace.Controls.Add(this.dataGridView1);
             this.WorkSpace.Location = new System.Drawing.Point(4, 34);
             this.WorkSpace.Name = "WorkSpace";
-            this.WorkSpace.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.WorkSpace.Padding = new System.Windows.Forms.Padding(3);
             this.WorkSpace.Size = new System.Drawing.Size(752, 438);
             this.WorkSpace.TabIndex = 0;
             this.WorkSpace.Text = "工作台";
@@ -285,6 +287,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.laser_time);
             this.tabPage2.Controls.Add(this.comboBox3);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.textBox2);
@@ -334,14 +337,24 @@
             this.tabPage2.Controls.Add(this.targettemp);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label45);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(752, 438);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // laser_time
+            // 
+            this.laser_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.laser_time.Location = new System.Drawing.Point(332, 394);
+            this.laser_time.Name = "laser_time";
+            this.laser_time.Size = new System.Drawing.Size(45, 23);
+            this.laser_time.TabIndex = 50;
+            this.laser_time.Text = "1";
             // 
             // comboBox3
             // 
@@ -428,7 +441,7 @@
             // time_test
             // 
             this.time_test.Location = new System.Drawing.Point(653, 283);
-            this.time_test.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.time_test.Margin = new System.Windows.Forms.Padding(2);
             this.time_test.Name = "time_test";
             this.time_test.Size = new System.Drawing.Size(76, 27);
             this.time_test.TabIndex = 42;
@@ -439,7 +452,7 @@
             // savedir
             // 
             this.savedir.Location = new System.Drawing.Point(267, 282);
-            this.savedir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.savedir.Margin = new System.Windows.Forms.Padding(2);
             this.savedir.Name = "savedir";
             this.savedir.Size = new System.Drawing.Size(96, 29);
             this.savedir.TabIndex = 41;
@@ -450,7 +463,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(528, 393);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 28);
             this.button4.TabIndex = 40;
@@ -721,11 +734,11 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.Location = new System.Drawing.Point(320, 214);
+            this.label18.Location = new System.Drawing.Point(220, 397);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(144, 17);
+            this.label18.Size = new System.Drawing.Size(200, 17);
             this.label18.TabIndex = 13;
-            this.label18.Text = "位置：                    号";
+            this.label18.Text = "激光检测时间                    分钟";
             // 
             // radius
             // 
@@ -857,6 +870,16 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "1.温湿度设置";
             // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label45.Location = new System.Drawing.Point(320, 213);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(156, 17);
+            this.label45.TabIndex = 51;
+            this.label45.Text = "偏移：                     mm";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.button7);
@@ -885,7 +908,7 @@
             this.tabPage3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(752, 438);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "校准";
@@ -1482,7 +1505,7 @@
             this.LogPage.Controls.Add(this.logtext);
             this.LogPage.Location = new System.Drawing.Point(4, 34);
             this.LogPage.Name = "LogPage";
-            this.LogPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.LogPage.Padding = new System.Windows.Forms.Padding(3);
             this.LogPage.Size = new System.Drawing.Size(752, 438);
             this.LogPage.TabIndex = 3;
             this.LogPage.Text = "Log";
@@ -2032,6 +2055,8 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox laser_time;
     }
 }
 
