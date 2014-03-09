@@ -30,7 +30,7 @@ namespace Protein_Crystallization
             picture = new BasicForm();
             picture.parent_window = this;
             picture.Visible = false;
-            updateGrid(25);
+            updateGrid(26);
             update_delta();
         }
 
@@ -644,8 +644,8 @@ namespace Protein_Crystallization
         }
         private void set_Click(object sender, EventArgs e)
         {
-            float target_temp = string_to_float(25,targettemp.Text,false);
-            float target_moist = string_to_float(80, targetmoist.Text, false);
+            float target_temp = string_to_float(20,targettemp.Text,false);
+            float target_moist = string_to_float(50, targetmoist.Text, false);
             if (target_temp > 30 || target_temp < 0)
             {
                 MessageBox.Show("请输入正确的温度");
@@ -664,8 +664,9 @@ namespace Protein_Crystallization
         {
             uint i = string_to_uint(25,sampleid.Text,false);
             uint sample = string_to_uint(0,Sample.Text,false);
-            float d = string_to_float(14.05f,sample_radius.Text,false);
+            float d = string_to_float(16f,sample_radius.Text,false);
             float a = string_to_float(0,angle.Text,false);
+            updateGrid((int)sample);
             if (i > sample)
             {
                 MessageBox.Show("请输入正确的样本编号");
@@ -807,10 +808,6 @@ namespace Protein_Crystallization
                     PCAS.micoscope_y(delta_y);
                     PCAS.micoscope_z(delta_z);
                     Thread.Sleep(laser_test_time);
-                    if (exam_start == false)
-                    {
-                        return;
-                    }
                     reportfile = new StreamReader(reportfile_name);
                     while (!reportfile.EndOfStream)
                         strReadLine = reportfile.ReadLine(); //读取每行数据
@@ -820,12 +817,21 @@ namespace Protein_Crystallization
                         if (mc.Count >= 8)
                         {
                             dataGridView1[3, (int)i - 1].Value = mc[6].Value;
+                            for (int k = 0; k < sample; k++)
+                            {
+                                dataGridView1[3, k].OwningRow.Selected = false;
+                            }
+                            dataGridView1[3, (int)i - 1].OwningRow.Selected = true;
                         }
                     }
+                    reportfile.Close();
                     PCAS.micoscope_z(-delta_z);
                     PCAS.micoscope_x(-delta_x);
                     PCAS.micoscope_y(-delta_y);
-                    reportfile.Close();
+                    if (exam_start == false)
+                    {
+                        return;
+                    }
                 }
                 if (exam_start == false)
                 {

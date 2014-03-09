@@ -538,7 +538,7 @@
             this.Sample.Name = "Sample";
             this.Sample.Size = new System.Drawing.Size(45, 23);
             this.Sample.TabIndex = 33;
-            this.Sample.Text = "25";
+            this.Sample.Text = "26";
             this.Sample.TextChanged += new System.EventHandler(this.Sample_TextChanged);
             // 
             // label35
@@ -797,7 +797,7 @@
             this.sample_radius.Name = "sample_radius";
             this.sample_radius.Size = new System.Drawing.Size(45, 23);
             this.sample_radius.TabIndex = 7;
-            this.sample_radius.Text = "14.05";
+            this.sample_radius.Text = "16";
             this.sample_radius.TextChanged += new System.EventHandler(this.sample_radius_TextChanged);
             // 
             // label16
@@ -827,7 +827,7 @@
             this.targetmoist.Name = "targetmoist";
             this.targetmoist.Size = new System.Drawing.Size(45, 23);
             this.targetmoist.TabIndex = 4;
-            this.targetmoist.Text = "80";
+            this.targetmoist.Text = "50";
             this.targetmoist.TextChanged += new System.EventHandler(this.targetmoist_TextChanged);
             // 
             // label11
@@ -847,7 +847,7 @@
             this.targettemp.Name = "targettemp";
             this.targettemp.Size = new System.Drawing.Size(45, 23);
             this.targettemp.TabIndex = 2;
-            this.targettemp.Text = "25";
+            this.targettemp.Text = "20";
             this.targettemp.TextChanged += new System.EventHandler(this.targettemp_TextChanged);
             // 
             // label10
