@@ -36,6 +36,8 @@ namespace Protein_Crystallization
 
         private void updateGrid(int grid_size)
         {
+            if (dataGridView1.Rows.Count == (grid_size +1 ))
+                return;
             dataGridView1.Rows.Clear();     
             dataGridView1.Rows.Add(grid_size);
             for (int i = 0; i < grid_size; i++)
