@@ -41,6 +41,7 @@
             this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
             this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
             this.laser_time = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -183,7 +184,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
             this.temptime = new System.Windows.Forms.Timer(this.components);
-            this.button8 = new System.Windows.Forms.Button();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
@@ -354,6 +354,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设置";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(939, 65);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(116, 46);
+            this.button8.TabIndex = 52;
+            this.button8.Text = "温度曲线";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // laser_time
             // 
@@ -2001,16 +2011,6 @@
             // 
             this.temptime.Interval = 1000;
             this.temptime.Tick += new System.EventHandler(this.temptime_Tick);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(939, 65);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(116, 46);
-            this.button8.TabIndex = 52;
-            this.button8.Text = "温度曲线";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // openFileDialog3
             // 

@@ -1470,8 +1470,8 @@ namespace Protein_Crystallization
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             if (openFileDialog3.ShowDialog() == DialogResult.OK)//Load setting file
             {
-                tempfile = new StreamReader(openFileDialog2.FileName);
-                temptime.Interval = 10 * 60 * 1000;
+                tempfile = new StreamReader(openFileDialog3.FileName);
+                temptime.Interval = 1000 * 10 *60;
                 temptime.Start();
             }
         }
@@ -1480,7 +1480,7 @@ namespace Protein_Crystallization
         {
             if (tempfile == null)
                 return;
-            while (!tempfile.EndOfStream)
+            if (!tempfile.EndOfStream)
             {
                 float temp;
                 string strReadLine = tempfile.ReadLine(); //读取每行数据
@@ -1490,6 +1490,11 @@ namespace Protein_Crystallization
                     return;
                 temp = float.Parse(mc[0].Value);
                 PCAS.set_target_temperature(temp);
+                targettemp.Text = temp.ToString();
+            }
+            else
+            {
+                temptime.Stop();
             }
         }
     }
