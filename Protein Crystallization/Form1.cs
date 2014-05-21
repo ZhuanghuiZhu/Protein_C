@@ -660,6 +660,7 @@ namespace Protein_Crystallization
             }
             PCAS.set_target_temperature(target_temp);
             PCAS.set_target_moisture(target_moist);
+            temptime.Stop();
         }
         
         private void exam_Click(object sender, EventArgs e)
@@ -1460,6 +1461,35 @@ namespace Protein_Crystallization
                 PCAS.micoscope_y(-delta_y);
                 laser_test = true;
                 button7.Text = "校准";
+            }
+        }
+
+        StreamReader tempfile = null;
+        private void button8_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            if (openFileDialog3.ShowDialog() == DialogResult.OK)//Load setting file
+            {
+                tempfile = new StreamReader(openFileDialog2.FileName);
+                temptime.Interval = 10 * 60 * 1000;
+                temptime.Start();
+            }
+        }
+
+        private void temptime_Tick(object sender, EventArgs e)
+        {
+            if (tempfile == null)
+                return;
+            while (!tempfile.EndOfStream)
+            {
+                float temp;
+                string strReadLine = tempfile.ReadLine(); //读取每行数据
+                string regexStr = @"[-+]?\b(?:[0-9]*\.)?[0-9]+\b";
+                MatchCollection mc = Regex.Matches(strReadLine, regexStr);
+                if (mc.Count < 1)
+                    return;
+                temp = float.Parse(mc[0].Value);
+                PCAS.set_target_temperature(temp);
             }
         }
     }
