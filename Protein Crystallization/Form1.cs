@@ -1473,6 +1473,16 @@ namespace Protein_Crystallization
                 tempfile = new StreamReader(openFileDialog3.FileName);
                 temptime.Interval = 1000 * 10 *60;
                 temptime.Start();
+
+                float temp;
+                string strReadLine = tempfile.ReadLine(); //读取每行数据
+                string regexStr = @"[-+]?\b(?:[0-9]*\.)?[0-9]+\b";
+                MatchCollection mc = Regex.Matches(strReadLine, regexStr);
+                if (mc.Count < 1)
+                    return;
+                temp = float.Parse(mc[0].Value);
+                PCAS.set_target_temperature(temp);
+                targettemp.Text = temp.ToString();
             }
         }
 
