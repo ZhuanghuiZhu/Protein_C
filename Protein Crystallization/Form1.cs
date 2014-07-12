@@ -117,6 +117,13 @@ namespace Protein_Crystallization
             delta_z = (int)(string_to_float(3,sensor_z.Text,false) * -333);
         }
 
+        private void update_delta_s()
+        {
+            delta_x_s = (int)(string_to_float(3, syringe_x.Text, false) * -100);
+            delta_y_s = (int)(string_to_float(3, syringe_y.Text, false) * 100);
+            delta_z_s = (int)(string_to_float(3, syringe_z.Text, false) * -333);
+        }
+
         private void updatebar()
         {
             float t1 = PCAS.get_box_temperature();
@@ -230,7 +237,7 @@ namespace Protein_Crystallization
 
                 radius.Text        = save.h_radius.ToString();
                 holeid.Text        = save.holeid.ToString();
-                hole_off.Text      = save.h_off.ToString();
+                //hole_off.Text      = save.h_off.ToString();
                 angle.Text         = save.h_angle.ToString();
 
                 LED_light.Value = new decimal(save.LED);
@@ -294,7 +301,7 @@ namespace Protein_Crystallization
 
                 save.h_radius = float.Parse(radius.Text);
                 save.holeid   = uint.Parse(holeid.Text);
-                save.h_off    = float.Parse(hole_off.Text);
+                //save.h_off    = float.Parse(hole_off.Text);
                 save.h_angle  = float.Parse(angle.Text);
 
                 save.LED         = decimal.ToUInt32(LED_light.Value);
@@ -629,12 +636,12 @@ namespace Protein_Crystallization
 
         private void syf_Click(object sender, EventArgs e)
         {
-            PCAS.syringe_plus(25);
+            PCAS.syringe_plus(8);
            
         }
         private void syb_Click(object sender, EventArgs e)
         {
-            PCAS.syringe_minus(25);
+            PCAS.syringe_minus(8);
         }    
         private void syff_Click(object sender, EventArgs e)
         {
@@ -697,7 +704,6 @@ namespace Protein_Crystallization
             uint sample = string_to_uint(0,Sample.Text,false);
             float d = string_to_float(22.02f,radius.Text,false);
             float a = string_to_float(0,holeangle.Text,false);
-            float h_d = string_to_float(25.0f,hole_off.Text,false);
             float u = string_to_float(1,uL.Text,false);
             if (i > sample)
             {
@@ -714,15 +720,9 @@ namespace Protein_Crystallization
                 MessageBox.Show("请输入正确的半径");
                 return;
             }
-            if (h_d < 0 || h_d > 50)
-            {
-                MessageBox.Show("请输入正确的偏移");
-                return;
-            }
             PCAS.set_hole_radius(d);
             PCAS.set_hole_angle(a);
             PCAS.set_hole_sample(sample);
-            PCAS.set_hole_delta(h_d);
             PCAS.set_hole_uL(u);
             PCAS.move_to_hole(i);
         }
@@ -779,6 +779,9 @@ namespace Protein_Crystallization
         int delta_y = 0;
         int delta_z = 0;
         int laser_test_time = 0;
+        int delta_x_s = 0;
+        int delta_y_s = 0;
+        int delta_z_s = 0;
         private void sample_exam_thread()
         {
             
@@ -855,7 +858,7 @@ namespace Protein_Crystallization
             d = string_to_float(14.05f,sample_radius.Text,false);
             a = string_to_float(0,angle.Text,false);
             float t = string_to_float(0,laser_time.Text, false);
-            laser_test_time = (int)t * 1000 * 60;
+            laser_test_time = (int)(t * 1000 * 60);
             if (comboBox1.SelectedIndex == 0)
                 time = (int)string_to_uint(5,textBox7.Text,false) * 1000;
             else
@@ -1505,6 +1508,53 @@ namespace Protein_Crystallization
             else
             {
                 temptime.Stop();
+            }
+        }
+
+        bool syringe_test = true;
+        private void button9_Click(object sender, EventArgs e)
+        {
+            update_delta_s();
+            if (syringe_test == true)
+            {
+                PCAS.micoscope_x(delta_x_s);
+                PCAS.micoscope_y(delta_y_s);
+                PCAS.micoscope_z(delta_z_s);
+                syringe_test = false;
+                button9.Text = "复原";
+            }
+            else
+            {
+                PCAS.micoscope_z(-delta_z_s);
+                PCAS.micoscope_x(-delta_x_s);
+                PCAS.micoscope_y(-delta_y_s);
+                syringe_test = true;
+                PCAS.set_hole_delta(delta_x_s, delta_y_s, delta_z_s);
+                button9.Text = "校准";
+            }
+        }
+
+        private void syringe_x_TextChanged(object sender, EventArgs e)
+        {
+            if (syringe_x.Text.Length != 0)
+            {
+                update_delta_s();
+            }
+        }
+
+        private void syringe_z_TextChanged(object sender, EventArgs e)
+        {
+            if (syringe_z.Text.Length != 0)
+            {
+                update_delta_s();
+            }
+        }
+
+        private void syringe_y_TextChanged(object sender, EventArgs e)
+        {
+            if (syringe_y.Text.Length != 0)
+            {
+                update_delta_s();
             }
         }
     }

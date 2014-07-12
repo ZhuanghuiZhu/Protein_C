@@ -11,7 +11,7 @@ namespace Meteroi
 {
     class broad
     {
-        bool debug =  false;
+        bool debug =  true;
         private Terminal shell = null;
         public string log;
         bool connect_state = false;
@@ -324,9 +324,9 @@ namespace Meteroi
             b.send_command_get_response(com);
             return;
         }
-        public static void set_hole_delta(float i)
+        public static void set_hole_delta(int x, int y, int z)
         {
-            string com = "holed " + i.ToString();
+            string com = "holed " + x.ToString() + ' '+ y.ToString() + ' '+ z.ToString();
             b.send_command_get_response(com);
             return;
         }

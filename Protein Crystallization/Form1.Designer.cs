@@ -54,7 +54,6 @@
             this.savedir = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.hole_off = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.holeangle = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -77,7 +76,6 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.LoadSetting = new System.Windows.Forms.Button();
-            this.holeid = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.radius = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -92,7 +90,6 @@
             this.targettemp = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
@@ -126,10 +123,6 @@
             this.xpp = new System.Windows.Forms.Button();
             this.xm = new System.Windows.Forms.Button();
             this.xp = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -185,6 +178,17 @@
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
             this.temptime = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.syringe_z = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.syringe_y = new System.Windows.Forms.TextBox();
+            this.syringe_x = new System.Windows.Forms.TextBox();
+            this.holeid = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -306,8 +310,6 @@
             this.tabPage2.Controls.Add(this.savedir);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.hole_off);
-            this.tabPage2.Controls.Add(this.label37);
             this.tabPage2.Controls.Add(this.holeangle);
             this.tabPage2.Controls.Add(this.label36);
             this.tabPage2.Controls.Add(this.addsample);
@@ -344,7 +346,7 @@
             this.tabPage2.Controls.Add(this.targettemp);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.label45);
+            this.tabPage2.Controls.Add(this.label37);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -505,27 +507,16 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // hole_off
-            // 
-            this.hole_off.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.hole_off.Location = new System.Drawing.Point(598, 376);
-            this.hole_off.Margin = new System.Windows.Forms.Padding(4);
-            this.hole_off.Name = "hole_off";
-            this.hole_off.Size = new System.Drawing.Size(66, 30);
-            this.hole_off.TabIndex = 38;
-            this.hole_off.Text = "25.00";
-            this.hole_off.TextChanged += new System.EventHandler(this.hole_off_TextChanged);
-            // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(480, 376);
+            this.label37.Location = new System.Drawing.Point(482, 323);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(209, 25);
+            this.label37.Size = new System.Drawing.Size(192, 25);
             this.label37.TabIndex = 37;
-            this.label37.Text = "偏移：                     mm";
+            this.label37.Text = "位置：                    号";
             // 
             // holeangle
             // 
@@ -767,17 +758,6 @@
             this.LoadSetting.UseVisualStyleBackColor = true;
             this.LoadSetting.Click += new System.EventHandler(this.LoadSetting_Click);
             // 
-            // holeid
-            // 
-            this.holeid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.holeid.Location = new System.Drawing.Point(592, 320);
-            this.holeid.Margin = new System.Windows.Forms.Padding(4);
-            this.holeid.Name = "holeid";
-            this.holeid.Size = new System.Drawing.Size(66, 30);
-            this.holeid.TabIndex = 14;
-            this.holeid.Text = "0";
-            this.holeid.TextChanged += new System.EventHandler(this.holeid_TextChanged);
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -932,19 +912,18 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "1.温湿度设置";
             // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label45.Location = new System.Drawing.Point(480, 320);
-            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(209, 25);
-            this.label45.TabIndex = 51;
-            this.label45.Text = "偏移：                     mm";
-            // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button9);
+            this.tabPage3.Controls.Add(this.label28);
+            this.tabPage3.Controls.Add(this.label29);
+            this.tabPage3.Controls.Add(this.label46);
+            this.tabPage3.Controls.Add(this.label47);
+            this.tabPage3.Controls.Add(this.syringe_z);
+            this.tabPage3.Controls.Add(this.label48);
+            this.tabPage3.Controls.Add(this.label49);
+            this.tabPage3.Controls.Add(this.syringe_y);
+            this.tabPage3.Controls.Add(this.syringe_x);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.label44);
             this.tabPage3.Controls.Add(this.label43);
@@ -960,10 +939,6 @@
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.button17);
-            this.tabPage3.Controls.Add(this.label29);
-            this.tabPage3.Controls.Add(this.label28);
-            this.tabPage3.Controls.Add(this.button16);
             this.tabPage3.Controls.Add(this.label26);
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -1389,52 +1364,6 @@
             this.xp.Click += new System.EventHandler(this.xp_Click);
             this.xp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.xp_MouseDown);
             this.xp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.xp_MouseUp);
-            // 
-            // button17
-            // 
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button17.Location = new System.Drawing.Point(396, 486);
-            this.button17.Margin = new System.Windows.Forms.Padding(4);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(84, 39);
-            this.button17.TabIndex = 10;
-            this.button17.Text = "确定";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label29.Location = new System.Drawing.Point(51, 495);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(278, 25);
-            this.label29.TabIndex = 9;
-            this.label29.Text = "  a.调整注射针头达到加样位置";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.Location = new System.Drawing.Point(51, 550);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(218, 25);
-            this.label28.TabIndex = 8;
-            this.label28.Text = "  b.调整焦距使图像清晰";
-            // 
-            // button16
-            // 
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button16.Location = new System.Drawing.Point(396, 542);
-            this.button16.Margin = new System.Windows.Forms.Padding(4);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(84, 39);
-            this.button16.TabIndex = 7;
-            this.button16.Text = "确定";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // label26
             // 
@@ -2016,6 +1945,128 @@
             // 
             this.openFileDialog3.FileName = "openFileDialog3";
             // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button9.Location = new System.Drawing.Point(528, 510);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(84, 39);
+            this.button9.TabIndex = 76;
+            this.button9.Text = "校准";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.Location = new System.Drawing.Point(310, 512);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(44, 25);
+            this.label28.TabIndex = 75;
+            this.label28.Text = "mm";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label29.Location = new System.Drawing.Point(466, 514);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(44, 25);
+            this.label29.TabIndex = 74;
+            this.label29.Text = "mm";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label46.Location = new System.Drawing.Point(200, 512);
+            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(25, 25);
+            this.label46.TabIndex = 73;
+            this.label46.Text = "Y";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label47.Location = new System.Drawing.Point(357, 514);
+            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(24, 25);
+            this.label47.TabIndex = 72;
+            this.label47.Text = "Z";
+            // 
+            // syringe_z
+            // 
+            this.syringe_z.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.syringe_z.Location = new System.Drawing.Point(390, 510);
+            this.syringe_z.Margin = new System.Windows.Forms.Padding(4);
+            this.syringe_z.Name = "syringe_z";
+            this.syringe_z.Size = new System.Drawing.Size(66, 30);
+            this.syringe_z.TabIndex = 71;
+            this.syringe_z.Text = "3";
+            this.syringe_z.TextChanged += new System.EventHandler(this.syringe_z_TextChanged);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label48.Location = new System.Drawing.Point(156, 514);
+            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(44, 25);
+            this.label48.TabIndex = 70;
+            this.label48.Text = "mm";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label49.Location = new System.Drawing.Point(54, 514);
+            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(26, 25);
+            this.label49.TabIndex = 69;
+            this.label49.Text = "X";
+            // 
+            // syringe_y
+            // 
+            this.syringe_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.syringe_y.Location = new System.Drawing.Point(234, 508);
+            this.syringe_y.Margin = new System.Windows.Forms.Padding(4);
+            this.syringe_y.Name = "syringe_y";
+            this.syringe_y.Size = new System.Drawing.Size(66, 30);
+            this.syringe_y.TabIndex = 68;
+            this.syringe_y.Text = "3";
+            this.syringe_y.TextChanged += new System.EventHandler(this.syringe_y_TextChanged);
+            // 
+            // syringe_x
+            // 
+            this.syringe_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.syringe_x.Location = new System.Drawing.Point(82, 508);
+            this.syringe_x.Margin = new System.Windows.Forms.Padding(4);
+            this.syringe_x.Name = "syringe_x";
+            this.syringe_x.Size = new System.Drawing.Size(66, 30);
+            this.syringe_x.TabIndex = 67;
+            this.syringe_x.Text = "3";
+            this.syringe_x.TextChanged += new System.EventHandler(this.syringe_x_TextChanged);
+            // 
+            // holeid
+            // 
+            this.holeid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.holeid.Location = new System.Drawing.Point(592, 320);
+            this.holeid.Margin = new System.Windows.Forms.Padding(4);
+            this.holeid.Name = "holeid";
+            this.holeid.Size = new System.Drawing.Size(66, 30);
+            this.holeid.TabIndex = 14;
+            this.holeid.Text = "0";
+            this.holeid.TextChanged += new System.EventHandler(this.holeid_TextChanged);
+            // 
             // Detector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2109,7 +2160,6 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button LoadSetting;
-        private System.Windows.Forms.TextBox holeid;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox radius;
         private System.Windows.Forms.Label label19;
@@ -2137,10 +2187,6 @@
         private System.Windows.Forms.Button ypp;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Button button16;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox0;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -2187,7 +2233,6 @@
         private System.Windows.Forms.Button addsample;
         private System.Windows.Forms.TextBox holeangle;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox hole_off;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -2215,11 +2260,21 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox laser_time;
         private System.Windows.Forms.Timer temptime;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox syringe_z;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox syringe_y;
+        private System.Windows.Forms.TextBox syringe_x;
+        private System.Windows.Forms.TextBox holeid;
     }
 }
 
