@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Target_temperature>20</Target_temperature>
+  <Target_moisture>50</Target_moisture>
+  <Samples>26</Samples>
+  <Sample_id>0</Sample_id>
+  <Sample_radius>16</Sample_radius>
+  <Sample_angle_offset>0</Sample_angle_offset>
+  <Hole_id>0</Hole_id>
+  <Hole_radius>22.02</Hole_radius>
+  <Hole_angle_offset>0</Hole_angle_offset>
+  <Hole_distance_offset>0</Hole_distance_offset>
+  <LED_light>10</LED_light>
+  <Liquid_uL>1</Liquid_uL>
+  <Testing_time>5</Testing_time>
+  <Testing_time_unit>0</Testing_time_unit>
+  <Interval_time>60</Interval_time>
+  <Interval_time_unit>0</Interval_time_unit>
+  <grid_size>26</grid_size>
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_name />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid_resualt />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid__x0020_diameter />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_uL />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <grid_other />
+  <laser_x>3</laser_x>
+  <laser_y>3</laser_y>
+  <laser_z>3</laser_z>
+  <syringe_x>15</syringe_x>
+  <syringe_y>23</syringe_y>
+  <syringe_z>11</syringe_z>
+</setting>

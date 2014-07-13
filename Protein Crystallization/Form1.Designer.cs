@@ -33,13 +33,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.WorkSpace = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.numbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InjectionVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
             this.laser_time = new System.Windows.Forms.TextBox();
@@ -54,7 +47,6 @@
             this.savedir = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.label37 = new System.Windows.Forms.Label();
             this.holeangle = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.addsample = new System.Windows.Forms.Button();
@@ -76,6 +68,7 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.LoadSetting = new System.Windows.Forms.Button();
+            this.holeid = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.radius = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -90,7 +83,18 @@
             this.targettemp = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.syringe_z = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.syringe_y = new System.Windows.Forms.TextBox();
+            this.syringe_x = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -178,17 +182,16 @@
             this.autotesttime = new System.Windows.Forms.Timer(this.components);
             this.temptime = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
-            this.button9 = new System.Windows.Forms.Button();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.syringe_z = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.syringe_y = new System.Windows.Forms.TextBox();
-            this.syringe_x = new System.Windows.Forms.TextBox();
-            this.holeid = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.threshold = new System.Windows.Forms.TextBox();
+            this.numbers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.names = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Diameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InjectionVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ManualInject = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.others = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.WorkSpace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -255,48 +258,11 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // numbers
-            // 
-            this.numbers.HeaderText = "编号";
-            this.numbers.Name = "numbers";
-            this.numbers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.numbers.Width = 75;
-            // 
-            // names
-            // 
-            this.names.HeaderText = "名称";
-            this.names.Name = "names";
-            // 
-            // Result
-            // 
-            this.Result.HeaderText = "结果";
-            this.Result.Name = "Result";
-            // 
-            // Diameter
-            // 
-            this.Diameter.HeaderText = "直径";
-            this.Diameter.Name = "Diameter";
-            // 
-            // InjectionVolume
-            // 
-            this.InjectionVolume.HeaderText = "加液量(μL)";
-            this.InjectionVolume.Name = "InjectionVolume";
-            this.InjectionVolume.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.InjectionVolume.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ManualInject
-            // 
-            this.ManualInject.HeaderText = "手动注射";
-            this.ManualInject.Name = "ManualInject";
-            this.ManualInject.Text = "注射";
-            // 
-            // others
-            // 
-            this.others.HeaderText = "其他";
-            this.others.Name = "others";
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button10);
+            this.tabPage2.Controls.Add(this.threshold);
+            this.tabPage2.Controls.Add(this.label45);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.laser_time);
             this.tabPage2.Controls.Add(this.comboBox3);
@@ -463,7 +429,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(66, 30);
             this.textBox1.TabIndex = 43;
-            this.textBox1.Text = "5";
+            this.textBox1.Text = "60";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // time_test
@@ -506,17 +472,6 @@
             this.button3.Text = "检测";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(482, 323);
-            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(192, 25);
-            this.label37.TabIndex = 37;
-            this.label37.Text = "位置：                    号";
             // 
             // holeangle
             // 
@@ -758,6 +713,17 @@
             this.LoadSetting.UseVisualStyleBackColor = true;
             this.LoadSetting.Click += new System.EventHandler(this.LoadSetting_Click);
             // 
+            // holeid
+            // 
+            this.holeid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.holeid.Location = new System.Drawing.Point(592, 320);
+            this.holeid.Margin = new System.Windows.Forms.Padding(4);
+            this.holeid.Name = "holeid";
+            this.holeid.Size = new System.Drawing.Size(66, 30);
+            this.holeid.TabIndex = 14;
+            this.holeid.Text = "0";
+            this.holeid.TextChanged += new System.EventHandler(this.holeid_TextChanged);
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -912,6 +878,17 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "1.温湿度设置";
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.Location = new System.Drawing.Point(482, 323);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(192, 25);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "位置：                    号";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.button9);
@@ -952,6 +929,117 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "校准";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button9.Location = new System.Drawing.Point(528, 510);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(84, 39);
+            this.button9.TabIndex = 76;
+            this.button9.Text = "校准";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.Location = new System.Drawing.Point(310, 512);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(44, 25);
+            this.label28.TabIndex = 75;
+            this.label28.Text = "mm";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label29.Location = new System.Drawing.Point(466, 514);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(44, 25);
+            this.label29.TabIndex = 74;
+            this.label29.Text = "mm";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label46.Location = new System.Drawing.Point(200, 512);
+            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(25, 25);
+            this.label46.TabIndex = 73;
+            this.label46.Text = "Y";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label47.Location = new System.Drawing.Point(357, 514);
+            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(24, 25);
+            this.label47.TabIndex = 72;
+            this.label47.Text = "Z";
+            // 
+            // syringe_z
+            // 
+            this.syringe_z.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.syringe_z.Location = new System.Drawing.Point(390, 510);
+            this.syringe_z.Margin = new System.Windows.Forms.Padding(4);
+            this.syringe_z.Name = "syringe_z";
+            this.syringe_z.Size = new System.Drawing.Size(66, 30);
+            this.syringe_z.TabIndex = 71;
+            this.syringe_z.Text = "3";
+            this.syringe_z.TextChanged += new System.EventHandler(this.syringe_z_TextChanged);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label48.Location = new System.Drawing.Point(156, 514);
+            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(44, 25);
+            this.label48.TabIndex = 70;
+            this.label48.Text = "mm";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label49.Location = new System.Drawing.Point(54, 514);
+            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(26, 25);
+            this.label49.TabIndex = 69;
+            this.label49.Text = "X";
+            // 
+            // syringe_y
+            // 
+            this.syringe_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.syringe_y.Location = new System.Drawing.Point(234, 508);
+            this.syringe_y.Margin = new System.Windows.Forms.Padding(4);
+            this.syringe_y.Name = "syringe_y";
+            this.syringe_y.Size = new System.Drawing.Size(66, 30);
+            this.syringe_y.TabIndex = 68;
+            this.syringe_y.Text = "3";
+            this.syringe_y.TextChanged += new System.EventHandler(this.syringe_y_TextChanged);
+            // 
+            // syringe_x
+            // 
+            this.syringe_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.syringe_x.Location = new System.Drawing.Point(82, 508);
+            this.syringe_x.Margin = new System.Windows.Forms.Padding(4);
+            this.syringe_x.Name = "syringe_x";
+            this.syringe_x.Size = new System.Drawing.Size(66, 30);
+            this.syringe_x.TabIndex = 67;
+            this.syringe_x.Text = "3";
+            this.syringe_x.TextChanged += new System.EventHandler(this.syringe_x_TextChanged);
             // 
             // button7
             // 
@@ -1945,127 +2033,77 @@
             // 
             this.openFileDialog3.FileName = "openFileDialog3";
             // 
-            // button9
+            // label45
             // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button9.Location = new System.Drawing.Point(528, 510);
-            this.button9.Margin = new System.Windows.Forms.Padding(4);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(84, 39);
-            this.button9.TabIndex = 76;
-            this.button9.Text = "校准";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label45.Location = new System.Drawing.Point(483, 372);
+            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(209, 25);
+            this.label45.TabIndex = 53;
+            this.label45.Text = "自动加样：              nm";
             // 
-            // label28
+            // threshold
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.Location = new System.Drawing.Point(310, 512);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(44, 25);
-            this.label28.TabIndex = 75;
-            this.label28.Text = "mm";
+            this.threshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.threshold.Location = new System.Drawing.Point(592, 367);
+            this.threshold.Margin = new System.Windows.Forms.Padding(4);
+            this.threshold.Name = "threshold";
+            this.threshold.Size = new System.Drawing.Size(66, 30);
+            this.threshold.TabIndex = 54;
+            this.threshold.Text = "0";
             // 
-            // label29
+            // numbers
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label29.Location = new System.Drawing.Point(466, 514);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(44, 25);
-            this.label29.TabIndex = 74;
-            this.label29.Text = "mm";
+            this.numbers.HeaderText = "编号";
+            this.numbers.Name = "numbers";
+            this.numbers.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.numbers.Width = 75;
             // 
-            // label46
+            // names
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label46.Location = new System.Drawing.Point(200, 512);
-            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(25, 25);
-            this.label46.TabIndex = 73;
-            this.label46.Text = "Y";
+            this.names.HeaderText = "名称";
+            this.names.Name = "names";
             // 
-            // label47
+            // Result
             // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label47.Location = new System.Drawing.Point(357, 514);
-            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(24, 25);
-            this.label47.TabIndex = 72;
-            this.label47.Text = "Z";
+            this.Result.HeaderText = "结果";
+            this.Result.Name = "Result";
             // 
-            // syringe_z
+            // Diameter
             // 
-            this.syringe_z.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.syringe_z.Location = new System.Drawing.Point(390, 510);
-            this.syringe_z.Margin = new System.Windows.Forms.Padding(4);
-            this.syringe_z.Name = "syringe_z";
-            this.syringe_z.Size = new System.Drawing.Size(66, 30);
-            this.syringe_z.TabIndex = 71;
-            this.syringe_z.Text = "3";
-            this.syringe_z.TextChanged += new System.EventHandler(this.syringe_z_TextChanged);
+            this.Diameter.HeaderText = "直径(nm)";
+            this.Diameter.Name = "Diameter";
             // 
-            // label48
+            // InjectionVolume
             // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label48.Location = new System.Drawing.Point(156, 514);
-            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(44, 25);
-            this.label48.TabIndex = 70;
-            this.label48.Text = "mm";
+            this.InjectionVolume.HeaderText = "加液量(μL)";
+            this.InjectionVolume.Name = "InjectionVolume";
+            this.InjectionVolume.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InjectionVolume.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // label49
+            // ManualInject
             // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label49.Location = new System.Drawing.Point(54, 514);
-            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(26, 25);
-            this.label49.TabIndex = 69;
-            this.label49.Text = "X";
+            this.ManualInject.HeaderText = "手动注射";
+            this.ManualInject.Name = "ManualInject";
+            this.ManualInject.Text = "注射";
             // 
-            // syringe_y
+            // others
             // 
-            this.syringe_y.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.syringe_y.Location = new System.Drawing.Point(234, 508);
-            this.syringe_y.Margin = new System.Windows.Forms.Padding(4);
-            this.syringe_y.Name = "syringe_y";
-            this.syringe_y.Size = new System.Drawing.Size(66, 30);
-            this.syringe_y.TabIndex = 68;
-            this.syringe_y.Text = "3";
-            this.syringe_y.TextChanged += new System.EventHandler(this.syringe_y_TextChanged);
+            this.others.HeaderText = "其他";
+            this.others.Name = "others";
             // 
-            // syringe_x
+            // button10
             // 
-            this.syringe_x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.syringe_x.Location = new System.Drawing.Point(82, 508);
-            this.syringe_x.Margin = new System.Windows.Forms.Padding(4);
-            this.syringe_x.Name = "syringe_x";
-            this.syringe_x.Size = new System.Drawing.Size(66, 30);
-            this.syringe_x.TabIndex = 67;
-            this.syringe_x.Text = "3";
-            this.syringe_x.TextChanged += new System.EventHandler(this.syringe_x_TextChanged);
-            // 
-            // holeid
-            // 
-            this.holeid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.holeid.Location = new System.Drawing.Point(592, 320);
-            this.holeid.Margin = new System.Windows.Forms.Padding(4);
-            this.holeid.Name = "holeid";
-            this.holeid.Size = new System.Drawing.Size(66, 30);
-            this.holeid.TabIndex = 14;
-            this.holeid.Text = "0";
-            this.holeid.TextChanged += new System.EventHandler(this.holeid_TextChanged);
+            this.button10.Location = new System.Drawing.Point(766, 361);
+            this.button10.Margin = new System.Windows.Forms.Padding(4);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(112, 45);
+            this.button10.TabIndex = 55;
+            this.button10.Text = "手动";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Detector
             // 
@@ -2217,13 +2255,6 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numbers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn names;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Diameter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InjectionVolume;
-        private System.Windows.Forms.DataGridViewButtonColumn ManualInject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn others;
         private System.Windows.Forms.Button set;
         private System.Windows.Forms.Button exam;
         private System.Windows.Forms.TextBox angle;
@@ -2275,6 +2306,16 @@
         private System.Windows.Forms.TextBox syringe_y;
         private System.Windows.Forms.TextBox syringe_x;
         private System.Windows.Forms.TextBox holeid;
+        private System.Windows.Forms.TextBox threshold;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numbers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn names;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Diameter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InjectionVolume;
+        private System.Windows.Forms.DataGridViewButtonColumn ManualInject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn others;
+        private System.Windows.Forms.Button button10;
     }
 }
 

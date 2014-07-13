@@ -207,6 +207,15 @@ namespace Protein_Crystallization
             [XmlElementAttribute("laser_z")]
             public float laser_delta_z;
 
+            [XmlElementAttribute("syringe_x")]
+            public float syringe_delta_x;
+
+            [XmlElementAttribute("syringe_y")]
+            public float syringe_delta_y;
+
+            [XmlElementAttribute("syringe_z")]
+            public float syringe_delta_z;
+
             public setting()
             {
                 grid_name     = new List<string>();
@@ -238,7 +247,7 @@ namespace Protein_Crystallization
                 radius.Text        = save.h_radius.ToString();
                 holeid.Text        = save.holeid.ToString();
                 //hole_off.Text      = save.h_off.ToString();
-                angle.Text         = save.h_angle.ToString();
+                holeangle.Text     = save.h_angle.ToString();
 
                 LED_light.Value = new decimal(save.LED);
                 uL.Text         = save.uL.ToString();
@@ -251,7 +260,13 @@ namespace Protein_Crystallization
                 sensor_x.Text = save.laser_delta_x.ToString();
                 sensor_y.Text = save.laser_delta_y.ToString();
                 sensor_z.Text = save.laser_delta_z.ToString();
+
+                syringe_x.Text = save.syringe_delta_x.ToString();
+                syringe_y.Text = save.syringe_delta_y.ToString();
+                syringe_z.Text = save.syringe_delta_z.ToString();
+                
                 update_delta();
+                update_delta_s();
 
                 i = 0;
                 foreach(string s in save.grid_name)
@@ -302,7 +317,7 @@ namespace Protein_Crystallization
                 save.h_radius = float.Parse(radius.Text);
                 save.holeid   = uint.Parse(holeid.Text);
                 //save.h_off    = float.Parse(hole_off.Text);
-                save.h_angle  = float.Parse(angle.Text);
+                save.h_angle  = float.Parse(holeangle.Text);
 
                 save.LED         = decimal.ToUInt32(LED_light.Value);
                 save.uL          = uint.Parse(uL.Text);
@@ -337,6 +352,10 @@ namespace Protein_Crystallization
                 save.laser_delta_x = float.Parse(sensor_x.Text);
                 save.laser_delta_y = float.Parse(sensor_y.Text);
                 save.laser_delta_z = float.Parse(sensor_z.Text);
+
+                save.syringe_delta_x = float.Parse(syringe_x.Text);
+                save.syringe_delta_y = float.Parse(syringe_y.Text);
+                save.syringe_delta_z = float.Parse(syringe_z.Text);
 
                 XmlSerializer serializer = new XmlSerializer(save.GetType());
                 TextWriter writer = new StreamWriter(saveFileDialog1.FileName);
@@ -720,6 +739,7 @@ namespace Protein_Crystallization
                 MessageBox.Show("请输入正确的半径");
                 return;
             }
+            PCAS.set_hole_delta(delta_x_s, delta_y_s, delta_z_s);
             PCAS.set_hole_radius(d);
             PCAS.set_hole_angle(a);
             PCAS.set_hole_sample(sample);
@@ -782,6 +802,8 @@ namespace Protein_Crystallization
         int delta_x_s = 0;
         int delta_y_s = 0;
         int delta_z_s = 0;
+        float report_d = 0;
+        float threshold_value = 0;
         private void sample_exam_thread()
         {
             
@@ -804,9 +826,9 @@ namespace Protein_Crystallization
                     PCAS.microscopexy(x[(int)i], y[(int)i]);
                 }
                 this.set_sampleid(i.ToString());
-                Thread.Sleep(100);
+                Thread.Sleep(300);
                 picture.Record_the_picture(i);
-                Thread.Sleep(100);
+                Thread.Sleep(300);
                 if (reportfile_name != null)
                 {
                     StreamReader reportfile = null;
@@ -823,6 +845,7 @@ namespace Protein_Crystallization
                         if (mc.Count >= 8)
                         {
                             dataGridView1[3, (int)i - 1].Value = mc[6].Value;
+                            report_d = string_to_float(0, mc[6].Value);
                             for (int k = 0; k < sample; k++)
                             {
                                 dataGridView1[3, k].OwningRow.Selected = false;
@@ -837,6 +860,14 @@ namespace Protein_Crystallization
                     if (exam_start == false)
                     {
                         return;
+                    }
+                }
+                if (auto_add_sample == true)
+                {
+                    if (report_d > threshold_value)
+                    {
+                        if (i != 13 && i!= 19 && i!=20 && i!= 21 && i!=26)
+                            PCAS.move_to_hole(i);
                     }
                 }
                 if (exam_start == false)
@@ -857,6 +888,7 @@ namespace Protein_Crystallization
             sample = string_to_uint(0,Sample.Text,false);
             d = string_to_float(14.05f,sample_radius.Text,false);
             a = string_to_float(0,angle.Text,false);
+            threshold_value = string_to_float(0, threshold.Text, false);
             float t = string_to_float(0,laser_time.Text, false);
             laser_test_time = (int)(t * 1000 * 60);
             if (comboBox1.SelectedIndex == 0)
@@ -1345,9 +1377,9 @@ namespace Protein_Crystallization
             {
                 uint time;
                 if(comboBox2.SelectedIndex ==0)
-                    time = string_to_uint(5,textBox1.Text,true) * 1000 * 60;
+                    time = string_to_uint(60,textBox1.Text,true) * 1000 * 60;
                 else
-                    time = string_to_uint(5, textBox1.Text, true) * 1000 * 60 * 60;
+                    time = string_to_uint(60, textBox1.Text, true) * 1000 * 60 * 60;
                 uint sample = string_to_uint(0, Sample.Text, true);
                 uint timeinterval = string_to_uint(5,textBox7.Text, true) * 1000;
                 if (time < sample * timeinterval)
@@ -1529,7 +1561,6 @@ namespace Protein_Crystallization
                 PCAS.micoscope_x(-delta_x_s);
                 PCAS.micoscope_y(-delta_y_s);
                 syringe_test = true;
-                PCAS.set_hole_delta(delta_x_s, delta_y_s, delta_z_s);
                 button9.Text = "校准";
             }
         }
@@ -1555,6 +1586,46 @@ namespace Protein_Crystallization
             if (syringe_y.Text.Length != 0)
             {
                 update_delta_s();
+            }
+        }
+
+        bool auto_add_sample = false;
+        private void button10_Click(object sender, EventArgs e)
+        {
+            uint i = string_to_uint(0, holeid.Text, false);
+            uint sample = string_to_uint(0, Sample.Text, false);
+            float d = string_to_float(22.02f, radius.Text, false);
+            float a = string_to_float(0, holeangle.Text, false);
+            float u = string_to_float(1, uL.Text, false);
+            if (i > sample)
+            {
+                MessageBox.Show("请输入正确的样本编号");
+                return;
+            }
+            if (a > 360 || a < -360)
+            {
+                MessageBox.Show("请输入正确的角偏移");
+                return;
+            }
+            if (d < 0 || d > 30)
+            {
+                MessageBox.Show("请输入正确的半径");
+                return;
+            }
+            PCAS.set_hole_delta(delta_x_s, delta_y_s, delta_z_s);
+            PCAS.set_hole_radius(d);
+            PCAS.set_hole_angle(a);
+            PCAS.set_hole_sample(sample);
+            PCAS.set_hole_uL(u);
+            if (auto_add_sample == false)
+            {
+                auto_add_sample = true;
+                button10.Text = "自动";
+            }
+            else
+            {
+                auto_add_sample = false;
+                button10.Text = "手动";
             }
         }
     }
